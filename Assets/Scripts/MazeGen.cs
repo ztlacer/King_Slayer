@@ -10,11 +10,6 @@ public class MazeGen : MonoBehaviour
     public GameObject[] Walls3;
     public GameObject[] Walls4;
 
-    //public int startX0 = -20;
-    //public int startZ0 = -30;
-    //public int startX90 = -10;
-    //public int startZ90 = -40;
-
     // Start is called before the first frame update
     void Start()
     {
