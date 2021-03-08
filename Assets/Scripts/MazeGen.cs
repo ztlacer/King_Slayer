@@ -5,53 +5,58 @@ using UnityEngine;
 public class MazeGen : MonoBehaviour
 {
 
-    public GameObject Wall1;
-    public GameObject Wall2;
-    public GameObject Wall3;
-    public GameObject Wall4;
-    public GameObject Wall5;
-    public GameObject Wall6;
-    public GameObject Wall7;
-    public GameObject Wall8;
-    public GameObject Wall9;
-    public GameObject Wall10;
-    public GameObject Wall11;
-    public GameObject Wall12;
-    public GameObject Wall13;
-    public GameObject Wall14;
-    public GameObject Wall15;
-    public GameObject Wall16;
+    public GameObject[] Walls1;
+    public GameObject[] Walls2;
+    public GameObject[] Walls3;
+    public GameObject[] Walls4;
 
-    public int startX0 = -20;
-    public int startZ0 = -30;
-    public int startX90 = -10;
-    public int startZ90 = -40;
-
-    public GameObject[] Walls;
+    //public int startX0 = -20;
+    //public int startZ0 = -30;
+    //public int startX90 = -10;
+    //public int startZ90 = -40;
 
     // Start is called before the first frame update
     void Start()
     {
-        Walls = new GameObject[16];
-        Walls[0] = Wall1;
-        Walls[1] = Wall2;
-        Walls[2] = Wall3;
-        Walls[3] = Wall4;
-        Walls[4] = Wall5;
-        Walls[5] = Wall6;
-        Walls[6] = Wall7;
-        Walls[7] = Wall8;
-        Walls[8] = Wall9;
-        Walls[9] = Wall10;
-        Walls[10] = Wall11;
-        Walls[11] = Wall12;
-        Walls[12] = Wall13;
-        Walls[13] = Wall14;
-        Walls[14] = Wall15;
-        Walls[15] = Wall16;
 
-        genMaze(5, 5, 0, 0, 0, 15);
+        Walls1 = new GameObject[361];
+        for (int i = 0; i < 361; i++)
+        {
+            Walls1[i] = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            Walls1[i].transform.position = new Vector3(0, -15, 0);
+            Walls1[i].transform.localScale = new Vector3(50, 30, 1);
+        }
+
+        Walls2 = new GameObject[576];
+        for (int i = 0; i < 576; i++)
+        {
+            Walls2[i] = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            Walls2[i].transform.position = new Vector3(0, -15, 0);
+            Walls2[i].transform.localScale = new Vector3(40, 30, 1);
+        }
+
+        Walls3 = new GameObject[1521];
+        for (int i = 0; i < 1521; i++)
+        {
+            Walls3[i] = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            Walls3[i].transform.position = new Vector3(0, -15, 0);
+            Walls3[i].transform.localScale = new Vector3(25, 30, 1);
+        }
+
+        Walls4 = new GameObject[2401];
+        for (int i = 0; i < 2401; i ++)
+        {
+            Walls4[i] = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            Walls4[i].transform.position = new Vector3(0, -15, 0);
+            Walls4[i].transform.localScale = new Vector3(20, 30, 1);
+        }
         
+
+        genMaze(50, 50, 0, 0, 0, 2400, -1500, 800, 20, -20, -30, -10, -40, Walls4);
+        genMaze(40, 40, 0, 0, 0, 1520, -497.5, 554.5, 25, -20, -30, -7.5, -42.5, Walls3);
+        genMaze(25, 25, 0, 0, 0, 575, -1490, -180, 40, -20, -30, 0, -50, Walls2);
+        genMaze(20, 20, 0, 0, 0, 360, -485, -420, 50, -20, -30, 5, -55, Walls1);
+
     }
 
     // Update is called once per frame
@@ -74,18 +79,18 @@ public class MazeGen : MonoBehaviour
      * 
      * round - term for debugging
      */
-    void genMaze(int x, int z, int startX, int startZ, int index, int maxIndex)
+    void genMaze(int x, int z, int startX, int startZ, int index, int maxIndex, double xt, double zt, int size, int startX0, int startZ0, double startX90, double startZ90, GameObject[] Walls)
     {
         int orientation = 0;
 
-        if (x >= z)
+        if (x > z)
         {
             orientation = 1;
         }
 
         if (x == z)
         {
-            //orientation = Random.Range(0, 2);
+            orientation = Random.Range(0, 2);
         }
             
 
@@ -97,22 +102,22 @@ public class MazeGen : MonoBehaviour
 
             int width = Random.Range(0, x);
 
-            int transZ = startZ0 + depth * 20 + 20 * startZ;
+            int transZ = startZ0 + depth * size + size * startZ;
 
-            int transX = startX0 + 20 * startX;
+            int transX = startX0 + size * startX;
 
-            int banX = transX + width * 20;
+            int banX = transX + width * size;
 
 
             for (int i = index; i < (x - 1) + index; i++)
             {
                 if (transX == banX)
                 {
-                    transX += 20;
+                    transX += size;
                 }
-                Walls[i].transform.position = new Vector3(transX, 5, transZ);
+                Walls[i].transform.position = new Vector3( transX + (float) xt, 5, transZ + (float) zt);
                 Walls[i].transform.Rotate(0, angle, 0, Space.Self);
-                transX += 20;
+                transX += size;
 
             }
             
@@ -136,11 +141,11 @@ public class MazeGen : MonoBehaviour
 
                 if (wallsNeededA > 0)
                 {
-                    genMaze(nextX, nextZA, startX, nextStartZA, nextIndexA, maxIndexA);
+                    genMaze(nextX, nextZA, startX, nextStartZA, nextIndexA, maxIndexA, xt, zt, size, startX0, startZ0, startX90, startZ90, Walls);
                 }
                 if (wallsNeededB > 0)
                 {
-                    genMaze(nextX, nextZB, startX, nextStartZB, nextIndexB, maxIndexB);
+                    genMaze(nextX, nextZB, startX, nextStartZB, nextIndexB, maxIndexB, xt, zt, size, startX0, startZ0, startX90, startZ90, Walls);
                 }
             
         } else {
@@ -152,21 +157,21 @@ public class MazeGen : MonoBehaviour
 
             int depth = Random.Range(0, z);
 
-            int transX = startX90 + width * 20 + 20 * startX;
+            double transX = startX90 + width * size + size * startX;
 
-            int transZ = startZ90 + 20 * startZ;
+            double transZ = startZ90 + size * startZ;
 
-            int banZ = transZ + depth * 20;
+            double banZ = transZ + depth * size;
 
             for (int i = index; i < (z - 1) + index; i++)
             {
                 if (transZ == banZ)
                 {
-                    transZ += 20;
+                    transZ += size;
                 }
                 Walls[i].transform.Rotate(0, angle, 0, Space.Self);
-                Walls[i].transform.position = new Vector3(transX, 5, transZ);
-                transZ += 20;
+                Walls[i].transform.position = new Vector3((float) transX + (float) xt, 5, (float) transZ + (float) zt);
+                transZ += size;
             }
 
             
@@ -190,11 +195,11 @@ public class MazeGen : MonoBehaviour
 
                 if (wallsNeededA > 0)
                 {
-                    genMaze(nextXA, nextZ, nextStartXA, startZ, nextIndexA, maxIndexA);
+                    genMaze(nextXA, nextZ, nextStartXA, startZ, nextIndexA, maxIndexA, xt, zt, size, startX0, startZ0, startX90, startZ90, Walls);
                 }
                 if (wallsNeededB > 0)
                 {
-                    genMaze(nextXB, nextZ, nextStartXB, startZ, nextIndexB, maxIndexB);
+                    genMaze(nextXB, nextZ, nextStartXB, startZ, nextIndexB, maxIndexB, xt, zt, size, startX0, startZ0, startX90, startZ90, Walls);
                 }
 
             
