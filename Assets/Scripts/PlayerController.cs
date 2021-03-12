@@ -10,6 +10,13 @@ public class PlayerController : NetworkBehaviour
     private float movementX;
     private float movementY;
     // Start is called before the first frame update
+
+    public override void OnStartLocalPlayer()
+    {
+        base.OnStartLocalPlayer();
+        Debug.Log("Started local player");
+        this.gameObject.name = "localplayer";
+    }
     void Start()
     {
         if(!isLocalPlayer)
@@ -34,6 +41,7 @@ public class PlayerController : NetworkBehaviour
     {
         if (!isLocalPlayer)
         {
+            gameObject.GetComponent<Camera>().enabled = false;
             return;
         }
         Vector3 movement = new Vector3(movementX, 0.0f, movementY);
