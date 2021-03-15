@@ -61,29 +61,34 @@ public class MazeGen : MonoBehaviour
     }
 
     /**
-     * x - the width
-     * y - the depth
+     * Procedurally Generates a Maze 
      * 
-     * startX - used to determine the coordinates to create the wall; representative of
-     *  where the wall will be created on a hypothetical grid
-     *  
-     * startZ - used to create the coordinates of the wall; representative of where the 
-     *  wall will be created on a hypothetical grid 
-     *  
-     * index - the index of the wall array usable to this paritcular iteration
-     * 
-     * round - term for debugging
+     * @parameters
+     * gridWidth - Divisions That Make Up The Width Of The Maze Grid (i.e. Is the grid 5x6 or 6x6?)
+     * gridWidth - Divisions That Make Up The Depth Of The Maze Grid (i.e. Is the grid 5x6 or 5x7?)
+     * gridStartIndexX - On The Overall Maze Grid, Which X Index Will This SubMaze Start Generating At (i.e. Will the submaze start generating at (3,2)? (4,2)?)
+     * gridStartIndexZ - On The Overall Maze Grid, Which Z Index Will This SubMaze Start Generating At (i.e. Will the submaze start generating at (3,2)? (3,3)?)
+     * wallsStartIndex - Which Index In The Walls Array Can This Method Start Pulling From (i.e. index 6 of Walls[])
+     * wallsEndIndex - Which Index In The Walls Array Must This Method Stop Pulling From (i.e. index 12 of Walls[])
+     * worldTransX - X Translation To Place This Maze In An Appropriate Location In World
+     * worldTransZ - Z Translation To Place This Maze In An Appropriate Location In World
+     * coordSize - Size of A Coord In Game Units
+     * rotX0 - X Translation For Rotating Wall To 0 Degrees
+     * rotZ0 - Z Translation For Rotating Wall To 0 Degrees
+     * rotX90 - X Translation For Rotating Wall To 90 Degrees
+     * rotZ90 - Z Translation For Rotating Wall To 90 Degrees
+     * Walls - Array Of Walls To Use For Maze Generation
      */
-    void genMaze(int x, int z, int startX, int startZ, int index, int maxIndex, double xt, double zt, int size, int startX0, int startZ0, double startX90, double startZ90, GameObject[] Walls)
+    void genMaze(int gridWidth, int gridDepth, int gridStartIndexX, int gridStartIndexZ, int wallsStartIndex, int wallsEndIndex, double worldTransX, double worldTransZ, int coordSize, int rotX0, int rotZ0, double rotX90, double rotZ90, GameObject[] Walls)
     {
         int orientation = 0;
 
-        if (x > z)
+        if (gridWidth > gridDepth)
         {
             orientation = 1;
         }
 
-        if (x == z)
+        if (gridWidth == gridDepth)
         {
             orientation = Random.Range(0, 2);
         }
@@ -93,54 +98,54 @@ public class MazeGen : MonoBehaviour
 
         if (orientation == 0)
         {
-            int depth = Random.Range(0, z - 1);
+            int depth = Random.Range(0, gridDepth - 1);
 
-            int width = Random.Range(0, x);
+            int width = Random.Range(0, gridWidth);
 
-            int transZ = startZ0 + depth * size + size * startZ;
+            int transZ = rotZ0 + depth * coordSize + coordSize * gridStartIndexZ;
 
-            int transX = startX0 + size * startX;
+            int transX = rotX0 + coordSize * gridStartIndexX;
 
-            int banX = transX + width * size;
+            int banX = transX + width * coordSize;
 
 
-            for (int i = index; i < (x - 1) + index; i++)
+            for (int i = wallsStartIndex; i < (gridWidth - 1) + wallsStartIndex; i++)
             {
                 if (transX == banX)
                 {
-                    transX += size;
+                    transX += coordSize;
                 }
-                Walls[i].transform.position = new Vector3( transX + (float) xt, 5, transZ + (float) zt);
+                Walls[i].transform.position = new Vector3( transX + (float) worldTransX, 5, transZ + (float) worldTransZ);
                 Walls[i].transform.Rotate(0, angle, 0, Space.Self);
-                transX += size;
+                transX += coordSize;
 
             }
             
-                int nextX = x;
+                int nextX = gridWidth;
                 
-                int nextZA = z - (depth + 1);
+                int nextZA = gridDepth - (depth + 1);
                 int nextZB = depth + 1;
                 
-                int nextStartZA = startZ + nextZB;
-                int nextStartZB = startZ;
+                int nextStartZA = gridStartIndexZ + nextZB;
+                int nextStartZB = gridStartIndexZ;
 
                 
                 int wallsNeededA = (nextX - 1) * (nextZA - 1);
                 int wallsNeededB = (nextX - 1) * (nextZB - 1);
 
-                int nextIndexA = index + x - 1;
+                int nextIndexA = wallsStartIndex + gridWidth - 1;
                 int maxIndexA = nextIndexA + wallsNeededA - 1;
                 
                 int nextIndexB = nextIndexA + wallsNeededA;
-                int maxIndexB = maxIndex;
+                int maxIndexB = wallsEndIndex;
 
                 if (wallsNeededA > 0)
                 {
-                    genMaze(nextX, nextZA, startX, nextStartZA, nextIndexA, maxIndexA, xt, zt, size, startX0, startZ0, startX90, startZ90, Walls);
+                    genMaze(nextX, nextZA, gridStartIndexX, nextStartZA, nextIndexA, maxIndexA, worldTransX, worldTransZ, coordSize, rotX0, rotZ0, rotX90, rotZ90, Walls);
                 }
                 if (wallsNeededB > 0)
                 {
-                    genMaze(nextX, nextZB, startX, nextStartZB, nextIndexB, maxIndexB, xt, zt, size, startX0, startZ0, startX90, startZ90, Walls);
+                    genMaze(nextX, nextZB, gridStartIndexX, nextStartZB, nextIndexB, maxIndexB, worldTransX, worldTransZ, coordSize, rotX0, rotZ0, rotX90, rotZ90, Walls);
                 }
             
         } else {
@@ -148,53 +153,53 @@ public class MazeGen : MonoBehaviour
             angle = 90;
             print("Orientation Caught");
 
-            int width = Random.Range(0, x - 1);
+            int width = Random.Range(0, gridWidth - 1);
 
-            int depth = Random.Range(0, z);
+            int depth = Random.Range(0, gridDepth);
 
-            double transX = startX90 + width * size + size * startX;
+            double transX = rotX90 + width * coordSize + coordSize * gridStartIndexX;
 
-            double transZ = startZ90 + size * startZ;
+            double transZ = rotZ90 + coordSize * gridStartIndexZ;
 
-            double banZ = transZ + depth * size;
+            double banZ = transZ + depth * coordSize;
 
-            for (int i = index; i < (z - 1) + index; i++)
+            for (int i = wallsStartIndex; i < (gridDepth - 1) + wallsStartIndex; i++)
             {
                 if (transZ == banZ)
                 {
-                    transZ += size;
+                    transZ += coordSize;
                 }
                 Walls[i].transform.Rotate(0, angle, 0, Space.Self);
-                Walls[i].transform.position = new Vector3((float) transX + (float) xt, 5, (float) transZ + (float) zt);
-                transZ += size;
+                Walls[i].transform.position = new Vector3((float) transX + (float) worldTransX, 5, (float) transZ + (float) worldTransZ);
+                transZ += coordSize;
             }
 
             
-                int nextZ = z;
+                int nextZ = gridDepth;
 
-                int nextXA = x - (width + 1);
+                int nextXA = gridWidth - (width + 1);
                 int nextXB = width + 1;
 
-                int nextStartXA = startX + nextXB;
-                int nextStartXB = startX;
+                int nextStartXA = gridStartIndexX + nextXB;
+                int nextStartXB = gridStartIndexX;
 
 
                 int wallsNeededA = (nextZ - 1) * (nextXA - 1);
                 int wallsNeededB = (nextZ - 1) * (nextXB - 1);
 
-                int nextIndexA = index + z - 1;
+                int nextIndexA = wallsStartIndex + gridDepth - 1;
                 int maxIndexA = nextIndexA + wallsNeededA - 1;
 
                 int nextIndexB = nextIndexA + wallsNeededA;
-                int maxIndexB = maxIndex;
+                int maxIndexB = wallsEndIndex;
 
                 if (wallsNeededA > 0)
                 {
-                    genMaze(nextXA, nextZ, nextStartXA, startZ, nextIndexA, maxIndexA, xt, zt, size, startX0, startZ0, startX90, startZ90, Walls);
+                    genMaze(nextXA, nextZ, nextStartXA, gridStartIndexZ, nextIndexA, maxIndexA, worldTransX, worldTransZ, coordSize, rotX0, rotZ0, rotX90, rotZ90, Walls);
                 }
                 if (wallsNeededB > 0)
                 {
-                    genMaze(nextXB, nextZ, nextStartXB, startZ, nextIndexB, maxIndexB, xt, zt, size, startX0, startZ0, startX90, startZ90, Walls);
+                    genMaze(nextXB, nextZ, nextStartXB, gridStartIndexZ, nextIndexB, maxIndexB, worldTransX, worldTransZ, coordSize, rotX0, rotZ0, rotX90, rotZ90, Walls);
                 }
 
             
