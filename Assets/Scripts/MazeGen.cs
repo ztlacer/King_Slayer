@@ -10,6 +10,8 @@ public class MazeGen : MonoBehaviour
     public GameObject[] Walls3;
     public GameObject[] Walls4;
 
+    public GameObject[] wayPoints1;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -45,12 +47,23 @@ public class MazeGen : MonoBehaviour
             Walls4[i].transform.position = new Vector3(0, -15, 0);
             Walls4[i].transform.localScale = new Vector3(20, 30, 1);
         }
+
+        wayPoints1 = new GameObject[5];
+        for (int i = 0; i < 5; i++)
+        {
+            wayPoints1[i] = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            wayPoints1[i].transform.position = new Vector3(0, -15, 0);
+            wayPoints1[i].transform.localScale = new Vector3(5, 500, 5);
+        }
         
 
         genMaze(50, 50, 0, 0, 0, 2400, -499, 550, 20, -20, -30, -10, -40, Walls4);
         genMaze(40, 40, 0, 0, 0, 1520, -1497.5, 804.5, 25, -20, -30, -7.5, -42.5, Walls3);
         genMaze(25, 25, 0, 0, 0, 575, -1490, -180, 40, -20, -30, 0, -50, Walls2);
         genMaze(20, 20, 0, 0, 0, 360, -485, -420, 50, -20, -30, 5, -55, Walls1);
+
+        // int wayPointCount, int gridWidth, int gridDepth, double worldTransX, double worldTransZ, int coordSize, GameObject[] wayPoints
+        generateWayPoints(5, 20, 20, -485, -420, 50, wayPoints1);
 
     }
 
@@ -92,7 +105,7 @@ public class MazeGen : MonoBehaviour
         {
             orientation = Random.Range(0, 2);
         }
-            
+
 
         int angle = 0;
 
@@ -115,40 +128,42 @@ public class MazeGen : MonoBehaviour
                 {
                     transX += coordSize;
                 }
-                Walls[i].transform.position = new Vector3( transX + (float) worldTransX, 5, transZ + (float) worldTransZ);
+                Walls[i].transform.position = new Vector3(transX + (float)worldTransX, 5, transZ + (float)worldTransZ);
                 Walls[i].transform.Rotate(0, angle, 0, Space.Self);
                 transX += coordSize;
 
             }
-            
-                int nextX = gridWidth;
-                
-                int nextZA = gridDepth - (depth + 1);
-                int nextZB = depth + 1;
-                
-                int nextStartZA = gridStartIndexZ + nextZB;
-                int nextStartZB = gridStartIndexZ;
 
-                
-                int wallsNeededA = (nextX - 1) * (nextZA - 1);
-                int wallsNeededB = (nextX - 1) * (nextZB - 1);
+            int nextX = gridWidth;
 
-                int nextIndexA = wallsStartIndex + gridWidth - 1;
-                int maxIndexA = nextIndexA + wallsNeededA - 1;
-                
-                int nextIndexB = nextIndexA + wallsNeededA;
-                int maxIndexB = wallsEndIndex;
+            int nextZA = gridDepth - (depth + 1);
+            int nextZB = depth + 1;
 
-                if (wallsNeededA > 0)
-                {
-                    genMaze(nextX, nextZA, gridStartIndexX, nextStartZA, nextIndexA, maxIndexA, worldTransX, worldTransZ, coordSize, rotX0, rotZ0, rotX90, rotZ90, Walls);
-                }
-                if (wallsNeededB > 0)
-                {
-                    genMaze(nextX, nextZB, gridStartIndexX, nextStartZB, nextIndexB, maxIndexB, worldTransX, worldTransZ, coordSize, rotX0, rotZ0, rotX90, rotZ90, Walls);
-                }
-            
-        } else {
+            int nextStartZA = gridStartIndexZ + nextZB;
+            int nextStartZB = gridStartIndexZ;
+
+
+            int wallsNeededA = (nextX - 1) * (nextZA - 1);
+            int wallsNeededB = (nextX - 1) * (nextZB - 1);
+
+            int nextIndexA = wallsStartIndex + gridWidth - 1;
+            int maxIndexA = nextIndexA + wallsNeededA - 1;
+
+            int nextIndexB = nextIndexA + wallsNeededA;
+            int maxIndexB = wallsEndIndex;
+
+            if (wallsNeededA > 0)
+            {
+                genMaze(nextX, nextZA, gridStartIndexX, nextStartZA, nextIndexA, maxIndexA, worldTransX, worldTransZ, coordSize, rotX0, rotZ0, rotX90, rotZ90, Walls);
+            }
+            if (wallsNeededB > 0)
+            {
+                genMaze(nextX, nextZB, gridStartIndexX, nextStartZB, nextIndexB, maxIndexB, worldTransX, worldTransZ, coordSize, rotX0, rotZ0, rotX90, rotZ90, Walls);
+            }
+
+        }
+        else
+        {
 
             angle = 90;
             print("Orientation Caught");
@@ -170,41 +185,82 @@ public class MazeGen : MonoBehaviour
                     transZ += coordSize;
                 }
                 Walls[i].transform.Rotate(0, angle, 0, Space.Self);
-                Walls[i].transform.position = new Vector3((float) transX + (float) worldTransX, 5, (float) transZ + (float) worldTransZ);
+                Walls[i].transform.position = new Vector3((float)transX + (float)worldTransX, 5, (float)transZ + (float)worldTransZ);
                 transZ += coordSize;
             }
 
-            
-                int nextZ = gridDepth;
 
-                int nextXA = gridWidth - (width + 1);
-                int nextXB = width + 1;
+            int nextZ = gridDepth;
 
-                int nextStartXA = gridStartIndexX + nextXB;
-                int nextStartXB = gridStartIndexX;
+            int nextXA = gridWidth - (width + 1);
+            int nextXB = width + 1;
+
+            int nextStartXA = gridStartIndexX + nextXB;
+            int nextStartXB = gridStartIndexX;
 
 
-                int wallsNeededA = (nextZ - 1) * (nextXA - 1);
-                int wallsNeededB = (nextZ - 1) * (nextXB - 1);
+            int wallsNeededA = (nextZ - 1) * (nextXA - 1);
+            int wallsNeededB = (nextZ - 1) * (nextXB - 1);
 
-                int nextIndexA = wallsStartIndex + gridDepth - 1;
-                int maxIndexA = nextIndexA + wallsNeededA - 1;
+            int nextIndexA = wallsStartIndex + gridDepth - 1;
+            int maxIndexA = nextIndexA + wallsNeededA - 1;
 
-                int nextIndexB = nextIndexA + wallsNeededA;
-                int maxIndexB = wallsEndIndex;
+            int nextIndexB = nextIndexA + wallsNeededA;
+            int maxIndexB = wallsEndIndex;
 
-                if (wallsNeededA > 0)
-                {
-                    genMaze(nextXA, nextZ, nextStartXA, gridStartIndexZ, nextIndexA, maxIndexA, worldTransX, worldTransZ, coordSize, rotX0, rotZ0, rotX90, rotZ90, Walls);
-                }
-                if (wallsNeededB > 0)
-                {
-                    genMaze(nextXB, nextZ, nextStartXB, gridStartIndexZ, nextIndexB, maxIndexB, worldTransX, worldTransZ, coordSize, rotX0, rotZ0, rotX90, rotZ90, Walls);
-                }
+            if (wallsNeededA > 0)
+            {
+                genMaze(nextXA, nextZ, nextStartXA, gridStartIndexZ, nextIndexA, maxIndexA, worldTransX, worldTransZ, coordSize, rotX0, rotZ0, rotX90, rotZ90, Walls);
+            }
+            if (wallsNeededB > 0)
+            {
+                genMaze(nextXB, nextZ, nextStartXB, gridStartIndexZ, nextIndexB, maxIndexB, worldTransX, worldTransZ, coordSize, rotX0, rotZ0, rotX90, rotZ90, Walls);
+            }
 
-            
-            
+
+
         }
-
     }
+
+        void generateWayPoints(int wayPointCount, int gridWidth, int gridDepth, double worldTransX, double worldTransZ, float coordSize, GameObject[] wayPoints)
+        {
+            int[] xValues = new int[gridWidth];
+            int[] zValues = new int[gridDepth];
+            int foundValues = 0;
+
+            for (int i = 0; i < wayPointCount; i++)
+            {
+                bool found = false;
+                while (!found)
+                {
+                    int xCoord = Random.Range(0, gridWidth - 1);
+                    int zCoord = Random.Range(0, gridDepth - 1);
+
+                    found = true;
+                    for(int j = 0; j < foundValues; j++)
+                    {
+                        if (xValues[j] == xCoord && zValues[j] == zCoord)
+                        {
+                            found = false;
+                        } // end if 
+                    } // end found values loop
+
+                    if (found == true)
+                    {
+                        xValues[i] = xCoord;
+                        zValues[i] = zCoord;
+                        foundValues++;
+                    }
+
+                } // end while not found loop
+
+                var x = worldTransX + coordSize * xValues[i] + coordSize/2;
+                var z = worldTransZ + coordSize * zValues[i];
+                wayPoints[i].transform.position = new Vector3( (float) x, 5, (float) z);
+
+
+            } // end waypoints loop
+        } // end method
+
+    
 }
