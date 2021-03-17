@@ -412,12 +412,48 @@ public class MazeGen : MonoBehaviour
 
             return true;
         }
+
+        bool move(int[] xValues, int[] zValues, int lastX, int lastZ, int rendered, bool rendering, int[][] takenX, int[][] takenZ, int i)
+        {
+            if (moveNorth(xValues, zValues, lastX, lastZ, rendered, takenX) == true && rendering)
+                {
+                    print("move north");
+                    xValues[i] = lastX;
+                    zValues[i] = lastZ + 1;
+                    return true;
+
+                } else if (moveSouth(xValues, zValues, lastX, lastZ, rendered, takenX) == true && rendering)
+                {
+
+                    print("move south");
+                    xValues[i] = lastX;
+                    zValues[i] = lastZ - 1;
+                    return true;
+
+                } else if (moveWest(xValues, zValues, lastX, lastZ, rendered, takenZ) == true && rendering)
+                {
+
+                    print("move west");
+                    xValues[i] = lastX + 1;
+                    zValues[i] = lastZ;
+                    return true;
+
+                } else if (moveEast(xValues, zValues, lastX, lastZ, rendered, takenZ) == true && rendering)
+                {
+                    print("move east");
+                    xValues[i] = lastX - 1;
+                    zValues[i] = lastZ;
+                    return true;
+
+                } 
+            return false;
+        }
         
         void generateWayPoints(int wayPointCount, int gridWidth, int gridDepth, double worldTransX, double worldTransZ, float coordSize, GameObject[] wayPoints, int[][] takenX, int[][] takenZ)
         {
-            int[] xValues = new int[gridWidth];
-            int[] zValues = new int[gridDepth];
-            
+            int[] xValues = new int[wayPointCount];
+            int[] zValues = new int[wayPointCount];
+
             xValues[0] = Random.Range(0, gridWidth - 1);
             zValues[0] = Random.Range(0, gridDepth - 1);
 
@@ -430,42 +466,45 @@ public class MazeGen : MonoBehaviour
                 int lastX = xValues[lastIndex];
                 int lastZ = zValues[lastIndex];
 
-                if (moveNorth(xValues, zValues, lastX, lastZ, rendered, takenX) == true && rendering)
+                bool moved = move(xValues, zValues, lastX, lastZ, rendered, rendering, takenX, takenZ, i);
+
+                if (moved)
                 {
-                    print("move north");
-                    xValues[i] = lastX;
-                    zValues[i] = lastZ + 1;
                     rendered++;
-
-                } else if (moveSouth(xValues, zValues, lastX, lastZ, rendered, takenX) == true && rendering)
-                {
-
-                    print("move south");
-                    xValues[i] = lastX;
-                    zValues[i] = lastZ - 1;
-                    rendered++;
-
-                } else if (moveWest(xValues, zValues, lastX, lastZ, rendered, takenZ) == true && rendering)
-                {
-
-                    print("move west");
-                    xValues[i] = lastX + 1;
-                    zValues[i] = lastZ;
-                    rendered++;
-
-                } else if (moveEast(xValues, zValues, lastX, lastZ, rendered, takenZ) == true && rendering)
-                {
-                    print("move east");
-                    xValues[i] = lastX - 1;
-                    zValues[i] = lastZ;
-                    rendered++;
-
                 } else
                 {
-                    rendering = false;
-                }
+                    bool resultFound = false;
+                    while(!resultFound)
+                    {
 
-            }
+                        if (lastIndex - 1 < 0)
+                        {
+                      
+                            rendering = false;
+                            resultFound = true;
+
+                        }
+                        else
+                        {
+                            lastIndex--;
+                            lastX = xValues[lastIndex];
+                            lastZ = zValues[lastIndex];
+                            moved = move(xValues, zValues, lastX, lastZ, rendered, rendering, takenX, takenZ, i);
+                            if (moved)
+                            {
+
+                                rendered++;
+                                resultFound = true;
+                                
+                            } // end if
+
+                         } // end if else 
+
+                    } // end while
+                    
+                } // end for loop
+
+            } // end method
 
             for (int i = 0; i < rendered; i++)
             {
