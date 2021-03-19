@@ -25,7 +25,7 @@ public class PlayerNameInput : MonoBehaviour
 
         nameInputField.text = defaultName;
 
-        SetPlayerName(default);
+        SetPlayerName(defaultName);
     }
 
     public void SetPlayerName(string name)
