@@ -1,0 +1,26 @@
+[33m5e4c256[m[33m ([m[1;36mHEAD[m[33m)[m HEAD@{0}: checkout: moving from 40b1fee9f14ef8d03c563356d98f3f3dc8e150ca to 40b1fee9f14ef8d03c563356d98f3f3dc8e150ca
+[33m40b1fee[m HEAD@{1}: checkout: moving from development to 40b1fee9f14ef8d03c563356d98f3f3dc8e150ca
+[33m6da5278[m[33m ([m[1;31morigin/development[m[33m, [m[1;32mdevelopment[m[33m)[m HEAD@{2}: commit (merge): Merge remote-tracking branch 'origin/development' into development
+[33m40b1fee[m HEAD@{3}: commit: Reset again
+[33m5e4c256[m[33m ([m[1;36mHEAD[m[33m)[m HEAD@{4}: commit: had to reset
+[33m33cb34d[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m HEAD@{5}: reset: moving to HEAD@{19}
+[33me9a0aef[m HEAD@{6}: reset: moving to e9a0aef
+[33mad7778b[m HEAD@{7}: commit: Auto stash before merge of "development" and "origin/development"
+[33m4d7e1c9[m[33m ([m[1;31morigin/backupDev[m[33m)[m HEAD@{8}: checkout: moving from brandon/camera-and-movement to development
+[33m111ded6[m[33m ([m[1;31morigin/brandon/camera-and-movement[m[33m, [m[1;32mbrandon/camera-and-movement[m[33m)[m HEAD@{9}: checkout: moving from development to brandon/camera-and-movement
+[33m4d7e1c9[m[33m ([m[1;31morigin/backupDev[m[33m)[m HEAD@{10}: Fast forward branch development to branch development
+[33mc788b0e[m HEAD@{11}: reset: moving to c788b0e1869bebf8c12cd956bdddf3705740bd54 [324821bd535574957450525d363ddd78fdfe1ec2]
+[33me9a0aef[m HEAD@{12}: commit: Added animations to the playable character.
+[33mc788b0e[m HEAD@{13}: Fast forward branch development to branch development
+[33m78d4386[m HEAD@{14}: checkout: moving from main to development
+[33m33cb34d[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m HEAD@{15}: checkout: moving from brandon/camera-and-movement to main
+[33m111ded6[m[33m ([m[1;31morigin/brandon/camera-and-movement[m[33m, [m[1;32mbrandon/camera-and-movement[m[33m)[m HEAD@{16}: checkout: moving from 78d438656e53b51d0b5b0ed80b1cbcc37b8b9f55 to brandon/camera-and-movement
+[33m78d4386[m HEAD@{17}: checkout: moving from Maxx/AI to 78d438656e53b51d0b5b0ed80b1cbcc37b8b9f55
+[33ma61812e[m HEAD@{18}: checkout: moving from brandon/camera-and-movement to Maxx/AI
+[33m111ded6[m[33m ([m[1;31morigin/brandon/camera-and-movement[m[33m, [m[1;32mbrandon/camera-and-movement[m[33m)[m HEAD@{19}: checkout: moving from Maxx/AI to brandon/camera-and-movement
+[33ma61812e[m HEAD@{20}: checkout: moving from brandon/camera-and-movement to Maxx/AI
+[33m111ded6[m[33m ([m[1;31morigin/brandon/camera-and-movement[m[33m, [m[1;32mbrandon/camera-and-movement[m[33m)[m HEAD@{21}: Fast forward branch brandon/camera-and-movement to branch brandon/camera-and-movement
+[33m2b47936[m HEAD@{22}: commit: Added a basic player model with the plans for animation
+[33m86a0e5b[m HEAD@{23}: commit: Finished adding character movement and camera
+[33m33cb34d[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m HEAD@{24}: checkout: moving from main to brandon/camera-and-movement
+[33m33cb34d[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m HEAD@{25}: clone: from https://github.com/ztlacer/King_Slayer.git

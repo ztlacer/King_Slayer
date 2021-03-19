@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class ThirdPersonMovement : MonoBehaviour
 {
@@ -12,6 +13,16 @@ public class ThirdPersonMovement : MonoBehaviour
     public float turnSmoothTime = 1f;
     float turnSmoothVelocity;
 
+    private float horizontal;
+    private float vertical;
+
+    private void OnMove(InputValue movementValue)
+    {
+        Vector2 movementVector = movementValue.Get<Vector2>();
+
+        horizontal = movementVector.x;
+        vertical = movementVector.y;
+    }
     // Update is called once per frame
     void Update()
     {
