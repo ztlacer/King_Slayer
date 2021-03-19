@@ -10,7 +10,7 @@ using UnityEngine;
         [SerializeField] private Transform playerTransform = null;
         [SerializeField] private CinemachineVirtualCamera virtualCamera = null;
 
-        private Controls controls;
+        private Controls controls; // for some reason cannot have = new Controls();
         private Controls Controls
         {
             get
