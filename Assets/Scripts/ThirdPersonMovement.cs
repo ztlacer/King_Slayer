@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class ThirdPersonMovement : MonoBehaviour
 {
@@ -12,12 +13,22 @@ public class ThirdPersonMovement : MonoBehaviour
     public float turnSmoothTime = 1f;
     float turnSmoothVelocity;
 
+    private float horizontalX;
+    private float horizontalZ;
+
+    private void OnMove(InputValue inputAction)
+    {
+        Vector2 direction = inputAction.Get<Vector2>();
+        horizontalX = direction.x;
+        horizontalZ = direction.y;
+        
+    }
+
     // Update is called once per frame
     void Update()
     {
-        float horizontal = Input.GetAxisRaw("Horizontal");
-        float vertical = Input.GetAxisRaw("Vertical");
-        Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
+
+        Vector3 direction = new Vector3(horizontalX, 0f, horizontalZ).normalized;
 
         if (direction.magnitude >= 0.1)
         {
