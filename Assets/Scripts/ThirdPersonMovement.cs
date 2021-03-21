@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using Mirror;
 
 public class ThirdPersonMovement : NetworkBehaviour
@@ -13,14 +14,16 @@ public class ThirdPersonMovement : NetworkBehaviour
     public float turnSmoothTime = 1f;
     float turnSmoothVelocity;
 
-    private void Start()
-    {
-        if(hasAuthority)
-        {
-            GameObject.Find("Camera").gameObject.transform.parent = this.transform;
-        }
-    }
+    private float horizontal;
+    private float vertical;
 
+    private void OnMove(InputValue movementValue)
+    {
+        Vector2 movementVector = movementValue.Get<Vector2>();
+
+        horizontal = movementVector.x;
+        vertical = movementVector.y;
+    }
     // Update is called once per frame
     void Update()
     {
