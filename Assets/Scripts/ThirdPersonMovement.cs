@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using Mirror;
 
-public class ThirdPersonMovement : NetworkBehaviour
+public class ThirdPersonMovement : MonoBehaviour
 {
     public CharacterController controller;
     public Transform cam;
@@ -14,26 +13,22 @@ public class ThirdPersonMovement : NetworkBehaviour
     public float turnSmoothTime = 1f;
     float turnSmoothVelocity;
 
-    private float horizontal;
-    private float vertical;
+    private float horizontalX;
+    private float horizontalZ;
 
-    private void OnMove(InputValue movementValue)
+    private void OnMove(InputValue inputAction)
     {
-        Vector2 movementVector = movementValue.Get<Vector2>();
-
-        horizontal = movementVector.x;
-        vertical = movementVector.y;
+        Vector2 direction = inputAction.Get<Vector2>();
+        horizontalX = direction.x;
+        horizontalZ = direction.y;
+        
     }
+
     // Update is called once per frame
     void Update()
     {
-        if (!hasAuthority)
-        {
-            return;
-        }
-        float horizontal = Input.GetAxisRaw("Horizontal");
-        float vertical = Input.GetAxisRaw("Vertical");
-        Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
+
+        Vector3 direction = new Vector3(horizontalX, 0f, horizontalZ).normalized;
 
         if (direction.magnitude >= 0.1)
         {
