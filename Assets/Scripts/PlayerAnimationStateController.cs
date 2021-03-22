@@ -2,30 +2,49 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Mirror;
 
-public class PlayerAnimationStateController : MonoBehaviour
+public class PlayerAnimationStateController : NetworkBehaviour
 {
-    Animator animator;
+    [SerializeField] Animator animator;
     // Start is called before the first frame update
 
     private bool running = false;
-    void Start()
-    {
-        animator = GetComponent<Animator>();
-    }
 
-    private void OnMove(InputValue movementValue)
-    {
-        Vector2 movementVector = movementValue.Get<Vector2>();
+    private Vector2 previousInput;
 
-        if (movementVector.magnitude > 0)
+
+    private Controls controls;
+    private Controls Controls
+    {
+        get
         {
-            running = true;
-        } else
-        {
-            running = false;
+            if (controls != null) { return controls; }
+            return controls = new Controls();
         }
     }
+    public override void OnStartAuthority()
+    {
+        Debug.Log("Start Authority");
+        enabled = true;
+
+        Controls.Player.Move.performed += ctx => SetMovement(ctx.ReadValue<Vector2>());
+        Controls.Player.Move.canceled += ctx => ResetMovement();
+    }
+
+
+    [ClientCallback]
+    private void OnEnable() => Controls.Enable();
+
+    [ClientCallback]
+    private void OnDisable() => Controls.Disable();
+
+
+    [Client]
+    private void SetMovement(Vector2 movement) => running = true;
+
+    [Client]
+    private void ResetMovement() => running = false;
 
     // Update is called once per frame
     void Update()

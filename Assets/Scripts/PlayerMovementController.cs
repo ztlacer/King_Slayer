@@ -5,6 +5,7 @@ public class PlayerMovementController : NetworkBehaviour
 {
     [SerializeField] private float movementSpeed = 5f;
     [SerializeField] private CharacterController controller = null;
+    [SerializeField] private Animator animate = null;
 
     private Vector2 previousInput;
 
@@ -45,7 +46,6 @@ public class PlayerMovementController : NetworkBehaviour
     [Client]
     private void Move()
     {
-        Debug.Log("Something happening");
         Vector3 right = controller.transform.right;
         Vector3 forward = controller.transform.forward;
         right.y = 0f;
@@ -54,5 +54,9 @@ public class PlayerMovementController : NetworkBehaviour
         Vector3 movement = right.normalized * previousInput.x + forward.normalized * previousInput.y;
         Debug.Log(movement);
         controller.Move(movement * movementSpeed * Time.deltaTime);
+
+        // If there is any magnitude at which the player is moving then animate it running
+        animate.SetBool("isRunning", movement.magnitude > 0);
+       
     }
 }
