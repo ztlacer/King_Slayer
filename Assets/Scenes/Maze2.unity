@@ -1881,7 +1881,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b75750ba7271b43b68d393ae5ddb527b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Material1: {fileID: 2100000, guid: e06855361f87d40baae0c2a15fb34e1d, type: 2}
+  Material1: {fileID: 2100000, guid: 265c1888e0bb7ae4893432e053373ca5, type: 2}
+  Material2: {fileID: 2100000, guid: 2d376d668dcec9045a4b0e642a7239d9, type: 2}
+  Material3: {fileID: 2100000, guid: 8bbfa9999a12c1c4ba28eb1d7932bc91, type: 2}
+  Material4: {fileID: 2100000, guid: 1d0c0bac13326d14a8fb5fda102ea2f7, type: 2}
   Walls1: []
   Walls2: []
   Walls3: []
