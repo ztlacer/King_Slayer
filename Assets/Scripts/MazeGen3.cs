@@ -9,6 +9,11 @@ public class MazeGen3 : MonoBehaviour
     public Material Material3;
     public Material Material4;
 
+    public Material Material5;
+    public Material Material6;
+    public Material Material7;
+    public Material Material8;
+
     public GameObject[] Walls1;
     public GameObject[] Walls2;
     public GameObject[] Walls3;
@@ -144,6 +149,7 @@ public class MazeGen3 : MonoBehaviour
             Walls1[i] = GameObject.CreatePrimitive(PrimitiveType.Cube);
             Walls1[i].transform.position = new Vector3(0, -15, 0);
             Walls1[i].transform.localScale = new Vector3(50, 30, 1);
+            Walls1[i].GetComponent<MeshRenderer>().material = Material5;
         }
 
         Walls2 = new GameObject[576];
@@ -152,6 +158,7 @@ public class MazeGen3 : MonoBehaviour
             Walls2[i] = GameObject.CreatePrimitive(PrimitiveType.Cube);
             Walls2[i].transform.position = new Vector3(0, -15, 0);
             Walls2[i].transform.localScale = new Vector3(40, 30, 1);
+            Walls2[i].GetComponent<MeshRenderer>().material = Material6;
         }
 
         Walls3 = new GameObject[1521];
@@ -160,6 +167,7 @@ public class MazeGen3 : MonoBehaviour
             Walls3[i] = GameObject.CreatePrimitive(PrimitiveType.Cube);
             Walls3[i].transform.position = new Vector3(0, -15, 0);
             Walls3[i].transform.localScale = new Vector3(25, 30, 1);
+            Walls3[i].GetComponent<MeshRenderer>().material = Material7;
         }
 
         Walls4 = new GameObject[2401];
@@ -168,6 +176,7 @@ public class MazeGen3 : MonoBehaviour
             Walls4[i] = GameObject.CreatePrimitive(PrimitiveType.Cube);
             Walls4[i].transform.position = new Vector3(0, -15, 0);
             Walls4[i].transform.localScale = new Vector3(20, 30, 1);
+            Walls4[i].GetComponent<MeshRenderer>().material = Material8;
         }
 
         wayPoints1 = new GameObject[5];
