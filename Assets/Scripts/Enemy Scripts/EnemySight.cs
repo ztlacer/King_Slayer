@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemySight : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class EnemySight : MonoBehaviour
     public bool exited;
 
     public Vector3 lastKnownLoc;
+
+    public NavMeshAgent agent;
 
 
     // Start is called before the first frame update
@@ -30,19 +33,21 @@ public class EnemySight : MonoBehaviour
         // passedThrough = true;
         //  other.GetComponent<Rigidbody>().AddForce(Vector3.up * 12, ForceMode.Acceleration);
         
-        if (other.gameObject.name == "Player")
+        if (other.gameObject.tag == "Player")
         {
+            Debug.Log("Colliding!!");
            // Debug.Log("here");
             passedThrough = true;
             lastKnownLoc = other.transform.position;
 
-            if ((Vector2.Distance(transform.position, lastKnownLoc) < .5f))
+            if (agent.remainingDistance <= agent.stoppingDistance)
             {
                 return;
             }
             else
             {
-                transform.position = Vector3.MoveTowards(transform.position, lastKnownLoc, speed * Time.deltaTime);
+                //transform.position = Vector3.MoveTowards(transform.position, lastKnownLoc, speed * Time.deltaTime);
+                agent.SetDestination(lastKnownLoc);
             }
         }
 
@@ -50,7 +55,7 @@ public class EnemySight : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.name == "Player")
+        if (other.gameObject.tag == "Player")
         {
             exited = true;
         }

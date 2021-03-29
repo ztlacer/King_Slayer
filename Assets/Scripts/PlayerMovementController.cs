@@ -52,7 +52,7 @@ public class PlayerMovementController : NetworkBehaviour
         forward.y = 0f;
 
         Vector3 movement = right.normalized * previousInput.x + forward.normalized * previousInput.y;
-        Debug.Log(movement);
+        //Debug.Log(movement);
         controller.Move(movement * movementSpeed * Time.deltaTime);
 
         // If there is any magnitude at which the player is moving then animate it running

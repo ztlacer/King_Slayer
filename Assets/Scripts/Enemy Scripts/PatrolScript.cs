@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class PatrolScript : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class PatrolScript : MonoBehaviour
     public float speed;
     private float waitTime;
     public float startWaitTime;
+
+    public NavMeshAgent agent;
 
 
     public Transform[] patrolLocations = new Transform[5]; 
@@ -77,14 +80,16 @@ public class PatrolScript : MonoBehaviour
         
         if (!otherMovement)
         {
-            transform.position = Vector3.MoveTowards(transform.position,  patrolLocations[nextSpot].position, speed * Time.deltaTime);
+            //transform.position = Vector3.MoveTowards(transform.position,  patrolLocations[nextSpot].position, speed * Time.deltaTime);
+            agent.SetDestination(patrolLocations[nextSpot].position);
         }
 
         //print(Vector2.Distance(transform.position, patrolLocations[nextSpot].position));
-        print(nextSpot);
-        if (Vector2.Distance(transform.position,  patrolLocations[nextSpot].position) < 0.2f)
+        //print(nextSpot);
+        //print(transform.position);
+        if (agent.remainingDistance <= agent.stoppingDistance)
         {
-            print("here");
+           // print("here");
             if (waitTime <= 0)
             {
 
@@ -107,7 +112,7 @@ public class PatrolScript : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.name == "Player")
+        if (other.gameObject.tag == "Player")
         {
             otherMovement = true;
         }
@@ -115,7 +120,7 @@ public class PatrolScript : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.name == "Player")
+        if (other.gameObject.tag == "Player")
         {
             otherMovement = false;
         }

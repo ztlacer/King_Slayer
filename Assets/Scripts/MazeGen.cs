@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 //using System;
 
 public class MazeGen : MonoBehaviour
@@ -39,7 +40,10 @@ public class MazeGen : MonoBehaviour
         Walls1 = new GameObject[361];
         for (int i = 0; i < 361; i++)
         {
-            Walls1[i] = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            GameObject thing = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            thing.AddComponent<NavMeshObstacle>();
+            thing.GetComponent<NavMeshObstacle>().carving = true;
+            Walls1[i] = thing;
             Walls1[i].transform.position = new Vector3(0, -15, 0);
             Walls1[i].transform.localScale = new Vector3(50, 30, 1);
         }
@@ -47,7 +51,10 @@ public class MazeGen : MonoBehaviour
         Walls2 = new GameObject[576];
         for (int i = 0; i < 576; i++)
         {
-            Walls2[i] = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            GameObject thing = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            thing.AddComponent<NavMeshObstacle>();
+            thing.GetComponent<NavMeshObstacle>().carving = true;
+            Walls2[i] = thing;
             Walls2[i].transform.position = new Vector3(0, -15, 0);
             Walls2[i].transform.localScale = new Vector3(40, 30, 1);
         }
@@ -55,7 +62,10 @@ public class MazeGen : MonoBehaviour
         Walls3 = new GameObject[1521];
         for (int i = 0; i < 1521; i++)
         {
-            Walls3[i] = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            GameObject thing = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            thing.AddComponent<NavMeshObstacle>();
+            thing.GetComponent<NavMeshObstacle>().carving = true;
+            Walls3[i] = thing;
             Walls3[i].transform.position = new Vector3(0, -15, 0);
             Walls3[i].transform.localScale = new Vector3(25, 30, 1);
         }
@@ -63,7 +73,10 @@ public class MazeGen : MonoBehaviour
         Walls4 = new GameObject[2401];
         for (int i = 0; i < 2401; i ++)
         {
-            Walls4[i] = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            GameObject thing = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            thing.AddComponent<NavMeshObstacle>();
+            thing.GetComponent<NavMeshObstacle>().carving = true;
+            Walls4[i] = thing;
             Walls4[i].transform.position = new Vector3(0, -15, 0);
             Walls4[i].transform.localScale = new Vector3(20, 30, 1);
         }
@@ -220,6 +233,8 @@ public class MazeGen : MonoBehaviour
         generateWayPoints(5, 39, 10, -1505, 785, 25, wayPoints6, takenX3, takenZ3, 38, 9);
         generateWayPoints(5, 4, 2, -390, 550, 20, wayPoints7, takenX4, takenZ4, 2, 0);
         generateWayPoints(5, 33, 47, -650, 490, 20, wayPoints8, takenX4, takenZ4, 32, 46);
+
+        //UnityEditor.AI.NavMeshBuilder.BuildNavMesh();
 
     }
 
