@@ -33,11 +33,17 @@ public class PlayerAnimationStateController : MonoBehaviour
         if (running)
         {
             animator.SetBool("isRunning", true);
+        } else { 
+            animator.SetBool("isRunning", false);
         }
 
-        if (!running)
+        if (Keyboard.current.ctrlKey.wasPressedThisFrame)
         {
-            animator.SetBool("isRunning", false);
+            animator.SetBool("isCrouching", true);
+        }
+        else if (Keyboard.current.ctrlKey.wasReleasedThisFrame)
+        {
+            animator.SetBool("isCrouching", false);
         }
     }
 }

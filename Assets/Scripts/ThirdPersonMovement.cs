@@ -10,11 +10,15 @@ public class ThirdPersonMovement : MonoBehaviour
 
     public float speed = 6f;
 
+    [Range(.2f, 1f)]
+    public float crouchMultiplier = .5f;
+
     public float turnSmoothTime = 1f;
     float turnSmoothVelocity;
 
     private float horizontalX;
     private float horizontalZ;
+    private bool crouching = false;
 
     private void OnMove(InputValue inputAction)
     {
@@ -38,7 +42,22 @@ public class ThirdPersonMovement : MonoBehaviour
 
 
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-            controller.Move(moveDir.normalized * speed * Time.deltaTime);
+
+            float multiplier = 1f;
+            if (crouching)
+            {
+                multiplier = crouchMultiplier;
+            }
+            controller.Move(moveDir.normalized * speed * multiplier * Time.deltaTime);
+        }
+
+        if (Keyboard.current.ctrlKey.wasPressedThisFrame)
+        {
+            crouching = true;
+        }
+        else if (Keyboard.current.ctrlKey.wasReleasedThisFrame)
+        {
+            crouching = false;
         }
     }
 }
