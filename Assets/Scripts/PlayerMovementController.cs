@@ -1,5 +1,6 @@
 ﻿using Mirror;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMovementController : NetworkBehaviour
 {
@@ -53,10 +54,24 @@ public class PlayerMovementController : NetworkBehaviour
 
         Vector3 movement = right.normalized * previousInput.x + forward.normalized * previousInput.y;
         //Debug.Log(movement);
+
+        
+        
+
+        if (Keyboard.current.ctrlKey.wasPressedThisFrame) // if the player is crouching, reduce movement speed
+        {
+            animate.SetBool("isCrouching", true);
+            movementSpeed = 2.5f;
+        } else if (Keyboard.current.ctrlKey.wasReleasedThisFrame)
+        {
+            animate.SetBool("isCrouching", false);
+            movementSpeed = 5f;
+        }
         controller.Move(movement * movementSpeed * Time.deltaTime);
 
         // If there is any magnitude at which the player is moving then animate it running
         animate.SetBool("isRunning", movement.magnitude > 0);
+
        
     }
 }
