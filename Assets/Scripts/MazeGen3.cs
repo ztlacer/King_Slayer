@@ -14,6 +14,16 @@ public class MazeGen3 : MonoBehaviour
     public Material Material7;
     public Material Material8;
 
+    public GameObject[] Buildings1;
+    public GameObject[] Buildings2;
+    public GameObject[] Buildings3;
+    public GameObject[] Buildings4;
+
+    public int b1Taken = 0;
+    public int b2Taken = 0;
+    public int b3Taken = 0;
+    public int b4Taken = 0;
+
     public GameObject[] Walls1;
     public GameObject[] Walls2;
     public GameObject[] Walls3;
@@ -51,6 +61,12 @@ public class MazeGen3 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Vector3 pos = transform.position + new Vector3(100, 0, 100);
+        //float angleDegrees = -45 * Mathf.Rad2Deg;
+        //Quaternion rot = Quaternion.Euler(0, angleDegrees, 0);
+        //Instantiate(Buildings1[0], pos, rot);
+        //Buildings1[0].transform.localScale = new Vector3(45, 60, 45);
+
         SubZones1 = new GameObject[3];
         transXTaken1 = new int[4][];
         transZTaken1 = new int[4][];
@@ -261,15 +277,41 @@ public class MazeGen3 : MonoBehaviour
             }
         }
 
+        //Instantiate(Buildings1[0], transform.position, transform.rotation);
+        for (int i = 0; i < 10; i++)
+        {
+            //Instantiate(Buildings1[i], transform.position, transform.rotation);
+            Buildings1[i].transform.position = new Vector3(-130 + i * 10, -10, -175);
+        }
+
+        for (int i = 0; i < 15; i++)
+        {
+            Buildings2[i].transform.position = new Vector3(-130 + i * 10, -10, -175);
+        }
+
+        for (int i = 0; i < 20; i++)
+        {
+            Buildings3[i].transform.position = new Vector3(-130 + i * 10, -10, -175);
+        }
+
+        for (int i = 0; i < 25; i++)
+        {
+            Buildings4[i].transform.position = new Vector3(-130 + i * 10, -10, -175);
+        }
+
+        b1Taken = 0;
+        b2Taken = 0;
+        b3Taken = 0;
+        b4Taken = 0;
         genSubZone(3, 4, 4, 20, 20, 50, -430, -400, transXTaken1, transZTaken1, SubZones1);
         genSubZone(4, 4, 4, 25, 25, 40, -1450, -170, transXTaken2, transZTaken2, SubZones2);
         genSubZone(3, 8, 8, 40, 40, 25, -1442.5, 861.5, transXTaken3, transZTaken3, SubZones3);
         genSubZone(4, 9, 9, 50, 50, 20, -449, 600, transXTaken4, transZTaken4, SubZones4);
 
-        genMaze(takenX4, takenZ4, transXTaken4, transZTaken4, 4, 9, 9, 50, 50, 0, 0, 0, 2400, -499, 550, 20, -20, -30, -10, -40, Walls4);
-        genMaze(takenX3, takenZ3, transXTaken3, transZTaken3, 3, 8, 8, 40, 40, 0, 0, 0, 1520, -1497.5, 804.5, 25, -20, -30, -7.5, -42.5, Walls3);
-        genMaze(takenX2, takenZ2, transXTaken2, transZTaken2, 4, 4, 4, 25, 25, 0, 0, 0, 575, -1490, -180, 40, -20, -30, 0, -50, Walls2);
-        genMaze(takenX1, takenZ1, transXTaken1, transZTaken1, 3, 4, 4, 20, 20, 0, 0, 0, 360, -485, -420, 50, -20, -30, 5, -55, Walls1);
+        genMaze(takenX4, takenZ4, transXTaken4, transZTaken4, 4, 9, 9, 50, 50, 0, 0, 0, 2400, -499, 550, 20, -20, -30, -10, -40, Walls4, 4);
+        genMaze(takenX3, takenZ3, transXTaken3, transZTaken3, 3, 8, 8, 40, 40, 0, 0, 0, 1520, -1497.5, 804.5, 25, -20, -30, -7.5, -42.5, Walls3, 3);
+        genMaze(takenX2, takenZ2, transXTaken2, transZTaken2, 4, 4, 4, 25, 25, 0, 0, 0, 575, -1490, -180, 40, -20, -30, 0, -50, Walls2, 2);
+        genMaze(takenX1, takenZ1, transXTaken1, transZTaken1, 3, 4, 4, 20, 20, 0, 0, 0, 360, -485, -420, 50, -20, -30, 5, -55, Walls1, 1);
 
         generateWayPoints(5, 20, 20, -485, -420, 50, wayPoints1, takenX1, takenZ1);
 
@@ -320,7 +362,7 @@ public class MazeGen3 : MonoBehaviour
      * rotZ90 - Z Translation For Rotating Wall To 90 Degrees
      * Walls - Array Of Walls To Use For Maze Generation
      */
-    void genMaze(int[][] xTaken, int[][] zTaken, int[][] transXTaken, int[][] transZTaken, int subZoneCount, int subZoneWidth, int subZoneDepth, int gridWidth, int gridDepth, int gridStartIndexX, int gridStartIndexZ, int wallsStartIndex, int wallsEndIndex, double worldTransX, double worldTransZ, int coordSize, int rotX0, int rotZ0, double rotX90, double rotZ90, GameObject[] Walls)
+    void genMaze(int[][] xTaken, int[][] zTaken, int[][] transXTaken, int[][] transZTaken, int subZoneCount, int subZoneWidth, int subZoneDepth, int gridWidth, int gridDepth, int gridStartIndexX, int gridStartIndexZ, int wallsStartIndex, int wallsEndIndex, double worldTransX, double worldTransZ, int coordSize, int rotX0, int rotZ0, double rotX90, double rotZ90, GameObject[] Walls, int level)
     {
         int orientation = 0;
 
@@ -348,6 +390,8 @@ public class MazeGen3 : MonoBehaviour
             int transX = rotX0 + coordSize * gridStartIndexX;
 
             int banX = transX + width * coordSize;
+
+            //bool addedBuild = false;
 
             int count = 0;
             for (int i = wallsStartIndex; i < (gridWidth - 1) + wallsStartIndex; i++)
@@ -393,6 +437,100 @@ public class MazeGen3 : MonoBehaviour
                 {
                     Walls[i].transform.position = new Vector3(transX + (float)worldTransX, 5, transZ + (float)worldTransZ);
                     Walls[i].transform.Rotate(0, angle, 0, Space.Self);
+
+                    // Generate Level 1 Buildings
+                    if (level == 1)
+                    {
+                        if (b1Taken < 5)
+                        {
+                            int buildingPossibility = Random.Range(0, 30);
+                            //int buildingPossibility = 0;
+                            if (buildingPossibility == 0)
+                            {
+                                Buildings1[b1Taken].transform.Rotate(0, 90, 0, Space.Self);
+                                Buildings1[b1Taken].transform.position = new Vector3((float)transX + (float)worldTransX, 10, (float)transZ + (float)worldTransZ - 9);
+                                b1Taken++;
+                                //addedBuild = true;
+                            }
+
+                        }
+                        else if (b1Taken < 10)
+                        {
+                            Buildings1[b1Taken].transform.Rotate(0, 180, 0, Space.Self);
+                            Buildings1[b1Taken].transform.position = new Vector3((float)transX + (float)worldTransX , 1, (float)transZ + (float)worldTransZ - 9);
+                            b1Taken++;
+                            //addedBuild = true;
+                        }
+                    } // end lv 1
+                    if (level == 2)
+                    {
+                        if (b2Taken < 7)
+                        {
+                            int buildingPossibility = Random.Range(0, 30);
+                            //int buildingPossibility = 0;
+                            if (buildingPossibility == 0)
+                            {
+                                Buildings2[b2Taken].transform.Rotate(0, 180, 0, Space.Self);
+                                Buildings2[b2Taken].transform.position = new Vector3((float)transX + (float)worldTransX, -1, (float)transZ + (float)worldTransZ - 9);
+                                b2Taken++;
+                                //addedBuild = true;
+                            }
+
+                        }
+                        else if (b2Taken < 15)
+                        {
+                            Buildings2[b2Taken].transform.Rotate(0, 90, 0, Space.Self);
+                            Buildings2[b2Taken].transform.position = new Vector3((float)transX + (float)worldTransX, 1, (float)transZ + (float)worldTransZ - 9);
+                            b2Taken++;
+                            //addedBuild = true;
+                        }
+                    } // end lv 2
+                    if (level == 3)
+                    {
+                        if (b3Taken < 12)
+                        {
+                            int buildingPossibility = Random.Range(0, 60);
+                            //int buildingPossibility = 0;
+                            if (buildingPossibility == 0)
+                            {
+                                Buildings3[b3Taken].transform.Rotate(0, 90, 0, Space.Self);
+                                Buildings3[b3Taken].transform.position = new Vector3((float)transX + (float)worldTransX + 4, 1, (float)transZ + (float)worldTransZ - 9);
+                                b3Taken++;
+                                //addedBuild = true;
+                            }
+
+                        }
+                        else if (b3Taken < 20)
+                        {
+                            Buildings3[b3Taken].transform.Rotate(0, 90, 0, Space.Self);
+                            Buildings3[b3Taken].transform.position = new Vector3((float)transX + (float)worldTransX - 4, 8, (float)transZ + (float)worldTransZ - 9);
+                            b3Taken++;
+                            //addedBuild = true;
+                        }
+                    } // end lv 3
+                    if (level == 4)
+                    {
+                        if (b4Taken < 15)
+                        {
+                            int buildingPossibility = Random.Range(0, 90);
+                            //int buildingPossibility = 0;
+                            if (buildingPossibility == 0)
+                            {
+                                Buildings4[b4Taken].transform.Rotate(0, 90, 0, Space.Self);
+                                Buildings4[b4Taken].transform.position = new Vector3((float)transX + (float)worldTransX, 1, (float)transZ + (float)worldTransZ - 6);
+                                b4Taken++;
+                                //addedBuild = true;
+                            }
+
+                        }
+                        else if (b4Taken < 25)
+                        {
+                            Buildings4[b4Taken].transform.Rotate(0, 90, 0, Space.Self);
+                            Buildings4[b4Taken].transform.position = new Vector3((float)transX + (float)worldTransX, 8, (float)transZ + (float)worldTransZ - 9);
+                            b4Taken++;
+                            //addedBuild = true;
+                        }
+                    } // end lv 4
                 }
                 transX += coordSize;
 
@@ -421,11 +559,11 @@ public class MazeGen3 : MonoBehaviour
 
             if (wallsNeededA > 0)
             {
-                genMaze(xTaken, zTaken, transXTaken, transZTaken, subZoneCount, subZoneWidth, subZoneDepth, nextX, nextZA, gridStartIndexX, nextStartZA, nextIndexA, maxIndexA, worldTransX, worldTransZ, coordSize, rotX0, rotZ0, rotX90, rotZ90, Walls);
+                genMaze(xTaken, zTaken, transXTaken, transZTaken, subZoneCount, subZoneWidth, subZoneDepth, nextX, nextZA, gridStartIndexX, nextStartZA, nextIndexA, maxIndexA, worldTransX, worldTransZ, coordSize, rotX0, rotZ0, rotX90, rotZ90, Walls, level);
             }
             if (wallsNeededB > 0)
             {
-                genMaze(xTaken, zTaken, transXTaken, transZTaken, subZoneCount, subZoneWidth, subZoneDepth, nextX, nextZB, gridStartIndexX, nextStartZB, nextIndexB, maxIndexB, worldTransX, worldTransZ, coordSize, rotX0, rotZ0, rotX90, rotZ90, Walls);
+                genMaze(xTaken, zTaken, transXTaken, transZTaken, subZoneCount, subZoneWidth, subZoneDepth, nextX, nextZB, gridStartIndexX, nextStartZB, nextIndexB, maxIndexB, worldTransX, worldTransZ, coordSize, rotX0, rotZ0, rotX90, rotZ90, Walls, level);
             }
 
         }
@@ -443,6 +581,8 @@ public class MazeGen3 : MonoBehaviour
             double transZ = rotZ90 + coordSize * gridStartIndexZ;
 
             double banZ = transZ + depth * coordSize;
+
+            //bool addedBuild = false;
 
             int count = 0;
             for (int i = wallsStartIndex; i < (gridDepth - 1) + wallsStartIndex; i++)
@@ -490,6 +630,99 @@ public class MazeGen3 : MonoBehaviour
                 {
                     Walls[i].transform.Rotate(0, angle, 0, Space.Self);
                     Walls[i].transform.position = new Vector3((float)transX + (float)worldTransX, 5, (float)transZ + (float)worldTransZ);
+
+                    if (level == 1)
+                    {
+                        if (b1Taken < 5)
+                        {
+                            int buildingPossibility = Random.Range(0, 30);
+                            //int buildingPossibility = 0;
+                            if (buildingPossibility == 0)
+                            {
+                                Buildings1[b1Taken].transform.Rotate(0, 180, 0, Space.Self);
+                                Buildings1[b1Taken].transform.position = new Vector3((float)transX + (float)worldTransX - 9, 10, (float)transZ + (float)worldTransZ);
+                                b1Taken++;
+                                //addedBuild = true;
+                            }
+
+                        } else if (b1Taken < 10)
+                        {
+                            Buildings1[b1Taken].transform.Rotate(0, 270, 0, Space.Self);
+                            Buildings1[b1Taken].transform.position = new Vector3((float)transX + (float)worldTransX - 9, 1, (float)transZ + (float)worldTransZ);
+                            b1Taken++;
+                            //addedBuild = true;
+                        }
+                    }
+                    if (level == 2)
+                    {
+                        if (b2Taken < 7)
+                        {
+                            int buildingPossibility = Random.Range(0, 30);
+                            //int buildingPossibility = 0;
+                            if (buildingPossibility == 0)
+                            {
+                                Buildings2[b2Taken].transform.Rotate(0, 90, 0, Space.Self);
+                                Buildings2[b2Taken].transform.position = new Vector3((float)transX + (float)worldTransX + 9, -1, (float)transZ + (float)worldTransZ);
+                                b2Taken++;
+                                //addedBuild = true;
+                            }
+
+                        }
+                        else if (b2Taken < 15)
+                        {
+                            Buildings2[b2Taken].transform.Rotate(0, 180, 0, Space.Self);
+                            Buildings2[b2Taken].transform.position = new Vector3((float)transX + (float)worldTransX - 9, 1, (float)transZ + (float)worldTransZ);
+                            b2Taken++;
+                            //addedBuild = true;
+                        }
+                    } // end lv 2
+                    if (level == 3)
+                    {
+                        if (b3Taken < 12)
+                        {
+                            int buildingPossibility = Random.Range(0, 60);
+                            //int buildingPossibility = 0;
+                            if (buildingPossibility == 0)
+                            {
+                                Buildings3[b3Taken].transform.Rotate(0, 180, 0, Space.Self);
+                                Buildings3[b3Taken].transform.position = new Vector3((float)transX + (float)worldTransX - 9, 1, (float)transZ + (float)worldTransZ - 5);
+                                b3Taken++;
+                                //addedBuild = true;
+                            }
+
+                        }
+                        else if (b3Taken < 20)
+                        {
+                            Buildings3[b3Taken].transform.Rotate(0, 180, 0, Space.Self);
+                            Buildings3[b3Taken].transform.position = new Vector3((float)transX + (float)worldTransX - 9, 8, (float)transZ + (float)worldTransZ);
+                            b3Taken++;
+                            //addedBuild = true;
+                        }
+                    } // end lv 3
+                    if (level == 4)
+                    {
+                        if (b4Taken < 15)
+                        {
+                            int buildingPossibility = Random.Range(0, 100);
+                            //int buildingPossibility = 0;
+                            if (buildingPossibility == 0)
+                            {
+                                Buildings4[b4Taken].transform.Rotate(0, 180, 0, Space.Self);
+                                Buildings4[b4Taken].transform.position = new Vector3((float)transX + (float)worldTransX - 6, 1, (float)transZ + (float)worldTransZ);
+                                b4Taken++;
+                                //addedBuild = true;
+                            }
+
+                        }
+                        else if (b4Taken < 25)
+                        {
+                            Buildings4[b4Taken].transform.Rotate(0, 180, 0, Space.Self);
+                            Buildings4[b4Taken].transform.position = new Vector3((float)transX + (float)worldTransX - 9, 8, (float)transZ + (float)worldTransZ);
+                            b4Taken++;
+                            //addedBuild = true;
+                        }
+                    } // end lv 4
+
                 }
                 
                 transZ += coordSize;
@@ -519,11 +752,11 @@ public class MazeGen3 : MonoBehaviour
 
             if (wallsNeededA > 0)
             {
-                genMaze(xTaken, zTaken, transXTaken, transZTaken, subZoneCount, subZoneWidth, subZoneDepth, nextXA, nextZ, nextStartXA, gridStartIndexZ, nextIndexA, maxIndexA, worldTransX, worldTransZ, coordSize, rotX0, rotZ0, rotX90, rotZ90, Walls);
+                genMaze(xTaken, zTaken, transXTaken, transZTaken, subZoneCount, subZoneWidth, subZoneDepth, nextXA, nextZ, nextStartXA, gridStartIndexZ, nextIndexA, maxIndexA, worldTransX, worldTransZ, coordSize, rotX0, rotZ0, rotX90, rotZ90, Walls, level);
             }
             if (wallsNeededB > 0)
             {
-                genMaze(xTaken, zTaken, transXTaken, transZTaken, subZoneCount, subZoneWidth, subZoneDepth, nextXB, nextZ, nextStartXB, gridStartIndexZ, nextIndexB, maxIndexB, worldTransX, worldTransZ, coordSize, rotX0, rotZ0, rotX90, rotZ90, Walls);
+                genMaze(xTaken, zTaken, transXTaken, transZTaken, subZoneCount, subZoneWidth, subZoneDepth, nextXB, nextZ, nextStartXB, gridStartIndexZ, nextIndexB, maxIndexB, worldTransX, worldTransZ, coordSize, rotX0, rotZ0, rotX90, rotZ90, Walls, level);
             }
 
 
