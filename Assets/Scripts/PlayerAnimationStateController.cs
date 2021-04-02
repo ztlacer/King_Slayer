@@ -6,11 +6,15 @@ using Mirror;
 
 public class PlayerAnimationStateController : NetworkBehaviour
 {
-    [SerializeField] Animator animator;
+    [SerializeField] private Animator animator;
     // Start is called before the first frame update
+    private void Start()
+    {
+        //animator = gameObject.GetComponent<Animator>();
+    }
 
     private void Update()
     {
-        animator.SetBool("isRunning", gameObject.transform.hasChanged);
+        //animator.SetBool("isMoving", gameObject.transform.hasChanged);
     }
 }
