@@ -6,6 +6,9 @@ public class TestMazeGen : MonoBehaviour
 {
     public GameObject[] Walls;
 
+    public UnityEngine.AI.NavMeshSurface navSurface;
+   
+
     // Start is called before the first frame update
     void Start()
     {
@@ -13,12 +16,17 @@ public class TestMazeGen : MonoBehaviour
         Walls = new GameObject[16];
         for (int i = 0; i < 16; i++)
         {
-            Walls[i] = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            GameObject thing = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            thing.AddComponent<UnityEngine.AI.NavMeshObstacle>();
+            thing.GetComponent<UnityEngine.AI.NavMeshObstacle>().carving = true;
+            Walls[i] = thing;
             Walls[i].transform.position = new Vector3(0, -15, 0);
             Walls[i].transform.localScale = new Vector3(20, 30, 1);
         }
 
         genMaze(5, 5, 0, 0, 0, 15, -20, 0, 20, -20, -30, -10, -40, Walls);
+        navSurface.BuildNavMesh();
+        
     }
 
     // Update is called once per frame

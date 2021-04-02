@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
+//using System;
 
 public class MazeGen : MonoBehaviour
 {
@@ -21,6 +23,15 @@ public class MazeGen : MonoBehaviour
     public int[][] takenZ4;
 
     public GameObject[] wayPoints1;
+    public GameObject[] wayPoints2;
+    public GameObject[] wayPoints3;
+    public GameObject[] wayPoints4;
+    public GameObject[] wayPoints5;
+    public GameObject[] wayPoints6;
+    public GameObject[] wayPoints7;
+    public GameObject[] wayPoints8;
+
+    int numberOfWaypoints = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -29,7 +40,10 @@ public class MazeGen : MonoBehaviour
         Walls1 = new GameObject[361];
         for (int i = 0; i < 361; i++)
         {
-            Walls1[i] = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            GameObject thing = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            thing.AddComponent<NavMeshObstacle>();
+            thing.GetComponent<NavMeshObstacle>().carving = true;
+            Walls1[i] = thing;
             Walls1[i].transform.position = new Vector3(0, -15, 0);
             Walls1[i].transform.localScale = new Vector3(50, 30, 1);
         }
@@ -37,7 +51,10 @@ public class MazeGen : MonoBehaviour
         Walls2 = new GameObject[576];
         for (int i = 0; i < 576; i++)
         {
-            Walls2[i] = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            GameObject thing = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            thing.AddComponent<NavMeshObstacle>();
+            thing.GetComponent<NavMeshObstacle>().carving = true;
+            Walls2[i] = thing;
             Walls2[i].transform.position = new Vector3(0, -15, 0);
             Walls2[i].transform.localScale = new Vector3(40, 30, 1);
         }
@@ -45,7 +62,10 @@ public class MazeGen : MonoBehaviour
         Walls3 = new GameObject[1521];
         for (int i = 0; i < 1521; i++)
         {
-            Walls3[i] = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            GameObject thing = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            thing.AddComponent<NavMeshObstacle>();
+            thing.GetComponent<NavMeshObstacle>().carving = true;
+            Walls3[i] = thing;
             Walls3[i].transform.position = new Vector3(0, -15, 0);
             Walls3[i].transform.localScale = new Vector3(25, 30, 1);
         }
@@ -53,7 +73,10 @@ public class MazeGen : MonoBehaviour
         Walls4 = new GameObject[2401];
         for (int i = 0; i < 2401; i ++)
         {
-            Walls4[i] = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            GameObject thing = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            thing.AddComponent<NavMeshObstacle>();
+            thing.GetComponent<NavMeshObstacle>().carving = true;
+            Walls4[i] = thing;
             Walls4[i].transform.position = new Vector3(0, -15, 0);
             Walls4[i].transform.localScale = new Vector3(20, 30, 1);
         }
@@ -64,6 +87,62 @@ public class MazeGen : MonoBehaviour
             wayPoints1[i] = GameObject.CreatePrimitive(PrimitiveType.Cube);
             wayPoints1[i].transform.position = new Vector3(0, -200, 0);
             wayPoints1[i].transform.localScale = new Vector3(5, 500, 5);
+        }
+
+        wayPoints2 = new GameObject[5];
+        for (int i = 0; i < 5; i++)
+        {
+            wayPoints2[i] = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            wayPoints2[i].transform.position = new Vector3(0, -200, 0);
+            wayPoints2[i].transform.localScale = new Vector3(5, 500, 5);
+        }
+
+        wayPoints3 = new GameObject[5];
+        for (int i = 0; i < 5; i++)
+        {
+            wayPoints3[i] = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            wayPoints3[i].transform.position = new Vector3(0, -200, 0);
+            wayPoints3[i].transform.localScale = new Vector3(5, 500, 5);
+        }
+
+        wayPoints4 = new GameObject[5];
+        for (int i = 0; i < 5; i++)
+        {
+            wayPoints4[i] = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            wayPoints4[i].transform.position = new Vector3(0, -200, 0);
+            wayPoints4[i].transform.localScale = new Vector3(5, 500, 5);
+        }
+
+        wayPoints5 = new GameObject[5];
+        for (int i = 0; i < 5; i++)
+        {
+            wayPoints5[i] = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            wayPoints5[i].transform.position = new Vector3(0, -200, 0);
+            wayPoints5[i].transform.localScale = new Vector3(5, 500, 5);
+        }
+
+        wayPoints6 = new GameObject[5];
+        for (int i = 0; i < 5; i++)
+        {
+            wayPoints6[i] = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            wayPoints6[i].transform.position = new Vector3(0, -200, 0);
+            wayPoints6[i].transform.localScale = new Vector3(5, 500, 5);
+        }
+
+        wayPoints7 = new GameObject[5];
+        for (int i = 0; i < 5; i++)
+        {
+            wayPoints7[i] = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            wayPoints7[i].transform.position = new Vector3(0, -200, 0);
+            wayPoints7[i].transform.localScale = new Vector3(5, 500, 5);
+        }
+
+        wayPoints8 = new GameObject[5];
+        for (int i = 0; i < 5; i++)
+        {
+            wayPoints8[i] = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            wayPoints8[i].transform.position = new Vector3(0, -200, 0);
+            wayPoints8[i].transform.localScale = new Vector3(5, 500, 5);
         }
 
         takenX1 = new int[19][];
@@ -146,7 +225,16 @@ public class MazeGen : MonoBehaviour
         genMaze(takenX2, takenZ2, 25, 25, 0, 0, 0, 575, -1490, -180, 40, -20, -30, 0, -50, Walls2);
         genMaze(takenX1, takenZ1, 20, 20, 0, 0, 0, 360, -485, -420, 50, -20, -30, 5, -55, Walls1);
 
-        generateWayPoints(5, 20, 20, -485, -420, 50, wayPoints1, takenX1, takenZ1);
+        generateWayPoints(5, 2, 19, -485, -420, 50, wayPoints1, takenX1, takenZ1, 0, 18);
+        generateWayPoints(5, 19, 19, -485, -420, 50, wayPoints2, takenX1, takenZ1, 17, 17);
+        generateWayPoints(5, 2, 24, -1490, -190, 40, wayPoints3, takenX2, takenZ2, 0, 23);
+        generateWayPoints(5, 19, 19, -1490, -190, 40, wayPoints4, takenX2, takenZ2, 17, 17);
+        generateWayPoints(5, 4, 4, -1505, 785, 25, wayPoints5, takenX3, takenZ3, 2, 2);
+        generateWayPoints(5, 39, 10, -1505, 785, 25, wayPoints6, takenX3, takenZ3, 38, 9);
+        generateWayPoints(5, 4, 2, -390, 550, 20, wayPoints7, takenX4, takenZ4, 2, 0);
+        generateWayPoints(5, 33, 47, -650, 490, 20, wayPoints8, takenX4, takenZ4, 32, 46);
+
+        //UnityEditor.AI.NavMeshBuilder.BuildNavMesh();
 
     }
 
@@ -449,13 +537,14 @@ public class MazeGen : MonoBehaviour
             return false;
         }
         
-        void generateWayPoints(int wayPointCount, int gridWidth, int gridDepth, double worldTransX, double worldTransZ, float coordSize, GameObject[] wayPoints, int[][] takenX, int[][] takenZ)
+        void generateWayPoints(int wayPointCount, int gridEndX, int gridEndZ, double worldTransX, double worldTransZ, float coordSize, GameObject[] wayPoints, int[][] takenX, int[][] takenZ, int gridStartX, int gridStartZ)
         {
             int[] xValues = new int[wayPointCount];
             int[] zValues = new int[wayPointCount];
+            List<int> waypointOrder = new List<int>();
 
-            xValues[0] = Random.Range(0, gridWidth - 1);
-            zValues[0] = Random.Range(0, gridDepth - 1);
+        xValues[0] = Random.Range(gridStartX, gridEndX);
+            zValues[0] = Random.Range(gridStartZ, gridEndZ);
 
             int rendered = 1;
             bool rendering = true;
@@ -506,15 +595,115 @@ public class MazeGen : MonoBehaviour
 
             } // end method
 
-            for (int i = 0; i < rendered; i++)
+            
+            int max_X = -1000000;
+            int bestXIndex = -1;
+            List<int> indexList = new List<int>();
+        for (int i = 0; i < xValues.Length; i++)
+            {
+                if (max_X == xValues[i])
+                {
+                    indexList.Add(i);
+                }
+                else
+            {
+                max_X = Mathf.Max(max_X, xValues[i]);
+                if (max_X == xValues[i])
+                {
+                    indexList.Clear();
+                    indexList.Add(i);
+                    bestXIndex = i;
+                }
+            }
+        }
+        if (indexList.Count == 1) {
+            waypointOrder.Add(bestXIndex);
+
+        }
+        else if (indexList.Count == wayPointCount)
+        {
+            max_X = -1000000;
+            for (int i = 0; i < zValues.Length; i++)
+            {
+                max_X = Mathf.Max(max_X, zValues[i]);
+                if (max_X == zValues[i])
+                {
+                    bestXIndex = i;
+                }
+            }
+        }
+        else {
+            for (int i = 0; i < zValues.Length; i++)
+            {
+                max_X = 1000000;
+                if (xValues[i] == xValues[bestXIndex] && bestXIndex == i)
+                {
+                    for (int j = 0; j < indexList.Count; j++)
+                    {
+                        max_X = Mathf.Min(max_X, zValues[indexList[j]]);
+                        if (max_X == zValues[indexList[j]])
+                        {
+                            bestXIndex = j;
+                        }
+                    }
+                }
+            }
+        }
+
+
+        //waypointOrder = findClosest(xValues, zValues, bestXIndex, waypointOrder, -1);
+            
+        for (int i = 0; i < rendered; i++)
             {
                 var x = worldTransX + coordSize * xValues[i] - coordSize / 2;
                 var z = worldTransZ + coordSize * zValues[i] - coordSize;
+                //wayPoints[waypointOrder[i]].transform.position = new Vector3((float)x, 5, (float)z);
                 wayPoints[i].transform.position = new Vector3((float)x, 5, (float)z);
 
-            }
+
+            wayPoints[i].name = "waypoint" + numberOfWaypoints.ToString();
+            wayPoints[i].tag = "Waypoint";
+            numberOfWaypoints++;
+            //wayPoints[waypointOrder[i]].name = "waypoint" + i.ToString();
+            //wayPoints[waypointOrder[i]].tag = "Waypoint";
+
+        }
 
         } // end method 
 
-    
+    List<int> findClosest(int[] xValues, int[] zValues, int currentVal, List<int> waypointOrder, int lastVal)
+    {
+        print(currentVal);
+        
+        for (int j = 0; j < xValues.Length; j++)
+        {
+            float closest = 10000000;
+            int closestIndex = -1;
+            for (int i = 0; i < xValues.Length; i++)
+            {
+                float xDist = xValues[i] - xValues[currentVal];
+                float zDist = zValues[i] - zValues[currentVal];
+                if (closest > Mathf.Abs(xDist) + Mathf.Abs(zDist) && i != currentVal && i != lastVal)
+                {
+                    closest = xDist + zDist;
+                    closestIndex = i;
+                }
+
+            }
+            if (closest == 10000000)
+            {
+                return waypointOrder;
+            }
+            waypointOrder.Add(closestIndex);
+            lastVal = currentVal;
+            currentVal = closestIndex;
+        }
+        print(waypointOrder[0]);
+        print(waypointOrder[1]);
+        print(waypointOrder[2]);
+        print(waypointOrder[3]);
+        print(waypointOrder[4]);
+        return waypointOrder;
+    }
+
 }

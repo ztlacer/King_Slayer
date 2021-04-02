@@ -140,7 +140,7 @@ public class NetManager : NetworkManager
         // mapHandler = new MapHandler(mapSet, numberOfRounds);
 
         // ServerChangeScene(mapHandler.NextMap);
-        ServerChangeScene("NetworkMaze");
+        ServerChangeScene("MazeDemo");
         }
     }
 
