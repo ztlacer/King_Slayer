@@ -24,6 +24,11 @@ public class MazeGen3 : MonoBehaviour
     public int b3Taken = 0;
     public int b4Taken = 0;
 
+    public GameObject[] Towns1;
+    public GameObject[] Towns2;
+    public GameObject[] Towns3;
+    public GameObject[] Towns4;
+
     public GameObject[] Walls1;
     public GameObject[] Walls2;
     public GameObject[] Walls3;
@@ -303,10 +308,10 @@ public class MazeGen3 : MonoBehaviour
         b2Taken = 0;
         b3Taken = 0;
         b4Taken = 0;
-        genSubZone(3, 4, 4, 20, 20, 50, -430, -400, transXTaken1, transZTaken1, SubZones1);
-        genSubZone(4, 4, 4, 25, 25, 40, -1450, -170, transXTaken2, transZTaken2, SubZones2);
-        genSubZone(3, 8, 8, 40, 40, 25, -1442.5, 861.5, transXTaken3, transZTaken3, SubZones3);
-        genSubZone(4, 9, 9, 50, 50, 20, -449, 600, transXTaken4, transZTaken4, SubZones4);
+        genSubZone(3, 4, 4, 20, 20, 50, -430, -400, transXTaken1, transZTaken1, SubZones1, 1);
+        genSubZone(4, 4, 4, 25, 25, 40, -1450, -170, transXTaken2, transZTaken2, SubZones2, 2);
+        genSubZone(3, 8, 8, 40, 40, 25, -1442.5, 861.5, transXTaken3, transZTaken3, SubZones3, 3);
+        genSubZone(4, 9, 9, 50, 50, 20, -449, 600, transXTaken4, transZTaken4, SubZones4, 4);
 
         genMaze(takenX4, takenZ4, transXTaken4, transZTaken4, 4, 9, 9, 50, 50, 0, 0, 0, 2400, -499, 550, 20, -20, -30, -10, -40, Walls4, 4);
         genMaze(takenX3, takenZ3, transXTaken3, transZTaken3, 3, 8, 8, 40, 40, 0, 0, 0, 1520, -1497.5, 804.5, 25, -20, -30, -7.5, -42.5, Walls3, 3);
@@ -317,7 +322,7 @@ public class MazeGen3 : MonoBehaviour
 
     }
 
-    void genSubZone(int subZoneCount, int subZoneWidth, int subZoneDepth, int gridWidth, int gridDepth, int coordSize, double worldTransX, double worldTransZ, int[][] transTakenX, int[][] transTakenZ, GameObject[] Subzone)
+    void genSubZone(int subZoneCount, int subZoneWidth, int subZoneDepth, int gridWidth, int gridDepth, int coordSize, double worldTransX, double worldTransZ, int[][] transTakenX, int[][] transTakenZ, GameObject[] Subzone, int level)
     {
 
         for (int i = 0; i < subZoneCount; i++)
@@ -327,7 +332,28 @@ public class MazeGen3 : MonoBehaviour
             // int startZ = Random.Range(i * (gridDepth/subZoneCount), gridDepth - ((gridDepth / subZoneCount) * (subZoneCount - i)) );
             int startZ = Random.Range(i * (gridDepth / subZoneCount), gridDepth - subZoneDepth);
 
-            Subzone[i].transform.position = new Vector3(startX * coordSize + (float)worldTransX, 2, startZ * coordSize + (float)worldTransZ);
+            Subzone[i].transform.position = new Vector3(startX * coordSize + (float)worldTransX, (float)0.1, startZ * coordSize + (float)worldTransZ);
+
+            if (level == 1)
+            {
+                Towns1[i].transform.position = new Vector3(startX * coordSize + (float)worldTransX + 40, -13, startZ * coordSize + (float)worldTransZ + 25);
+            }
+
+            if (level == 2)
+            {
+               Towns2[i].transform.position = new Vector3(startX * coordSize + (float)worldTransX + 40, -13, startZ * coordSize + (float)worldTransZ + 25);
+            }
+
+            if (level == 3)
+            {
+                Towns3[i].transform.position = new Vector3(startX * coordSize + (float)worldTransX + 40, -13, startZ * coordSize + (float)worldTransZ + 35);
+            }
+
+            if (level == 4)
+            {
+                Towns4[i].transform.position = new Vector3(startX * coordSize + (float)worldTransX + 40, -13, startZ * coordSize + (float)worldTransZ + 35);
+            }
+
             for (int j = 0; j < subZoneDepth; j++)
             {
                 transTakenX[i][j] += startX;
