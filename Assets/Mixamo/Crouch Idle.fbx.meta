@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: eed1a855556acbb4eb496420bf8f0e27
+guid: 79ba88513074f7f48a714202c6ad4690
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
@@ -57,7 +57,7 @@ ModelImporter:
     rigImportErrors: 
     rigImportWarnings: "Copied Avatar Rig Configuration mis-match. Inbetween bone
       rotation in copied configuration does not match rotation in animation file:\n\t'LowerLeg.L_end'
-      : rotation error = 18.930975 deg\n\t'LowerLeg.R_end' : rotation error = 20.530287
+      : rotation error = 39.693909 deg\n\t'LowerLeg.R_end' : rotation error = 70.935303
       deg\n"
     animationImportErrors: 
     animationImportWarnings: "\nClip 'CharacterArmature|CharacterArmature|CharacterArmature|PickUp|Layer0'

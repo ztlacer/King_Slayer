@@ -8,6 +8,8 @@ public class AnimationStateController : MonoBehaviour
     public Animator animator;
 
     bool isMoving = false;
+
+    float elapsedTime = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +18,7 @@ public class AnimationStateController : MonoBehaviour
 
     private void OnMove(InputValue inputAction)
     {
+        print("moved");
         Vector2 direction = inputAction.Get<Vector2>();
         if (direction.magnitude > 0)
         {
@@ -23,6 +26,16 @@ public class AnimationStateController : MonoBehaviour
         } else
         {
             isMoving = false;
+        }
+    }
+
+
+    private void OnFire(InputValue inputAction)
+    {
+        if (elapsedTime == 0)
+        {
+            animator.SetBool("isAttacking", true);
+            elapsedTime += Time.deltaTime;
         }
     }
     // Update is called once per frame
@@ -37,6 +50,18 @@ public class AnimationStateController : MonoBehaviour
         {
             animator.SetBool("isSneaking", false);
         }
-        
+
+        // check elapsed time and stuff.
+        if (elapsedTime > 0 && elapsedTime < 1.667) // length of attack anim
+        {
+            elapsedTime += Time.deltaTime;
+        }
+        else if (elapsedTime > 1.667)
+        {
+            print("reset animation");
+            elapsedTime = 0;
+            animator.SetBool("isAttacking", false);
+        }
+
     }
 }

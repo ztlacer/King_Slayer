@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: eed1a855556acbb4eb496420bf8f0e27
+guid: f9bd263b074723c41980e51abfc24c17
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
@@ -39,9 +39,6 @@ ModelImporter:
   - first:
       74: -409058748985224892
     second: CharacterArmature|CharacterArmature|mixamo.com|Layer0
-  - first:
-      74: -203655887218126122
-    second: mixamo.com
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -55,10 +52,7 @@ ModelImporter:
     optimizeGameObjects: 0
     motionNodeName: 
     rigImportErrors: 
-    rigImportWarnings: "Copied Avatar Rig Configuration mis-match. Inbetween bone
-      rotation in copied configuration does not match rotation in animation file:\n\t'LowerLeg.L_end'
-      : rotation error = 18.930975 deg\n\t'LowerLeg.R_end' : rotation error = 20.530287
-      deg\n"
+    rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: "\nClip 'CharacterArmature|CharacterArmature|CharacterArmature|PickUp|Layer0'
       has import animation warnings that might lower retargeting quality:\nNote:
@@ -89,14 +83,84 @@ ModelImporter:
       discarded.\n\nClip 'CharacterArmature|CharacterArmature|mixamo.com|Layer0'
       has import animation warnings that might lower retargeting quality:\nNote:
       Activate translation DOF on avatar to improve retargeting quality.\n\t'Hips'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
-      'mixamo.com' has import animation warnings that might lower retargeting quality:\nNote:
-      Activate translation DOF on avatar to improve retargeting quality.\n\t'Hips'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'LowerLeg.L_end'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'LowerLeg.R_end'
       is inbetween humanoid transforms and has rotation animation that will be discarded.\n"
-    animationRetargetingWarnings: 
-    animationDoRetargetingWarnings: 0
+    animationRetargetingWarnings: "\nRetargeting quality report for clip 'CharacterArmature|CharacterArmature|CharacterArmature|Defeat|Layer0':\n\tRetargeting
+      quality is good. No significant differences with original animation were found.\n\nRetargeting
+      quality report for clip 'CharacterArmature|CharacterArmature|CharacterArmature|Idle|Layer0':\n\tLeftUpperArm
+      average position error 4.6 mm and maximum position error 9.0 mm at time 3:13
+      (82.4%) Frame 103\n\tLeftLowerArm average position error 5.6 mm and maximum
+      position error 9.7 mm at time 3:13 (82.4%) Frame 103\n\tLeftHand average position
+      error 4.6 mm and maximum position error 9.0 mm at time 3:13 (82.4%) Frame 103\n\tRightUpperArm
+      average position error 7.2 mm and maximum position error 10.7 mm at time 3:10
+      (80.0%) Frame 100\n\tRightLowerArm average position error 8.1 mm and maximum
+      position error 11.4 mm at time 3:10 (80.0%) Frame 100\n\tRightHand average
+      position error 7.2 mm and maximum position error 10.7 mm at time 3:10 (80.0%)
+      Frame 100\n\nRetargeting quality report for clip 'CharacterArmature|CharacterArmature|CharacterArmature|PickUp|Layer0':\n\tRightUpperArm
+      average position error 25.6 mm and maximum position error 67.6 mm at time 0:20
+      (54.1%) Frame 20\n\tRightLowerArm average position error 25.7 mm and maximum
+      position error 67.6 mm at time 0:20 (54.1%) Frame 20\n\tRightHand average position
+      error 25.6 mm and maximum position error 67.6 mm at time 0:20 (54.1%) Frame
+      20\n\nRetargeting quality report for clip 'CharacterArmature|CharacterArmature|CharacterArmature|Punch|Layer0':\n\tLeftFoot
+      average position error 237.6 mm and maximum position error 237.6 mm at time
+      0:14 (63.6%) Frame 14\n\tRightFoot average position error 259.8 mm and maximum
+      position error 259.8 mm at time 0: 0 (0.0%) Frame 0\n\tRightUpperArm average
+      position error 86.7 mm and maximum position error 199.2 mm at time 0:12 (54.5%)
+      Frame 12\n\tRightLowerArm average position error 86.7 mm and maximum position
+      error 198.9 mm at time 0:12 (54.5%) Frame 12\n\tRightHand average position
+      error 86.8 mm and maximum position error 199.4 mm at time 0:12 (54.5%) Frame
+      12\n\nRetargeting quality report for clip 'CharacterArmature|CharacterArmature|CharacterArmature|RecieveHit|Layer0':\n\tRetargeting
+      quality is good. No significant differences with original animation were found.\n\nRetargeting
+      quality report for clip 'CharacterArmature|CharacterArmature|CharacterArmature|Shoot_OneHanded|Layer0':\n\tLeftUpperArm
+      average position error 4.5 mm and maximum position error 11.0 mm at time 0:
+      9 (56.3%) Frame 9\n\tLeftLowerArm average position error 1.9 mm and maximum
+      position error 4.6 mm at time 0: 9 (56.3%) Frame 9\n\tRightUpperArm average
+      position error 4.5 mm and maximum position error 11.0 mm at time 0: 9 (56.3%)
+      Frame 9\n\tRightLowerArm average position error 4.5 mm and maximum position
+      error 10.9 mm at time 0: 9 (56.3%) Frame 9\n\tRightHand average position error
+      4.5 mm and maximum position error 10.9 mm at time 0: 9 (56.3%) Frame 9\n\tHead
+      average position error 4.5 mm and maximum position error 11.0 mm at time 0:
+      9 (56.3%) Frame 9\n\nRetargeting quality report for clip 'CharacterArmature|CharacterArmature|CharacterArmature|SitDown|Layer0':\n\tRetargeting
+      quality is good. No significant differences with original animation were found.\n\nRetargeting
+      quality report for clip 'CharacterArmature|CharacterArmature|CharacterArmature|StandUp|Layer0':\n\tRetargeting
+      quality is good. No significant differences with original animation were found.\n\nRetargeting
+      quality report for clip 'CharacterArmature|CharacterArmature|CharacterArmature|Victory|Layer0':\n\tLeftUpperArm
+      average position error 62.7 mm and maximum position error 81.7 mm at time 1:12
+      (75.0%) Frame 42\n\tLeftLowerArm average position error 62.7 mm and maximum
+      position error 81.7 mm at time 1:12 (75.0%) Frame 42\n\tLeftHand average position
+      error 62.7 mm and maximum position error 81.7 mm at time 1:12 (75.0%) Frame
+      42\n\tRightUpperArm average position error 62.2 mm and maximum position error
+      81.1 mm at time 1:12 (75.0%) Frame 42\n\tRightLowerArm average position error
+      62.2 mm and maximum position error 81.1 mm at time 1:12 (75.0%) Frame 42\n\tRightHand
+      average position error 62.2 mm and maximum position error 81.1 mm at time 1:12
+      (75.0%) Frame 42\n\nRetargeting quality report for clip 'CharacterArmature|CharacterArmature|CharacterArmature|Walk_Carry|Layer0':\n\tLeftLowerLeg
+      average position error 16.7 mm and maximum position error 33.8 mm at time 1:
+      0 (81.1%) Frame 30\n\tLeftFoot average position error 280.2 mm and maximum
+      position error 480.8 mm at time 0:20 (54.1%) Frame 20\n\tRightLowerLeg average
+      position error 21.8 mm and maximum position error 44.0 mm at time 0:13 (35.1%)
+      Frame 13\n\tRightFoot average position error 269.5 mm and maximum position
+      error 500.3 mm at time 0: 0 (0.0%) Frame 0\n\nRetargeting quality report for
+      clip 'CharacterArmature|CharacterArmature|CharacterArmature|Walk|Layer0':\n\tLeftLowerLeg
+      average position error 16.7 mm and maximum position error 33.8 mm at time 1:
+      0 (81.1%) Frame 30\n\tLeftFoot average position error 280.2 mm and maximum
+      position error 480.8 mm at time 0:20 (54.1%) Frame 20\n\tRightLowerLeg average
+      position error 21.8 mm and maximum position error 44.0 mm at time 0:13 (35.1%)
+      Frame 13\n\tRightFoot average position error 269.5 mm and maximum position
+      error 500.3 mm at time 0: 0 (0.0%) Frame 0\n\tLeftLowerArm average position
+      error 0.8 mm and maximum position error 2.5 mm at time 0: 9 (24.3%) Frame 9\n\tRightLowerArm
+      average position error 1.3 mm and maximum position error 4.3 mm at time 0:
+      8 (21.6%) Frame 8\n\nRetargeting quality report for clip 'CharacterArmature|CharacterArmature|mixamo.com|Layer0':\n\tLeftFoot
+      average position error 306.3 mm and maximum position error 306.3 mm at time
+      4:10 (72.2%) Frame 130\n\tRightFoot average position error 500.3 mm and maximum
+      position error 500.3 mm at time 0: 3 (1.7%) Frame 3\n\tLeftUpperArm average
+      position error 7.7 mm and maximum position error 8.0 mm at time 2:15 (41.7%)
+      Frame 75\n\tLeftLowerArm average position error 4.3 mm and maximum position
+      error 4.6 mm at time 3:20 (61.1%) Frame 110\n\tLeftHand average position error
+      1.9 mm and maximum position error 2.0 mm at time 2: 2 (34.4%) Frame 62\n\tRightUpperArm
+      average position error 7.7 mm and maximum position error 8.0 mm at time 2:15
+      (41.7%) Frame 75\n\tRightLowerArm average position error 2.1 mm and maximum
+      position error 2.7 mm at time 1:12 (23.3%) Frame 42\n\tHead average position
+      error 7.7 mm and maximum position error 8.0 mm at time 2:15 (41.7%) Frame 75\n"
+    animationDoRetargetingWarnings: 1
     importAnimatedCustomProperties: 0
     importConstraints: 0
     animationCompression: 3
@@ -554,11 +618,11 @@ ModelImporter:
     hasTranslationDoF: 0
     hasExtraRoot: 1
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: f9bd263b074723c41980e51abfc24c17, type: 3}
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 3
   humanoidOversampling: 1
-  avatarSetup: 2
+  avatarSetup: 1
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   additionalBone: 0
   userData: 

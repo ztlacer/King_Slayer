@@ -1,44 +1,41 @@
 fileFormatVersion: 2
-guid: eed1a855556acbb4eb496420bf8f0e27
+guid: 3a03aeaefe26a2645a145af17c01545d
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
   - first:
-      74: -8628338465927866248
-    second: CharacterArmature|CharacterArmature|CharacterArmature|Defeat|Layer0
+      74: 1132547922023742953
+    second: CharacterArmature|Defeat
   - first:
-      74: -1304007995933263588
-    second: CharacterArmature|CharacterArmature|CharacterArmature|Idle|Layer0
+      74: 9061338213343248790
+    second: CharacterArmature|Idle
   - first:
-      74: -1702719288703332400
-    second: CharacterArmature|CharacterArmature|CharacterArmature|PickUp|Layer0
+      74: 7022811679865794533
+    second: CharacterArmature|PickUp
   - first:
-      74: -1240471244666178695
-    second: CharacterArmature|CharacterArmature|CharacterArmature|Punch|Layer0
+      74: -4592842328519117816
+    second: CharacterArmature|Punch
   - first:
-      74: 1659251593333057574
-    second: CharacterArmature|CharacterArmature|CharacterArmature|RecieveHit|Layer0
+      74: -4856542728082765067
+    second: CharacterArmature|RecieveHit
   - first:
-      74: 3086484652571638201
-    second: CharacterArmature|CharacterArmature|CharacterArmature|Shoot_OneHanded|Layer0
+      74: -5307234019925579384
+    second: CharacterArmature|Shoot_OneHanded
   - first:
-      74: -867592874716601256
-    second: CharacterArmature|CharacterArmature|CharacterArmature|SitDown|Layer0
+      74: 228616033308382003
+    second: CharacterArmature|SitDown
   - first:
-      74: 9185875762237473209
-    second: CharacterArmature|CharacterArmature|CharacterArmature|StandUp|Layer0
+      74: -2488620027461464802
+    second: CharacterArmature|StandUp
   - first:
-      74: 3549362909263977956
-    second: CharacterArmature|CharacterArmature|CharacterArmature|Victory|Layer0
+      74: 5008348457023331957
+    second: CharacterArmature|Victory
   - first:
-      74: 4219310894482162273
-    second: CharacterArmature|CharacterArmature|CharacterArmature|Walk_Carry|Layer0
+      74: -5599002979973759676
+    second: CharacterArmature|Walk
   - first:
-      74: 3219344277934140884
-    second: CharacterArmature|CharacterArmature|CharacterArmature|Walk|Layer0
-  - first:
-      74: -409058748985224892
-    second: CharacterArmature|CharacterArmature|mixamo.com|Layer0
+      74: -2469224417514991532
+    second: CharacterArmature|Walk_Carry
   - first:
       74: -203655887218126122
     second: mixamo.com
@@ -55,46 +52,9 @@ ModelImporter:
     optimizeGameObjects: 0
     motionNodeName: 
     rigImportErrors: 
-    rigImportWarnings: "Copied Avatar Rig Configuration mis-match. Inbetween bone
-      rotation in copied configuration does not match rotation in animation file:\n\t'LowerLeg.L_end'
-      : rotation error = 18.930975 deg\n\t'LowerLeg.R_end' : rotation error = 20.530287
-      deg\n"
+    rigImportWarnings: 
     animationImportErrors: 
-    animationImportWarnings: "\nClip 'CharacterArmature|CharacterArmature|CharacterArmature|PickUp|Layer0'
-      has import animation warnings that might lower retargeting quality:\nNote:
-      Activate translation DOF on avatar to improve retargeting quality.\n\t'Shoulder.R'
-      has translation animation that will be discarded.\n\nClip 'CharacterArmature|CharacterArmature|CharacterArmature|Punch|Layer0'
-      has import animation warnings that might lower retargeting quality:\nNote:
-      Activate translation DOF on avatar to improve retargeting quality.\n\t'Shoulder.R'
-      has translation animation that will be discarded.\n\nClip 'CharacterArmature|CharacterArmature|CharacterArmature|Shoot_OneHanded|Layer0'
-      has import animation warnings that might lower retargeting quality:\nNote:
-      Activate translation DOF on avatar to improve retargeting quality.\n\t'Hips'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
-      'CharacterArmature|CharacterArmature|CharacterArmature|Victory|Layer0' has
-      import animation warnings that might lower retargeting quality:\nNote: Activate
-      translation DOF on avatar to improve retargeting quality.\n\t'Shoulder.L' has
-      translation animation that will be discarded.\n\t'Shoulder.R' has translation
-      animation that will be discarded.\n\nClip 'CharacterArmature|CharacterArmature|CharacterArmature|Walk_Carry|Layer0'
-      has import animation warnings that might lower retargeting quality:\nNote:
-      Activate translation DOF on avatar to improve retargeting quality.\n\t'UpperLeg.L'
-      has translation animation that will be discarded.\n\t'Foot.L' has translation
-      animation that will be discarded.\n\t'UpperLeg.R' has translation animation
-      that will be discarded.\n\t'Foot.R' has translation animation that will be
-      discarded.\n\nClip 'CharacterArmature|CharacterArmature|CharacterArmature|Walk|Layer0'
-      has import animation warnings that might lower retargeting quality:\nNote:
-      Activate translation DOF on avatar to improve retargeting quality.\n\t'UpperLeg.L'
-      has translation animation that will be discarded.\n\t'Foot.L' has translation
-      animation that will be discarded.\n\t'UpperLeg.R' has translation animation
-      that will be discarded.\n\t'Foot.R' has translation animation that will be
-      discarded.\n\nClip 'CharacterArmature|CharacterArmature|mixamo.com|Layer0'
-      has import animation warnings that might lower retargeting quality:\nNote:
-      Activate translation DOF on avatar to improve retargeting quality.\n\t'Hips'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
-      'mixamo.com' has import animation warnings that might lower retargeting quality:\nNote:
-      Activate translation DOF on avatar to improve retargeting quality.\n\t'Hips'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'LowerLeg.L_end'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'LowerLeg.R_end'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n"
+    animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
@@ -305,40 +265,24 @@ ModelImporter:
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
-    - boneName: Foot.L_end
-      humanName: LeftToes
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: Foot.R_end
-      humanName: RightToes
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
     skeleton:
-    - name: Kinght Male Corrected(Clone)
+    - name: Standing Idle (Test)(Clone)
       parentName: 
       position: {x: 0, y: 0, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: Light
-      parentName: Kinght Male Corrected(Clone)
+      parentName: Standing Idle (Test)(Clone)
       position: {x: -4.0762453, y: 5.903862, z: -1.005454}
       rotation: {x: 0.52327543, y: -0.34203398, z: 0.72694236, w: 0.28416628}
       scale: {x: 100.00001, y: 100, z: 100}
     - name: Camera
-      parentName: Kinght Male Corrected(Clone)
+      parentName: Standing Idle (Test)(Clone)
       position: {x: -7.3588915, y: 4.958309, z: 6.925791}
       rotation: {x: 0.0906284, y: 0.8937962, z: -0.20997299, w: 0.38577998}
       scale: {x: 100, y: 100.00001, z: 99.99999}
     - name: CharacterArmature
-      parentName: Kinght Male Corrected(Clone)
+      parentName: Standing Idle (Test)(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
       scale: {x: 100, y: 100, z: 100}
@@ -349,7 +293,7 @@ ModelImporter:
       scale: {x: 1, y: 0.9999998, z: 0.9999998}
     - name: Body
       parentName: Bone
-      position: {x: -0.000021530499, y: 0.011212304, z: 0.00019310605}
+      position: {x: -0.000021530499, y: 0.017136179, z: 0.00019310605}
       rotation: {x: -0, y: -0.0000001192094, z: 1.4210855e-14, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: Hips
@@ -464,17 +408,17 @@ ModelImporter:
       scale: {x: 1.0000001, y: 1.0000001, z: 1.0000004}
     - name: Foot.L
       parentName: LowerLeg.L_end
-      position: {x: -0.000013251375, y: -0.0000011945428, z: 0.0000002789183}
-      rotation: {x: -0.0000016569422, y: 0.6735928, z: -0.7391027, w: -0.0000030217707}
-      scale: {x: 1.0000002, y: 1.000001, z: 0.9999994}
+      position: {x: -2.9744113e-10, y: 0.0052698497, z: -6.344635e-11}
+      rotation: {x: -0.0000016565348, y: 0.67359275, z: -0.7391028, w: -0.0000030208394}
+      scale: {x: 0.9999998, y: 1.000001, z: 0.9999993}
     - name: Foot.L_end
       parentName: Foot.L
-      position: {x: 5.475158e-12, y: 0.0010722841, z: 2.3283064e-12}
-      rotation: {x: -2.1380768e-13, y: 0.000000063790814, z: 1.7325873e-10, w: 1}
-      scale: {x: 0.9999998, y: 1, z: 0.9999998}
+      position: {x: 3.0908268e-10, y: 0.0010722843, z: 1.6763806e-10}
+      rotation: {x: -0.00000032782566, y: 0.000000045716654, z: -3.8971842e-10, w: 1}
+      scale: {x: 1.0000006, y: 1.0000005, z: 1.0000001}
     - name: Foot.L_end_end
       parentName: Foot.L_end
-      position: {x: -0, y: 0.0010722862, z: 0}
+      position: {x: -0, y: 0.0010722863, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: UpperLeg.R
@@ -494,17 +438,17 @@ ModelImporter:
       scale: {x: 1.0000001, y: 1.0000004, z: 1.0000005}
     - name: Foot.R
       parentName: LowerLeg.R_end
-      position: {x: 0.000013251416, y: -0.0000011957646, z: 0.0000002793269}
+      position: {x: 5.762558e-11, y: 0.0052698473, z: 1.268927e-10}
       rotation: {x: -0.000008458657, y: 0.6735937, z: -0.7391018, w: 0.000012175917}
-      scale: {x: 1, y: 1.0000005, z: 1.0000001}
+      scale: {x: 1, y: 1.0000006, z: 1.0000001}
     - name: Foot.R_end
       parentName: Foot.R
-      position: {x: 9.244104e-11, y: 0.0010722604, z: -2.3283064e-12}
-      rotation: {x: -0.00000017881383, y: 0.000000016368173, z: -6.739354e-10, w: 1}
-      scale: {x: 1.0000006, y: 1.0000002, z: 1.0000001}
+      position: {x: 1.9848811e-10, y: 0.0010722604, z: -4.202593e-10}
+      rotation: {x: -0.00000032782535, y: 0.00000003481454, z: -8.594723e-11, w: 1}
+      scale: {x: 1.0000008, y: 1.0000002, z: 1.0000002}
     - name: Foot.R_end_end
       parentName: Foot.R_end
-      position: {x: -0, y: 0.0010722862, z: 0}
+      position: {x: -0, y: 0.0010722863, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: PoleTarget.L
@@ -538,7 +482,7 @@ ModelImporter:
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: Body1
-      parentName: Kinght Male Corrected(Clone)
+      parentName: Standing Idle (Test)(Clone)
       position: {x: -0.000000040315822, y: -0.00000030517575, z: 0.000000033866776}
       rotation: {x: -0.7071068, y: 8.976325e-22, z: -2.5724396e-14, w: 0.7071067}
       scale: {x: 100, y: 100, z: 100}
@@ -554,7 +498,7 @@ ModelImporter:
     hasTranslationDoF: 0
     hasExtraRoot: 1
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: f9bd263b074723c41980e51abfc24c17, type: 3}
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: e0278e46840081748b07f94986ab1e88, type: 3}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 3
   humanoidOversampling: 1
