@@ -77,6 +77,7 @@ public class PlayerMove : MonoBehaviour
         {
             isSneaking = false;
         }
+        // test
 
         if (isMoving)
         { // then calculate movement and stuff.
