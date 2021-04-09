@@ -22,6 +22,7 @@ public class ItemText: MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.E))
             {
+
                 triggering = false;
 
             }
@@ -34,7 +35,7 @@ public class ItemText: MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Item")
+        if (other.tag == "Player")
         {
             triggering = true;
             triggeringNPC = other.gameObject;
@@ -43,7 +44,7 @@ public class ItemText: MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Item")
+        if (other.tag == "Player")
         {
             triggering = false;
             triggeringNPC = null;
