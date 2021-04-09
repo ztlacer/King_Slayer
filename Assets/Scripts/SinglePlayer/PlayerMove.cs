@@ -10,6 +10,8 @@ public class PlayerMove : MonoBehaviour
 
     private Vector2 previousInput;
 
+    public Animator animator;
+
     [SerializeField] private Transform cam;
 
     [Range(.05f, .15f)]
@@ -41,6 +43,10 @@ public class PlayerMove : MonoBehaviour
 
         Controls.Player.Move.performed += ctx => SetMovement(ctx.ReadValue<Vector2>());
         Controls.Player.Move.canceled += ctx => ResetMovement();
+
+        Controls.Player.Attack1.performed += ctx => attack1();
+        Controls.Player.Crouch.performed += ctx => crouch();
+        Controls.Player.Crouch.canceled += ctx => cancelCrouch();
     }
 
 
@@ -51,6 +57,24 @@ public class PlayerMove : MonoBehaviour
     private void SetMovement(Vector2 movement) => previousInput = movement;
 
     private void ResetMovement() => previousInput = Vector2.zero;
+
+    public void attack1()
+    {
+        print("Attacked with left click");
+
+    }
+
+    public void crouch()
+    {
+        print("hit crouch");
+        animator.SetBool("isSneaking", true);
+
+    }
+
+    public void cancelCrouch()
+    {
+        animator.SetBool("isSneaking", false);
+    }
 
 
     private void OnMove(InputValue inputAction)
@@ -89,12 +113,12 @@ public class PlayerMove : MonoBehaviour
             float realTurnTime = turnSmoothTime;
 
             
-            if (isSneaking)
-            {
-                print("holding");
-                realSpeed = movementSpeed * crouchSpeedMultiplier; // make their character turn slower too
-                realTurnTime = 4 * turnSmoothTime;
-            }
+            //if (isSneaking)
+            //{
+            //    print("holding");
+            //    realSpeed = movementSpeed * crouchSpeedMultiplier; // make their character turn slower too
+            //    realTurnTime = 4 * turnSmoothTime;
+            //}
                 
             //else if (Keyboard.current.ctrlKey.wasReleasedThisFrame)
             //{
