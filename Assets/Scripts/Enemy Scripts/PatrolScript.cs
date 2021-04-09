@@ -107,7 +107,7 @@ public class PatrolScript : MonoBehaviour
 
                 scheduleQueue(0);
 
-                print(prioQueue.Peek());
+                //print(prioQueue.Peek());
 
                 currentAction = true;
             }
@@ -159,7 +159,7 @@ public class PatrolScript : MonoBehaviour
         }
         else if (prioQueue.Peek() == 1)
         {
-            print(waitTime);
+            //print(waitTime);
             if (!setLocation)
             {
                 if (firstWander)
