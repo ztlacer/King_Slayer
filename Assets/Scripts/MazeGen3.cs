@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class MazeGen3 : MonoBehaviour
 {
@@ -62,6 +63,8 @@ public class MazeGen3 : MonoBehaviour
     public int[][] takenZ4;
 
     public GameObject[] wayPoints1;
+
+    public UnityEngine.AI.NavMeshSurface navSurface;
 
     // Start is called before the first frame update
     void Start()
@@ -126,6 +129,8 @@ public class MazeGen3 : MonoBehaviour
             transXTaken3[i] = new int[8];
             transZTaken3[i] = new int[8];
 
+
+
             SubZones3[i] = GameObject.CreatePrimitive(PrimitiveType.Cube);
             SubZones3[i].transform.position = new Vector3(0, -15, 0);
             SubZones3[i].transform.localScale = new Vector3(175, 2, 175);
@@ -167,7 +172,10 @@ public class MazeGen3 : MonoBehaviour
         Walls1 = new GameObject[361];
         for (int i = 0; i < 361; i++)
         {
-            Walls1[i] = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            GameObject thing = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            thing.AddComponent<NavMeshObstacle>();
+            thing.GetComponent<NavMeshObstacle>().carving = true;
+            Walls1[i] = thing;
             Walls1[i].transform.position = new Vector3(0, -15, 0);
             Walls1[i].transform.localScale = new Vector3(50, 30, 1);
             Walls1[i].GetComponent<MeshRenderer>().material = Material5;
@@ -176,7 +184,10 @@ public class MazeGen3 : MonoBehaviour
         Walls2 = new GameObject[576];
         for (int i = 0; i < 576; i++)
         {
-            Walls2[i] = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            GameObject thing = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            thing.AddComponent<NavMeshObstacle>();
+            thing.GetComponent<NavMeshObstacle>().carving = true;
+            Walls2[i] = thing;
             Walls2[i].transform.position = new Vector3(0, -15, 0);
             Walls2[i].transform.localScale = new Vector3(40, 30, 1);
             Walls2[i].GetComponent<MeshRenderer>().material = Material6;
@@ -185,7 +196,10 @@ public class MazeGen3 : MonoBehaviour
         Walls3 = new GameObject[1521];
         for (int i = 0; i < 1521; i++)
         {
-            Walls3[i] = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            GameObject thing = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            thing.AddComponent<NavMeshObstacle>();
+            thing.GetComponent<NavMeshObstacle>().carving = true;
+            Walls3[i] = thing;
             Walls3[i].transform.position = new Vector3(0, -15, 0);
             Walls3[i].transform.localScale = new Vector3(25, 30, 1);
             Walls3[i].GetComponent<MeshRenderer>().material = Material7;
@@ -194,7 +208,10 @@ public class MazeGen3 : MonoBehaviour
         Walls4 = new GameObject[2401];
         for (int i = 0; i < 2401; i++)
         {
-            Walls4[i] = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            GameObject thing = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            thing.AddComponent<NavMeshObstacle>();
+            thing.GetComponent<NavMeshObstacle>().carving = true;
+            Walls4[i] = thing;
             Walls4[i].transform.position = new Vector3(0, -15, 0);
             Walls4[i].transform.localScale = new Vector3(20, 30, 1);
             Walls4[i].GetComponent<MeshRenderer>().material = Material8;
@@ -203,6 +220,7 @@ public class MazeGen3 : MonoBehaviour
         wayPoints1 = new GameObject[5];
         for (int i = 0; i < 5; i++)
         {
+
             wayPoints1[i] = GameObject.CreatePrimitive(PrimitiveType.Cube);
             wayPoints1[i].transform.position = new Vector3(0, -200, 0);
             wayPoints1[i].transform.localScale = new Vector3(5, 500, 5);
@@ -320,6 +338,8 @@ public class MazeGen3 : MonoBehaviour
 
         generateWayPoints(5, 20, 20, -485, -420, 50, wayPoints1, takenX1, takenZ1);
 
+        navSurface.BuildNavMesh();
+
     }
 
     void genSubZone(int subZoneCount, int subZoneWidth, int subZoneDepth, int gridWidth, int gridDepth, int coordSize, double worldTransX, double worldTransZ, int[][] transTakenX, int[][] transTakenZ, GameObject[] Subzone, int level)
@@ -337,21 +357,34 @@ public class MazeGen3 : MonoBehaviour
             if (level == 1)
             {
                 Towns1[i].transform.position = new Vector3(startX * coordSize + (float)worldTransX + 40, -15, startZ * coordSize + (float)worldTransZ + 25);
+
+                GameObject npc = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                npc.transform.position = new Vector3(startX * coordSize + (float)worldTransX + 40, 1, startZ * coordSize + (float)worldTransZ + 25);
+                npc.name = "HotStuff";
             }
 
             if (level == 2)
             {
                Towns2[i].transform.position = new Vector3(startX * coordSize + (float)worldTransX + 40, -15, startZ * coordSize + (float)worldTransZ + 25);
+                GameObject npc = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                npc.transform.position = new Vector3(startX * coordSize + (float)worldTransX + 40, 1, startZ * coordSize + (float)worldTransZ + 25);
+                npc.name = "HotStuff2";
             }
 
             if (level == 3)
             {
                 Towns3[i].transform.position = new Vector3(startX * coordSize + (float)worldTransX + 40, -15, startZ * coordSize + (float)worldTransZ + 35);
+                GameObject npc = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                npc.transform.position = new Vector3(startX * coordSize + (float)worldTransX + 40, 1, startZ * coordSize + (float)worldTransZ + 25);
+                npc.name = "HotStuff3";
             }
 
             if (level == 4)
             {
                 Towns4[i].transform.position = new Vector3(startX * coordSize + (float)worldTransX + 40, -15, startZ * coordSize + (float)worldTransZ + 35);
+                GameObject npc = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                npc.transform.position = new Vector3(startX * coordSize + (float)worldTransX + 40, 1, startZ * coordSize + (float)worldTransZ + 25);
+                npc.name = "HotStuff4";
             }
 
             for (int j = 0; j < subZoneDepth; j++)

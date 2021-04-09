@@ -32,6 +32,7 @@ public class AnimationStateController : MonoBehaviour
 
     private void OnFire(InputValue inputAction)
     {
+        print("fire");
         if (elapsedTime == 0)
         {
             animator.SetBool("isAttacking", true);

@@ -73,6 +73,19 @@ public class PlayerMovementController : NetworkBehaviour
     [Client]
     private void Move()
     {
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (Time.timeScale == 0)
+            {
+                Time.timeScale = 1;
+            }
+            else
+            {
+                Time.timeScale = 0;
+
+            }
+        }
         Vector3 right = controller.transform.right;
         Vector3 forward = controller.transform.forward;
         right.y = 0f;

@@ -64,6 +64,18 @@ public class PlayerMove : MonoBehaviour
 
     void Update()
     {
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (Time.timeScale == 0)
+            {
+                Time.timeScale = 1;
+            } else
+            {
+                Time.timeScale = 0;
+
+            }
+        }
         Vector3 direction = new Vector3(horizontalX, 0f, horizontalZ).normalized;
 
         // If there is any magnitude at which the player is moving then animate it running

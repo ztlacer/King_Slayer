@@ -35,7 +35,7 @@ public class EnemySight : MonoBehaviour
         
         if (other.gameObject.tag == "Player")
         {
-            Debug.Log("Colliding!!");
+            //Debug.Log("Colliding!!");
            // Debug.Log("here");
             passedThrough = true;
             lastKnownLoc = other.transform.position;
@@ -50,7 +50,6 @@ public class EnemySight : MonoBehaviour
                 agent.SetDestination(lastKnownLoc);
             }
         }
-
     }
 
     void OnTriggerExit(Collider other)
