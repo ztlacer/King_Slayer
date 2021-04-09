@@ -336,22 +336,22 @@ public class MazeGen3 : MonoBehaviour
 
             if (level == 1)
             {
-                Towns1[i].transform.position = new Vector3(startX * coordSize + (float)worldTransX + 40, -13, startZ * coordSize + (float)worldTransZ + 25);
+                Towns1[i].transform.position = new Vector3(startX * coordSize + (float)worldTransX + 40, -15, startZ * coordSize + (float)worldTransZ + 25);
             }
 
             if (level == 2)
             {
-               Towns2[i].transform.position = new Vector3(startX * coordSize + (float)worldTransX + 40, -13, startZ * coordSize + (float)worldTransZ + 25);
+               Towns2[i].transform.position = new Vector3(startX * coordSize + (float)worldTransX + 40, -15, startZ * coordSize + (float)worldTransZ + 25);
             }
 
             if (level == 3)
             {
-                Towns3[i].transform.position = new Vector3(startX * coordSize + (float)worldTransX + 40, -13, startZ * coordSize + (float)worldTransZ + 35);
+                Towns3[i].transform.position = new Vector3(startX * coordSize + (float)worldTransX + 40, -15, startZ * coordSize + (float)worldTransZ + 35);
             }
 
             if (level == 4)
             {
-                Towns4[i].transform.position = new Vector3(startX * coordSize + (float)worldTransX + 40, -13, startZ * coordSize + (float)worldTransZ + 35);
+                Towns4[i].transform.position = new Vector3(startX * coordSize + (float)worldTransX + 40, -15, startZ * coordSize + (float)worldTransZ + 35);
             }
 
             for (int j = 0; j < subZoneDepth; j++)
@@ -474,7 +474,7 @@ public class MazeGen3 : MonoBehaviour
                             if (buildingPossibility == 0)
                             {
                                 Buildings1[b1Taken].transform.Rotate(0, 90, 0, Space.Self);
-                                Buildings1[b1Taken].transform.position = new Vector3((float)transX + (float)worldTransX, 10, (float)transZ + (float)worldTransZ - 9);
+                                Buildings1[b1Taken].transform.position = new Vector3((float)transX + (float)worldTransX, 8, (float)transZ + (float)worldTransZ - 9);
                                 b1Taken++;
                                 //addedBuild = true;
                             }
@@ -666,7 +666,7 @@ public class MazeGen3 : MonoBehaviour
                             if (buildingPossibility == 0)
                             {
                                 Buildings1[b1Taken].transform.Rotate(0, 180, 0, Space.Self);
-                                Buildings1[b1Taken].transform.position = new Vector3((float)transX + (float)worldTransX - 9, 10, (float)transZ + (float)worldTransZ);
+                                Buildings1[b1Taken].transform.position = new Vector3((float)transX + (float)worldTransX - 9, 8, (float)transZ + (float)worldTransZ);
                                 b1Taken++;
                                 //addedBuild = true;
                             }
