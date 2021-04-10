@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebf2d82100586c046b01568d4d1924db, type: 3}
+  m_Name: Sword
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 4865408144015019368, guid: bdcb1eaf79e0f904db73a0d1efb14f82, type: 3}
+  type: 1
+  description: Swingy Stingy
+  cost: 0
+  atkBonus: 20
+  defenseBonus: 0
+  stealthBonus: 0

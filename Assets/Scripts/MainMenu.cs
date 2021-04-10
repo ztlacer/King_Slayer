@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class MainMenu : MonoBehaviour
@@ -14,5 +15,10 @@ public class MainMenu : MonoBehaviour
         networkManager.StartHost();
 
         landingPagePanel.SetActive(false);
+    }
+
+    public void StartSingle(string scene)
+    {
+        SceneManager.LoadScene(scene);
     }
 }
