@@ -9,6 +9,8 @@ public class HealthBar : MonoBehaviour
 
     [SerializeField] private float updateSpeedSeconds = .5f;
 
+    public GameObject parent;
+
     private void Awake()
     {
         GetComponentInParent<Health>().onHealthPctChanged += HandleHealthChanged;
@@ -33,11 +35,15 @@ public class HealthBar : MonoBehaviour
         }
 
         foreground.fillAmount = pct;
+        if (foreground.fillAmount <= 0)
+        {
+            Destroy(parent);
+        }
     }
 
     private void LateUpdate()
     {
-        //transform.LookAt(Camera.main.transform);
-        //transform.Rotate(0, 180, 0);
+        transform.LookAt(Camera.main.transform);
+        transform.Rotate(0, 180, 0);
     }
 }

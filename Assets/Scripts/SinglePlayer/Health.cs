@@ -11,6 +11,7 @@ public class Health : MonoBehaviour
 
     public event Action<float> onHealthPctChanged = delegate { };
 
+
     private void OnEnable()
     {
         currentHealth = maxHealth;
@@ -22,19 +23,14 @@ public class Health : MonoBehaviour
 
         float currentHealthPct = (float)currentHealth / (float)maxHealth;
         onHealthPctChanged(currentHealthPct);
+
     }
 
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "weapon")
         {
-            print("ahhhh, it hertx");
             ModifyHealth(-10);
         }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        print("left");
     }
 }
