@@ -14,6 +14,11 @@ public class MazeGen3 : MonoBehaviour
     public Material Material7;
     public Material Material8;
 
+    public GameObject[] Gates1;
+    public GameObject[] Gates2;
+    public GameObject[] Gates3;
+    public GameObject[] Gates4;
+
     public GameObject[] Buildings1;
     public GameObject[] Buildings2;
     public GameObject[] Buildings3;
@@ -204,7 +209,7 @@ public class MazeGen3 : MonoBehaviour
         for (int i = 0; i < 5; i++)
         {
             wayPoints1[i] = GameObject.CreatePrimitive(PrimitiveType.Cube);
-            wayPoints1[i].transform.position = new Vector3(0, -200, 0);
+            wayPoints1[i].transform.position = new Vector3(0, -500, 0);
             wayPoints1[i].transform.localScale = new Vector3(5, 500, 5);
         }
 
@@ -318,7 +323,12 @@ public class MazeGen3 : MonoBehaviour
         genMaze(takenX2, takenZ2, transXTaken2, transZTaken2, 4, 4, 4, 25, 25, 0, 0, 0, 575, -1490, -180, 40, -20, -30, 0, -50, Walls2, 2);
         genMaze(takenX1, takenZ1, transXTaken1, transZTaken1, 3, 4, 4, 20, 20, 0, 0, 0, 360, -485, -420, 50, -20, -30, 5, -55, Walls1, 1);
 
-        generateWayPoints(5, 20, 20, -485, -420, 50, wayPoints1, takenX1, takenZ1);
+        //generateWayPoints(5, 20, 20, -485, -420, 50, wayPoints1, takenX1, takenZ1);
+
+        generateGates(4, 20, 20, -430, -400, 50, Gates1, false);
+        generateGates(4, 25, 25, -1450, -170, 40, Gates2, false);
+        generateGates(4, 40, 40, -1442.5, 861.5, 25, Gates3, true);
+        generateGates(4, 50, 50, -449, 600, 20, Gates4, false);
 
     }
 
@@ -983,5 +993,92 @@ public class MazeGen3 : MonoBehaviour
 
         }
 
-    } // end method 
+    } // end method
+
+    void generateWaypoints(int wayPointCount, int gridWidth, int gridDepth, double worldTransX, double worldTransZ, float coordSize, GameObject[] wayPoints, int[][] takenX, int[][] takenZ)
+    {
+        int[] xValues = new int[wayPointCount];
+        int[] zValues = new int[wayPointCount];
+
+        xValues[0] = Random.Range(0, gridWidth - 1);
+        zValues[0] = Random.Range(0, gridDepth - 1);
+
+        int rendered = 1;
+        bool rendering = true;
+
+        for (int i = 1; i < wayPointCount; i++)
+        {
+            int lastIndex = i - 1;
+            int lastX = xValues[lastIndex];
+            int lastZ = zValues[lastIndex];
+
+            bool moved = move(xValues, zValues, lastX, lastZ, rendered, rendering, takenX, takenZ, i);
+
+            if (moved)
+            {
+                rendered++;
+            }
+            else
+            {
+                bool resultFound = false;
+                while (!resultFound)
+                {
+
+                    if (lastIndex - 1 < 0)
+                    {
+
+                        rendering = false;
+                        resultFound = true;
+
+                    }
+                    else
+                    {
+                        lastIndex--;
+                        lastX = xValues[lastIndex];
+                        lastZ = zValues[lastIndex];
+                        moved = move(xValues, zValues, lastX, lastZ, rendered, rendering, takenX, takenZ, i);
+                        if (moved)
+                        {
+
+                            rendered++;
+                            resultFound = true;
+
+                        } // end if
+
+                    } // end if else 
+
+                } // end while
+
+            } // end for loop
+
+        } // end method
+
+        for (int i = 0; i < rendered; i++)
+        {
+            var x = worldTransX + coordSize * xValues[i] - coordSize / 2;
+            var z = worldTransZ + coordSize * zValues[i] - coordSize;
+            wayPoints[i].transform.position = new Vector3((float)x, 5, (float)z);
+
+        }
+
+    } // end method
+
+    // Need to check if subzone exists & 
+    void generateGates(int GateCount, int gridWidth, int gridDepth, double worldTransX, double worldTransZ, float coordSize, GameObject[] Gates, bool dec)
+    {
+        for (int i = 0; i < GateCount; i++)
+        {
+            float startX = Random.Range(0, gridWidth) * coordSize - coordSize - coordSize / 2;
+           
+            float startZ = Random.Range(0, gridDepth) * coordSize - coordSize - coordSize/2;
+            if (dec)
+            {
+                startX += coordSize / 2;
+                startZ += coordSize / 2;
+            }
+            //print("startX - " + startX);
+            //print("startZ - " + startZ);
+            Gates[i].transform.position = new Vector3(startX + (float)worldTransX, 5, startZ + (float)worldTransZ);
+        }
+    }
 }

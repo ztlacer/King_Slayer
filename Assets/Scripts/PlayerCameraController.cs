@@ -24,13 +24,14 @@ using UnityEngine;
 
         public override void OnStartAuthority()
         {
-            transposer = virtualCamera.GetCinemachineComponent<CinemachineTransposer>();
+        transposer = virtualCamera.GetCinemachineComponent<CinemachineTransposer>();
 
-            virtualCamera.gameObject.SetActive(true);
+        virtualCamera.gameObject.SetActive(true);
 
-            enabled = true;
+        enabled = true;
 
-            Controls.Player.Look.performed += ctx => Look(ctx.ReadValue<Vector2>());
+        Controls.Player.Look.performed += ctx => Look(ctx.ReadValue<Vector2>());
+        virtualCamera.gameObject.SetActive(false);
         }
 
         [ClientCallback]

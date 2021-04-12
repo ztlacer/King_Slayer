@@ -43,6 +43,11 @@ public class PlayerMove : MonoBehaviour
         Controls.Player.Move.canceled += ctx => ResetMovement();
     }
 
+    public void disableMovement()
+    {
+
+    } 
+
 
     private void OnEnable() => Controls.Enable();
 
