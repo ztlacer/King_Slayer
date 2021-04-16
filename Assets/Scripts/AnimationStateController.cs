@@ -18,7 +18,6 @@ public class AnimationStateController : MonoBehaviour
 
     private void OnMove(InputValue inputAction)
     {
-        print("moved");
         Vector2 direction = inputAction.Get<Vector2>();
         if (direction.magnitude > 0)
         {
@@ -32,7 +31,6 @@ public class AnimationStateController : MonoBehaviour
 
     private void OnFire(InputValue inputAction)
     {
-        print("fire");
         if (elapsedTime == 0)
         {
             animator.SetBool("isAttacking", true);
