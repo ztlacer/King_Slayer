@@ -6,6 +6,7 @@ public class PlayerMove : MonoBehaviour
 {
     [Range(8f, 15f)]
     [SerializeField] private float movementSpeed = 5f;
+    [SerializeField] private float gravity = -10f;
     [SerializeField] private CharacterController controller = null;
 
     private Vector2 previousInput;
@@ -124,14 +125,24 @@ public class PlayerMove : MonoBehaviour
 
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, realTurnTime);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
-            //print(realSpeed);
-            controller.Move(moveDir.normalized * realSpeed * Time.deltaTime);
 
-            //controller.Move(moveDir.normalized * movementSpeed * Time.deltaTime);
+            Vector3 playerVelocity = moveDir.normalized * movementSpeed * Time.deltaTime;
+            if (controller.isGrounded)
+            {
+                playerVelocity.y = 0;
 
-        } 
+            } else
+            {
+                playerVelocity.y += gravity * Time.deltaTime;
 
-        
+            }
+            controller.Move(playerVelocity);
+
+
+
+        }
+
+
 
 
 

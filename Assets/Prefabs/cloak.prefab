@@ -8,16 +8,32 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 9066652364626019796, guid: e8c9fbe84835533448125b79b9b47495, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9066652364626019796, guid: e8c9fbe84835533448125b79b9b47495, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 1474eda883194ba428987a45fc605783, type: 3}
+    - target: {fileID: 9066652364626019796, guid: e8c9fbe84835533448125b79b9b47495, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9066652364626019796, guid: e8c9fbe84835533448125b79b9b47495, type: 3}
       propertyPath: m_Color.b
-      value: 0.6787024
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9066652364626019796, guid: e8c9fbe84835533448125b79b9b47495, type: 3}
       propertyPath: m_Color.g
-      value: 0.12304199
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9066652364626019796, guid: e8c9fbe84835533448125b79b9b47495, type: 3}
       propertyPath: m_Color.r
-      value: 0.745283
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9066652364626019796, guid: e8c9fbe84835533448125b79b9b47495, type: 3}
+      propertyPath: m_Material
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 9066652364626019797, guid: e8c9fbe84835533448125b79b9b47495, type: 3}
       propertyPath: m_Pivot.x
@@ -105,7 +121,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9066652364626019798, guid: e8c9fbe84835533448125b79b9b47495, type: 3}
       propertyPath: m_Name
-      value: Image Variant 2
+      value: cloak
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e8c9fbe84835533448125b79b9b47495, type: 3}

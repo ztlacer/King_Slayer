@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerInventory : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class PlayerInventory : MonoBehaviour
     public BlackSmithInventory shopInv;
     public GameObject screen;
     public GameObject shopScreen;
+    [SerializeField] GameObject messagePrefab;
     public bool shopOpen = false;
     //public int currentContainerLook = null;
 
@@ -24,6 +26,12 @@ public class PlayerInventory : MonoBehaviour
         var item = other.GetComponent<Item>();
         if (item)
         {
+            // Notify that you received an item
+            //Vector3 v = Camera.main.WorldToViewportPoint(item.transform.position);
+            //spawnMessage("Picked up something", v.x, v.y);
+            GameObject obj = Instantiate(messagePrefab, gameObject.transform);
+            obj.transform.GetChild(0).GetComponent<TextMeshPro>().SetText("Picked up: " + item.name);
+            //obj.GetComponent<PickUp>().text.text = message;
             inventory.AddItem(item.item, 1);
             Destroy(other.gameObject);
         }
@@ -118,6 +126,14 @@ public class PlayerInventory : MonoBehaviour
     private void OnApplicationQuit()
     {
         inventory.Container.Clear();
+    }
+
+    private void spawnMessage(string message, float x, float y)
+    {
+        x = Mathf.Clamp(x, 0.05f, 0.95f); // clamp position to screen to ensure
+        y = Mathf.Clamp(y, 0.05f, 0.9f);  // the string will be visible
+        GameObject obj = Instantiate(messagePrefab, new Vector3(x, y, 0), Quaternion.identity);
+        obj.GetComponent<PickUp>().text.text = message;
     }
 
 }
