@@ -1,0 +1,29 @@
+fileFormatVersion: 2
+guid: 5939f29033d7b494986db9c43dc9cad8
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - player: {instanceID: 0}
+  - puzzle: {fileID: 11400000, guid: ce2c6b68a29c44b2e8e3df3d3ffec60b, type: 2}
+  - queen_0: {fileID: 11400000, guid: aea400057115f41879936340bb5ec35d, type: 2}
+  - queen_1: {fileID: 11400000, guid: 7679009f6d6dc4686b6af80e9abf8a39, type: 2}
+  - queen_2: {fileID: 11400000, guid: 51f5334e702b24da6bb1935ef6f799ee, type: 2}
+  - queen_3: {fileID: 11400000, guid: b0976173aed58468eb1d07eb3e8d676a, type: 2}
+  - bishop_0: {fileID: 11400000, guid: 8d9868baaf0374b29981040738b6fd3c, type: 2}
+  - bishop_1: {fileID: 11400000, guid: ae03ec6cbd94b45c38747e09c42c88ba, type: 2}
+  - bishop_2: {fileID: 11400000, guid: 12f4f6d0cfca24315a131d8e41d9e887, type: 2}
+  - bishop_3: {fileID: 11400000, guid: f8f734d4e64c24068b62ecec9f989c04, type: 2}
+  - knight_0: {fileID: 11400000, guid: b2956f4620ad14c0d833648a0d16caeb, type: 2}
+  - knight_1: {fileID: 11400000, guid: 8d650554882e04369bff28c5acd6f03d, type: 2}
+  - knight_2: {fileID: 11400000, guid: 47ee8fad32d674163a8f81fd8a0b8042, type: 2}
+  - knight_3: {fileID: 11400000, guid: 737ba682aec5d44339443a61ae14d1f5, type: 2}
+  - brook_0: {fileID: 11400000, guid: f4e03cb48672941f1a26f1cfd482f3ef, type: 2}
+  - brook_1: {fileID: 11400000, guid: ed8f6d2fe2ea840dfb152ebb7e8c7473, type: 2}
+  - brook_2: {fileID: 11400000, guid: 53032dcb0755f4b60aae7f0f2797840b, type: 2}
+  - brook_3: {fileID: 11400000, guid: 2f21a84f180164364a31a0170b123c32, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -43,7 +43,7 @@ public class PlayerCamera : MonoBehaviour
         float deltaTime = Time.deltaTime;
 
         transposer.m_FollowOffset.y = Mathf.Clamp(
-            transposer.m_FollowOffset.y - (lookAxis.y * cameraVelocity.y * deltaTime),
+            transposer.m_FollowOffset.y + (lookAxis.y * cameraVelocity.y * deltaTime),
             maxFollowOffset.x,
             maxFollowOffset.y);
 

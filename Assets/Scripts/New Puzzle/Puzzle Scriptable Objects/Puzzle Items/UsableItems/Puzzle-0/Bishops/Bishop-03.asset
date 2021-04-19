@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd0cf5b0f1bcc4ddb99540d9819202f5, type: 3}
+  m_Name: Bishop-03
+  m_EditorClassIdentifier: 
+  Id: 1
+  uiDisplay: {fileID: 21300000, guid: a2afcb8604b7543ad97b8a8fb372f98b, type: 3}
+  type: 1
+  pos: 1
+  description: 

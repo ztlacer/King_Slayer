@@ -71,12 +71,6 @@ public class MazeGen3 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //Vector3 pos = transform.position + new Vector3(100, 0, 100);
-        //float angleDegrees = -45 * Mathf.Rad2Deg;
-        //Quaternion rot = Quaternion.Euler(0, angleDegrees, 0);
-        //Instantiate(Buildings1[0], pos, rot);
-        //Buildings1[0].transform.localScale = new Vector3(45, 60, 45);
-
         SubZones1 = new GameObject[3];
         transXTaken1 = new int[4][];
         transZTaken1 = new int[4][];
@@ -1066,19 +1060,41 @@ public class MazeGen3 : MonoBehaviour
     // Need to check if subzone exists & 
     void generateGates(int GateCount, int gridWidth, int gridDepth, double worldTransX, double worldTransZ, float coordSize, GameObject[] Gates, bool dec)
     {
+        float[] gateXs = new float[GateCount];
+        float[] gateZs = new float[GateCount];
+
         for (int i = 0; i < GateCount; i++)
         {
-            float startX = Random.Range(0, gridWidth) * coordSize - coordSize - coordSize / 2;
-           
-            float startZ = Random.Range(0, gridDepth) * coordSize - coordSize - coordSize/2;
-            if (dec)
+            bool valid = false;
+
+            while (valid == false)
             {
-                startX += coordSize / 2;
-                startZ += coordSize / 2;
+                float startX = Random.Range(0, gridWidth - 1) * coordSize - coordSize - coordSize / 2;
+
+                float startZ = Random.Range(0, gridDepth - 1) * coordSize - coordSize - coordSize / 2;
+                if (dec)
+                {
+                    startX += coordSize / 2;
+                    startZ += coordSize / 2;
+                }
+
+                valid = true;
+                for (int j = 0; j < i; j++)
+                {
+                    if (gateXs[j] == startX && gateZs[j] == startZ)
+                    {
+                        valid = false;
+                    }
+                }
+
+                if (valid == true)
+                {
+                    gateXs[i] = startX;
+                    gateZs[i] = startZ;
+                    Gates[i].transform.position = new Vector3(startX + (float)worldTransX, 5, startZ + (float)worldTransZ);
+                }
             }
-            //print("startX - " + startX);
-            //print("startZ - " + startZ);
-            Gates[i].transform.position = new Vector3(startX + (float)worldTransX, 5, startZ + (float)worldTransZ);
+            
         }
     }
 }

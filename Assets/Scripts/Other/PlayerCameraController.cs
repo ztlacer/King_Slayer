@@ -30,7 +30,7 @@ using UnityEngine;
 
         enabled = true;
 
-        Controls.Player.Look.performed += ctx => Look(ctx.ReadValue<Vector2>());
+        Controls.Player.Look.performed += ctx => Look(-1 * ctx.ReadValue<Vector2>());
         virtualCamera.gameObject.SetActive(false);
         }
 
@@ -44,7 +44,7 @@ using UnityEngine;
             float deltaTime = Time.deltaTime;
 
             transposer.m_FollowOffset.y = Mathf.Clamp(
-                transposer.m_FollowOffset.y - (lookAxis.y * cameraVelocity.y * deltaTime),
+                transposer.m_FollowOffset.y + (lookAxis.y * cameraVelocity.y * deltaTime),
                 maxFollowOffset.x,
                 maxFollowOffset.y);
 
