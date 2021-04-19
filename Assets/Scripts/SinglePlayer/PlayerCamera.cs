@@ -9,6 +9,8 @@ public class PlayerCamera : MonoBehaviour
     public Transform playerTransform = null;
     public CinemachineVirtualCamera virtualCamera = null;
 
+    public Camera regCamera;
+
     private Controls controls; // for some reason cannot have = new Controls();
     private Controls Controls
     {
@@ -28,6 +30,7 @@ public class PlayerCamera : MonoBehaviour
         virtualCamera.gameObject.SetActive(true);
 
         enabled = true;
+        virtualCamera.gameObject.SetActive(false);
 
         Controls.Player.Look.performed += ctx => Look(ctx.ReadValue<Vector2>());
     }
@@ -40,7 +43,7 @@ public class PlayerCamera : MonoBehaviour
         float deltaTime = Time.deltaTime;
 
         transposer.m_FollowOffset.y = Mathf.Clamp(
-            transposer.m_FollowOffset.y - (lookAxis.y * cameraVelocity.y * deltaTime),
+            transposer.m_FollowOffset.y + (lookAxis.y * cameraVelocity.y * deltaTime),
             maxFollowOffset.x,
             maxFollowOffset.y);
 
