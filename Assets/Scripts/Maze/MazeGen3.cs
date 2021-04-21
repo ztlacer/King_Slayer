@@ -68,6 +68,8 @@ public class MazeGen3 : MonoBehaviour
 
     public GameObject[] wayPoints1;
 
+    public GameObject MerchantPrefab;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -341,21 +343,27 @@ public class MazeGen3 : MonoBehaviour
             if (level == 1)
             {
                 Towns1[i].transform.position = new Vector3(startX * coordSize + (float)worldTransX + 40, -15, startZ * coordSize + (float)worldTransZ + 25);
+
+                Instantiate(MerchantPrefab, new Vector3(startX * coordSize + (float)worldTransX + 40, 1.39f, startZ * coordSize + (float)worldTransZ + 25), Quaternion.identity);
+
             }
 
             if (level == 2)
             {
                 Towns2[i].transform.position = new Vector3(startX * coordSize + (float)worldTransX + 40, -15, startZ * coordSize + (float)worldTransZ + 25);
+                Instantiate(MerchantPrefab, new Vector3(startX * coordSize + (float)worldTransX + 40, 1.39f, startZ * coordSize + (float)worldTransZ + 25), Quaternion.identity);
             }
 
             if (level == 3)
             {
                 Towns3[i].transform.position = new Vector3(startX * coordSize + (float)worldTransX + 40, -15, startZ * coordSize + (float)worldTransZ + 35);
+                Instantiate(MerchantPrefab, new Vector3(startX * coordSize + (float)worldTransX + 40, 1.39f, startZ * coordSize + (float)worldTransZ + 25), Quaternion.identity);
             }
 
             if (level == 4)
             {
                 Towns4[i].transform.position = new Vector3(startX * coordSize + (float)worldTransX + 40, -15, startZ * coordSize + (float)worldTransZ + 35);
+                Instantiate(MerchantPrefab, new Vector3(startX * coordSize + (float)worldTransX + 40, 1.39f, startZ * coordSize + (float)worldTransZ + 25), Quaternion.identity);
             }
 
             for (int j = 0; j < subZoneDepth; j++)
