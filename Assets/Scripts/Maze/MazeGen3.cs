@@ -96,7 +96,10 @@ public class MazeGen3 : MonoBehaviour
             transXTaken1[i] = new int[4];
             transZTaken1[i] = new int[4];
 
-            SubZones1[i] = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            cube.AddComponent<UnityEngine.AI.NavMeshObstacle>();
+            cube.GetComponent<UnityEngine.AI.NavMeshObstacle>().carving = true;
+            SubZones1[i] = cube;
             SubZones1[i].transform.position = new Vector3(0, -15, 0);
             SubZones1[i].transform.localScale = new Vector3(200, (float)1.5, 200);
             SubZones1[i].GetComponent<MeshRenderer>().material = Material1;
@@ -119,7 +122,10 @@ public class MazeGen3 : MonoBehaviour
             transXTaken2[i] = new int[4];
             transZTaken2[i] = new int[4];
 
-            SubZones2[i] = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            cube.AddComponent<UnityEngine.AI.NavMeshObstacle>();
+            cube.GetComponent<UnityEngine.AI.NavMeshObstacle>().carving = true;
+            SubZones2[i] = cube;
             SubZones2[i].transform.position = new Vector3(0, -15, 0);
             SubZones2[i].transform.localScale = new Vector3(160, 2, 160);
             SubZones2[i].GetComponent<MeshRenderer>().material = Material2;
@@ -142,7 +148,10 @@ public class MazeGen3 : MonoBehaviour
             transXTaken3[i] = new int[8];
             transZTaken3[i] = new int[8];
 
-            SubZones3[i] = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            cube.AddComponent<UnityEngine.AI.NavMeshObstacle>();
+            cube.GetComponent<UnityEngine.AI.NavMeshObstacle>().carving = true;
+            SubZones3[i] = cube;
             SubZones3[i].transform.position = new Vector3(0, -15, 0);
             SubZones3[i].transform.localScale = new Vector3(175, 2, 175);
             SubZones3[i].GetComponent<MeshRenderer>().material = Material3;
@@ -165,7 +174,10 @@ public class MazeGen3 : MonoBehaviour
             transXTaken4[i] = new int[9];
             transZTaken4[i] = new int[9];
 
-            SubZones4[i] = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            cube.AddComponent<UnityEngine.AI.NavMeshObstacle>();
+            cube.GetComponent<UnityEngine.AI.NavMeshObstacle>().carving = true;
+            SubZones4[i] = cube;
             SubZones4[i].transform.position = new Vector3(0, -15, 0);
             SubZones4[i].transform.localScale = new Vector3(160, 2, 160);
             SubZones4[i].GetComponent<MeshRenderer>().material = Material4;
@@ -183,7 +195,10 @@ public class MazeGen3 : MonoBehaviour
         Walls1 = new GameObject[361];
         for (int i = 0; i < 361; i++)
         {
-            Walls1[i] = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            cube.AddComponent<UnityEngine.AI.NavMeshObstacle>();
+            cube.GetComponent<UnityEngine.AI.NavMeshObstacle>().carving = true;
+            Walls1[i] = cube;
             Walls1[i].transform.position = new Vector3(0, -15, 0);
             Walls1[i].transform.localScale = new Vector3(50, 30, 1);
             Walls1[i].GetComponent<MeshRenderer>().material = Material5;
@@ -192,7 +207,10 @@ public class MazeGen3 : MonoBehaviour
         Walls2 = new GameObject[576];
         for (int i = 0; i < 576; i++)
         {
-            Walls2[i] = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            cube.AddComponent<UnityEngine.AI.NavMeshObstacle>();
+            cube.GetComponent<UnityEngine.AI.NavMeshObstacle>().carving = true;
+            Walls2[i] = cube;
             Walls2[i].transform.position = new Vector3(0, -15, 0);
             Walls2[i].transform.localScale = new Vector3(40, 30, 1);
             Walls2[i].GetComponent<MeshRenderer>().material = Material6;
@@ -201,7 +219,10 @@ public class MazeGen3 : MonoBehaviour
         Walls3 = new GameObject[1521];
         for (int i = 0; i < 1521; i++)
         {
-            Walls3[i] = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            cube.AddComponent<UnityEngine.AI.NavMeshObstacle>();
+            cube.GetComponent<UnityEngine.AI.NavMeshObstacle>().carving = true;
+            Walls3[i] = cube;
             Walls3[i].transform.position = new Vector3(0, -15, 0);
             Walls3[i].transform.localScale = new Vector3(25, 30, 1);
             Walls3[i].GetComponent<MeshRenderer>().material = Material7;
@@ -210,7 +231,10 @@ public class MazeGen3 : MonoBehaviour
         Walls4 = new GameObject[2401];
         for (int i = 0; i < 2401; i++)
         {
-            Walls4[i] = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            cube.AddComponent<UnityEngine.AI.NavMeshObstacle>();
+            cube.GetComponent<UnityEngine.AI.NavMeshObstacle>().carving = true;
+            Walls4[i] = cube;
             Walls4[i].transform.position = new Vector3(0, -15, 0);
             Walls4[i].transform.localScale = new Vector3(20, 30, 1);
             Walls4[i].GetComponent<MeshRenderer>().material = Material8;
