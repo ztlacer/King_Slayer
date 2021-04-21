@@ -749,7 +749,7 @@ CharacterController:
   serializedVersion: 2
   m_Height: 2
   m_Radius: 0.5
-  m_SlopeLimit: 45
+  m_SlopeLimit: 90
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
@@ -791,7 +791,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2540056942861495321}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5e9f93979d578d044a6f219689d7ddf0, type: 3}
   m_Name: 
@@ -799,9 +799,17 @@ MonoBehaviour:
   inventory: {fileID: 11400000, guid: a9be18cb04f953c44a576daa767e72de, type: 2}
   isTriggering: 0
   shopInv: {fileID: 0}
-  screen: {fileID: 0}
+  screen: {fileID: 5733648654859247429}
   shopScreen: {fileID: 5733648653763613348}
+  messagePrefab: {fileID: 1171712415548316587, guid: 8d92ffdf254dfad429e00b7b54137dc9, type: 3}
   shopOpen: 0
+  display: {fileID: 5733648654859247481}
+  playerStats: {fileID: 11400000, guid: d742020996d217d4cb20cdfd8bcda90c, type: 2}
+  sword: {fileID: 11400000, guid: 245c8e6d2946468408406b04590cdb4d, type: 2}
+  armor: {fileID: 11400000, guid: 12a198523b796664f88b3cbffe270515, type: 2}
+  cloak: {fileID: 11400000, guid: 48b0f4cd182c7714b840bbf728985c12, type: 2}
+  potion: {fileID: 11400000, guid: 7bc2eda3bf81bf1489094a6a752682c0, type: 2}
+  meat: {fileID: 11400000, guid: 8cb6c3f96bbde944fa0b5489e610e3d2, type: 2}
 --- !u!114 &6501647036584285189
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -832,12 +840,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  movementSpeed: 5
+  movementSpeed: 12.86
+  gravity: -10
   controller: {fileID: 2540056942861495335}
   animator: {fileID: 2540056943088123104}
   freeLook: {fileID: 2540056943174015266}
-  turnSmoothTime: 1
-  crouchSpeedMultiplier: 0.5
+  playerUI: {fileID: 5733648653935444971}
+  turnSmoothTime: 0.1
+  crouchSpeedMultiplier: 0.24
 --- !u!114 &1915342144024383690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1869,7 +1879,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &5733648653763613349
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1963,7 +1973,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5733648653935444975
 RectTransform:
   m_ObjectHideFlags: 0

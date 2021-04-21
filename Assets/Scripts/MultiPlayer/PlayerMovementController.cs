@@ -7,9 +7,11 @@ public class PlayerMovementController : NetworkBehaviour
 {
     [Range(8f, 15f)]
     [SerializeField] private float movementSpeed = 5f;
+    [SerializeField] private float gravity = -10f;
     [SerializeField] private CharacterController controller = null;
     [SerializeField] private Animator animator = null;
     [SerializeField] private GameObject freeLook = null;
+    [SerializeField] private GameObject playerUI;
 
 
     //private Transform cam;
@@ -47,6 +49,8 @@ public class PlayerMovementController : NetworkBehaviour
     {
         enabled = true;
         freeLook.SetActive(true);
+        playerUI.SetActive(true);
+        GetComponent<PlayerInventory>().enabled = true;
         //cam = GameObject.Find("MainCamera").transform;
 
         Controls.Player.Move.performed += ctx => SetMovement(ctx.ReadValue<Vector2>());
@@ -138,60 +142,19 @@ public class PlayerMovementController : NetworkBehaviour
 
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, realTurnTime);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
-            //print(realSpeed);
-            controller.Move(moveDir.normalized * realSpeed * Time.deltaTime);
+            Vector3 playerVelocity = moveDir.normalized * movementSpeed * Time.deltaTime;
+            if (controller.isGrounded)
+            {
+                playerVelocity.y = 0;
 
-            //controller.Move(moveDir.normalized * movementSpeed * Time.deltaTime);
+            }
+            else
+            {
+                playerVelocity.y += gravity * Time.deltaTime;
 
-        }
-
-
-
-
-
-            //// OLD code for networked movement
-            //Vector3 right = controller.transform.right;
-            //Vector3 forward = controller.transform.forward;
-            //right.y = 0f;
-            //forward.y = 0f;
-
-            //Vector3 movement = right.normalized * previousInput.x + forward.normalized * previousInput.y;
-            ////Debug.Log(movement);
-
-            //Vector3 direction = new Vector3(horizontalX, 0f, horizontalZ).normalized;
-
-            //if (direction.magnitude >= 0.1)
-            //{
-            //    float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.transform.eulerAngles.y;
-            //    float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
-            //    transform.rotation = Quaternion.Euler(0f, angle, 0f);
-
-
-            //    Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-
-            //    float realSpeed = movementSpeed;
-
-            //    if (Keyboard.current.ctrlKey.wasPressedThisFrame) // if the player is crouching, reduce movement speed
-            //    {
-            //        //animator.SetBool("isCrouching", true);
-            //        realSpeed = movementSpeed * crouchSpeedMultiplier;
-            //    }
-            //    else if (Keyboard.current.ctrlKey.wasReleasedThisFrame)
-            //    {
-            //        //animator.SetBool("isCrouching", false);
-            //        realSpeed = movementSpeed;
-            //    }
-            //    controller.Move(moveDir.normalized * realSpeed * Time.deltaTime);
-
-            //    // If there is any magnitude at which the player is moving then animate it running
-            //    animator.SetBool("isMoving", movement.magnitude > 0);
-
-            //    //controller.Move(moveDir.normalized * movementSpeed * Time.deltaTime);
-
-            //}
-
-
-
+            }
+            controller.Move(playerVelocity);
 
         }
     }
+}

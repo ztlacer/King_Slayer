@@ -70,9 +70,12 @@ public class MazeGen3 : MonoBehaviour
 
     public GameObject MerchantPrefab;
 
+    public int randSeed;
+
     // Start is called before the first frame update
     void Start()
     {
+        Random.InitState(randSeed);
         SubZones1 = new GameObject[3];
         transXTaken1 = new int[4][];
         transZTaken1 = new int[4][];
@@ -333,7 +336,6 @@ public class MazeGen3 : MonoBehaviour
 
         for (int i = 0; i < subZoneCount; i++)
         {
-
             int startX = Random.Range(i * (gridWidth / subZoneCount), gridWidth - ((gridWidth / subZoneCount) * (subZoneCount - i)));
             // int startZ = Random.Range(i * (gridDepth/subZoneCount), gridDepth - ((gridDepth / subZoneCount) * (subZoneCount - i)) );
             int startZ = Random.Range(i * (gridDepth / subZoneCount), gridDepth - subZoneDepth);

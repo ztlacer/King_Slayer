@@ -25,10 +25,12 @@ public class PlayerInventory : MonoBehaviour
 
     public void Start()
     {
-        screen = GameObject.Find("InventoryScreen");
-        shopScreen = GameObject.Find("ShopScreen");
+        //screen = GameObject.Find("InventoryScreen");
+        //shopScreen = GameObject.Find("ShopScreen");
         shopScreen.SetActive(false);
         screen.SetActive(false);
+        //shopScreen = GameObject.Find("ShopScreen");
+        //shopScreen.SetActive(false);
     }
 
     public void OnTriggerEnter(Collider other)
