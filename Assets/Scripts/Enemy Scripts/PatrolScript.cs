@@ -34,6 +34,8 @@ public class PatrolScript : MonoBehaviour
 
     private bool firstWander = true;
 
+    public int numWaypointSet;
+
 
 
 
@@ -88,15 +90,24 @@ public class PatrolScript : MonoBehaviour
             if (GameObject.FindWithTag("Waypoint") != null)
             {
 
-                patrolLocations.SetValue(GameObject.Find("waypoint0").transform, 0);
 
-                patrolLocations.SetValue(GameObject.Find("waypoint1").transform, 1);
+                patrolLocations.SetValue(GameObject.Find("waypoint" +  numWaypointSet).transform, 0);
 
-                patrolLocations.SetValue(GameObject.Find("waypoint2").transform, 2);
+                numWaypointSet++;
 
-                patrolLocations.SetValue(GameObject.Find("waypoint3").transform, 3);
+                patrolLocations.SetValue(GameObject.Find("waypoint" + numWaypointSet).transform, 1);
 
-                patrolLocations.SetValue(GameObject.Find("waypoint4").transform, 4);
+                numWaypointSet++;
+
+                patrolLocations.SetValue(GameObject.Find("waypoint" + numWaypointSet).transform, 2);
+
+                numWaypointSet++;
+
+                patrolLocations.SetValue(GameObject.Find("waypoint" + numWaypointSet).transform, 3);
+
+                numWaypointSet++;
+
+                patrolLocations.SetValue(GameObject.Find("waypoint" + numWaypointSet).transform, 4);
 
                 transform.position = new Vector3(patrolLocations[nextSpot].position.x, transform.position.y, patrolLocations[nextSpot].position.z);
 

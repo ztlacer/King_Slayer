@@ -3,7 +3,17 @@ guid: b75750ba7271b43b68d393ae5ddb527b
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - Material1: {instanceID: 0}
+  - Material2: {instanceID: 0}
+  - Material3: {instanceID: 0}
+  - Material4: {instanceID: 0}
+  - Material5: {instanceID: 0}
+  - Material6: {instanceID: 0}
+  - Material7: {instanceID: 0}
+  - Material8: {instanceID: 0}
+  - MerchantPrefab: {fileID: 8446897834032388293, guid: 898764b3d9cd4524e97dc2c70a0f805e, type: 3}
+  - EnemyPrefab: {fileID: 3560365751083683863, guid: 222d4c203e608f94bb23132758b15b14, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

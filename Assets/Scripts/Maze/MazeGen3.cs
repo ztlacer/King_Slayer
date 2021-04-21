@@ -80,6 +80,8 @@ public class MazeGen3 : MonoBehaviour
 
     public GameObject MerchantPrefab;
 
+    public GameObject EnemyPrefab;
+
     public int randSeed;
 
     // Start is called before the first frame update
@@ -395,14 +397,14 @@ public class MazeGen3 : MonoBehaviour
         generateGates(4, 40, 40, -1442.5, 861.5, 25, Gates3, true);
         generateGates(4, 50, 50, -449, 600, 20, Gates4, false);
 
-        generateWayPoints(5, 2, 19, -485, -420, 50, wayPoints1, takenX1, takenZ1, 0, 18);
-        generateWayPoints(5, 19, 19, -485, -420, 50, wayPoints2, takenX1, takenZ1, 17, 17);
-        generateWayPoints(5, 2, 24, -1490, -190, 40, wayPoints3, takenX2, takenZ2, 0, 23);
-        generateWayPoints(5, 19, 19, -1490, -190, 40, wayPoints4, takenX2, takenZ2, 17, 17);
-        generateWayPoints(5, 4, 4, -1505, 785, 25, wayPoints5, takenX3, takenZ3, 2, 2);
-        generateWayPoints(5, 39, 10, -1505, 785, 25, wayPoints6, takenX3, takenZ3, 38, 9);
-        generateWayPoints(5, 4, 2, -390, 550, 20, wayPoints7, takenX4, takenZ4, 2, 0);
-        generateWayPoints(5, 33, 47, -650, 490, 20, wayPoints8, takenX4, takenZ4, 32, 46);
+        generateWayPoints(5, 2, 19, -485, -420, 50, wayPoints1, takenX1, takenZ1, 0, 18, 0);
+        generateWayPoints(5, 19, 19, -485, -420, 50, wayPoints2, takenX1, takenZ1, 17, 17, 5);
+        generateWayPoints(5, 2, 24, -1490, -190, 40, wayPoints3, takenX2, takenZ2, 0, 23, 10);
+        generateWayPoints(5, 19, 19, -1490, -190, 40, wayPoints4, takenX2, takenZ2, 17, 17, 15);
+        generateWayPoints(5, 4, 4, -1505, 785, 25, wayPoints5, takenX3, takenZ3, 2, 2, 20);
+        generateWayPoints(5, 39, 10, -1505, 785, 25, wayPoints6, takenX3, takenZ3, 38, 9, 25);
+        generateWayPoints(5, 4, 2, -390, 550, 20, wayPoints7, takenX4, takenZ4, 2, 0, 30);
+        generateWayPoints(5, 33, 47, -650, 490, 20, wayPoints8, takenX4, takenZ4, 32, 46, 35);
 
     }
 
@@ -422,6 +424,7 @@ public class MazeGen3 : MonoBehaviour
                 Towns1[i].transform.position = new Vector3(startX * coordSize + (float)worldTransX + 40, -15, startZ * coordSize + (float)worldTransZ + 25);
 
                 Instantiate(MerchantPrefab, new Vector3(startX * coordSize + (float)worldTransX + 40, 1.39f, startZ * coordSize + (float)worldTransZ + 25), Quaternion.identity);
+
 
             }
 
@@ -1007,10 +1010,12 @@ public class MazeGen3 : MonoBehaviour
         return false;
     }
 
-    void generateWayPoints(int wayPointCount, int gridWidth, int gridDepth, double worldTransX, double worldTransZ, float coordSize, GameObject[] wayPoints, int[][] takenX, int[][] takenZ)
+    void generateWayPoints(int wayPointCount, int gridWidth, int gridDepth, double worldTransX, double worldTransZ, float coordSize, GameObject[] wayPoints, int[][] takenX, int[][] takenZ, int waypointSet)
     {
         int[] xValues = new int[wayPointCount];
         int[] zValues = new int[wayPointCount];
+
+        
 
         xValues[0] = Random.Range(0, gridWidth - 1);
         zValues[0] = Random.Range(0, gridDepth - 1);
@@ -1183,7 +1188,7 @@ public class MazeGen3 : MonoBehaviour
 
         }
     }
-    void generateWayPoints(int wayPointCount, int gridEndX, int gridEndZ, double worldTransX, double worldTransZ, float coordSize, GameObject[] wayPoints, int[][] takenX, int[][] takenZ, int gridStartX, int gridStartZ)
+    void generateWayPoints(int wayPointCount, int gridEndX, int gridEndZ, double worldTransX, double worldTransZ, float coordSize, GameObject[] wayPoints, int[][] takenX, int[][] takenZ, int gridStartX, int gridStartZ, int waypointsSet)
     {
         int[] xValues = new int[wayPointCount];
         int[] zValues = new int[wayPointCount];
@@ -1191,6 +1196,12 @@ public class MazeGen3 : MonoBehaviour
 
         xValues[0] = Random.Range(gridStartX, gridEndX);
         zValues[0] = Random.Range(gridStartZ, gridEndZ);
+
+        var enemy = Instantiate(EnemyPrefab);
+
+        PatrolScript script = enemy.GetComponent<PatrolScript>();
+
+        script.numWaypointSet = waypointsSet;
 
         int rendered = 1;
         bool rendering = true;
