@@ -12,6 +12,14 @@ public class PlayerInventory : MonoBehaviour
     public GameObject shopScreen;
     [SerializeField] GameObject messagePrefab;
     public bool shopOpen = false;
+    public DisplayInventory display;
+    public StatObject playerStats;
+    public EquipmentObject sword;
+    public EquipmentObject armor;
+    public EquipmentObject cloak;
+    public HealthObject potion;
+    public HealthObject meat;
+
     //public int currentContainerLook = null;
 
 
@@ -73,8 +81,27 @@ public class PlayerInventory : MonoBehaviour
             {
                 if (shopInv.inventory.Container[shopInv.inventory.currentContainerLook].amount > 0)
                 {
-                    inventory.AddItem(shopInv.inventory.Container[shopInv.inventory.currentContainerLook].item, 1);
-                    shopInv.inventory.Container[shopInv.inventory.currentContainerLook].RemoveAmount(1);
+                    if (playerStats.goldAmount >= shopInv.inventory.Container[shopInv.inventory.currentContainerLook].item.cost)
+                    {
+                        inventory.AddItem(shopInv.inventory.Container[shopInv.inventory.currentContainerLook].item, 1);
+                        shopInv.inventory.Container[shopInv.inventory.currentContainerLook].RemoveAmount(1);
+                        playerStats.changeGold(-shopInv.inventory.Container[shopInv.inventory.currentContainerLook].item.cost);
+                        if (shopInv.inventory.Container[shopInv.inventory.currentContainerLook].item.type == ItemType.Equipment) 
+                        {
+                            if (shopInv.inventory.Container[shopInv.inventory.currentContainerLook].item.name == "Armor")
+                            {
+                                playerStats.Defense += armor.defenseBonus;
+                            }
+                            if (shopInv.inventory.Container[shopInv.inventory.currentContainerLook].item.name == "Sword")
+                            {
+                                playerStats.Attack += sword.atkBonus;
+                            }
+                            if (shopInv.inventory.Container[shopInv.inventory.currentContainerLook].item.name == "Cloak")
+                            {
+                                playerStats.Attack += cloak.stealthBonus;
+                            }
+                        }
+                    }
                 }
             }
 
@@ -97,20 +124,23 @@ public class PlayerInventory : MonoBehaviour
     public void OnTriggerStay(Collider other)
     {
         var shopInventory = other.GetComponent<BlackSmithInventory>();
-        print(shopInventory);
+        
         if (!isTriggering && shopInventory)
         {
+            print("foundBlacksmith");
             shopInventory.screen = shopScreen;
             //print(shopInventory.screen.name);
             shopInv = shopInventory;
             isTriggering = true;
+            display.inventory = shopInv.inventory;
         }
-
+        
     }
 
     public void OnTriggerExit(Collider other)
     {
         var shopInventory = other.GetComponent<BlackSmithInventory>();
+        
         if (isTriggering && shopInventory)
         {
             if (shopInv.screen.activeSelf)
@@ -121,6 +151,7 @@ public class PlayerInventory : MonoBehaviour
             shopInv = null;
             isTriggering = false;
         }
+        
     }
 
     private void OnApplicationQuit()

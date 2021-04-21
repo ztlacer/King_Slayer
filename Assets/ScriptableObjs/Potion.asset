@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b28a2db628919394fb1b8fc544041db2, type: 3}
-  m_Name: Meat
+  m_Name: Potion
   m_EditorClassIdentifier: 
-  prefab: {fileID: 3709356534708096603, guid: d09025c6b384e204ea2f5548dd7c9573, type: 3}
+  prefab: {fileID: 822438447775363644, guid: 4a0016be54199014b838435c311b8da7, type: 3}
   type: 0
-  description: Large drumstick of meat for a moderate health restore.
-  name: Meat
-  cost: 15
-  restoreHealthValue: 15
+  description: 
+  name: Potion
+  cost: 30
+  restoreHealthValue: 30

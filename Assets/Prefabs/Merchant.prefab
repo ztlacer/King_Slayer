@@ -513,6 +513,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventory: {fileID: 11400000, guid: 72f8117d610e1dc42917a29b53fe9efe, type: 2}
   screen: {fileID: 0}
+  potion: {fileID: 11400000, guid: 7bc2eda3bf81bf1489094a6a752682c0, type: 2}
+  meat: {fileID: 11400000, guid: 8cb6c3f96bbde944fa0b5489e610e3d2, type: 2}
+  armor: {fileID: 11400000, guid: 12a198523b796664f88b3cbffe270515, type: 2}
+  sword: {fileID: 11400000, guid: 245c8e6d2946468408406b04590cdb4d, type: 2}
 --- !u!1 &8446897834043869405
 GameObject:
   m_ObjectHideFlags: 0

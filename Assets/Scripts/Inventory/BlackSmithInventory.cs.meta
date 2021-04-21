@@ -3,7 +3,13 @@ guid: 5639b80f126fa854a8ba5c88d63a269f
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - inventory: {instanceID: 0}
+  - screen: {instanceID: 0}
+  - potion: {fileID: 11400000, guid: 48b0f4cd182c7714b840bbf728985c12, type: 2}
+  - meat: {fileID: 11400000, guid: 8cb6c3f96bbde944fa0b5489e610e3d2, type: 2}
+  - armor: {fileID: 11400000, guid: 12a198523b796664f88b3cbffe270515, type: 2}
+  - sword: {fileID: 11400000, guid: 245c8e6d2946468408406b04590cdb4d, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
