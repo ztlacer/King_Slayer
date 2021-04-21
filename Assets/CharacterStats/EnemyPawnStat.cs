@@ -8,6 +8,9 @@ public class EnemyPawnStat : StatObject
 
     public void Awake()
     {
-        type = CharacterType.EnemyPawn;
+        Stealth = 20;
+        Attack = 20;
+        Health = 20;
+        Defense = 20;
     }
 }

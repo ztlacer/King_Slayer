@@ -8,6 +8,9 @@ public class EnemyKnightStat : StatObject
 
     public void Awake()
     {
-        type = CharacterType.EnemyKnight;
+        Stealth = 20;
+        Attack = 20;
+        Health = 20;
+        Defense = 20;
     }
 }

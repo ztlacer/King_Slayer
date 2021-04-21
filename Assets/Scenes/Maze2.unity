@@ -24475,7 +24475,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 585693826445014094}
-  m_LocalRotation: {x: 0.09897815, y: 0.000086881155, z: -0.00000864177, w: 0.99508965}
+  m_LocalRotation: {x: 0.09897815, y: 0.00008688971, z: -0.000008642622, w: 0.99508965}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -24850,6 +24850,7 @@ GameObject:
   - component: {fileID: 585693827053489314}
   - component: {fileID: 585693827053489312}
   - component: {fileID: 585693827053489313}
+  - component: {fileID: 585693827053489310}
   m_Layer: 0
   m_Name: newKnightPlayer
   m_TagString: Player
@@ -24875,6 +24876,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &585693827053489310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 585693827053489308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6719f275f87bf2f44898d3b9ec0be859, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats: {fileID: 11400000, guid: d742020996d217d4cb20cdfd8bcda90c, type: 2}
 --- !u!114 &585693827053489312
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24923,6 +24937,13 @@ MonoBehaviour:
   screen: {fileID: 0}
   shopScreen: {fileID: 7274111819106857505}
   shopOpen: 0
+  display: {fileID: 7274111819106857507}
+  playerStats: {fileID: 11400000, guid: d742020996d217d4cb20cdfd8bcda90c, type: 2}
+  sword: {fileID: 11400000, guid: 245c8e6d2946468408406b04590cdb4d, type: 2}
+  armor: {fileID: 11400000, guid: 12a198523b796664f88b3cbffe270515, type: 2}
+  cloak: {fileID: 11400000, guid: 48b0f4cd182c7714b840bbf728985c12, type: 2}
+  potion: {fileID: 0}
+  meat: {fileID: 0}
 --- !u!143 &585693827053489314
 CharacterController:
   m_ObjectHideFlags: 0
