@@ -32,4 +32,12 @@ public class StatObject : ScriptableObject
     {
         goldAmount += change;
     }
+
+
+
+    private void OnApplicationQuit()
+    {
+        goldAmount = 100;
+    }
+
 }

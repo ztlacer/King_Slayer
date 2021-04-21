@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PlayerStats
   m_EditorClassIdentifier: 
   Stealth: 20
-  Attack: 20
+  Attack: 40
   Health: 20
-  Defense: 40
-  goldAmount: 15
+  Defense: 60
+  goldAmount: 0

@@ -17,7 +17,7 @@ public class PlayerKnightStat : MonoBehaviour
         stats.Defense = 20;
     }
 
-    
+
 
 
 

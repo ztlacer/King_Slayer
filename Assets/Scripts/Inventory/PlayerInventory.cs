@@ -26,6 +26,8 @@ public class PlayerInventory : MonoBehaviour
     public void Start()
     {
         screen = GameObject.Find("InventoryScreen");
+        shopScreen = GameObject.Find("ShopScreen");
+        shopScreen.SetActive(false);
         screen.SetActive(false);
     }
 
@@ -123,11 +125,11 @@ public class PlayerInventory : MonoBehaviour
 
     public void OnTriggerStay(Collider other)
     {
+        print("foundBlacksmith");
         var shopInventory = other.GetComponent<BlackSmithInventory>();
         
         if (!isTriggering && shopInventory)
         {
-            print("foundBlacksmith");
             shopInventory.screen = shopScreen;
             //print(shopInventory.screen.name);
             shopInv = shopInventory;
