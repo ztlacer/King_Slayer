@@ -111,14 +111,11 @@ public class PatrolScript : MonoBehaviour
 
                 transform.position = new Vector3(patrolLocations[nextSpot].position.x, transform.position.y, patrolLocations[nextSpot].position.z);
 
-
-                print(patrolLocations[nextSpot].position.x);
+                print(transform.position + " tpos");
 
                 waypointsSet = true;
 
                 scheduleQueue(0);
-
-                print(prioQueue.Peek());
 
                 currentAction = true;
             }
