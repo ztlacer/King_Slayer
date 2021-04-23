@@ -1013,6 +1013,7 @@ MonoBehaviour:
   lookDir: {x: 0, y: 0, z: 0}
   otherMovement: 0
   waypointsSet: 0
+  numWaypointSet: 0
 --- !u!195 &3560365751083683856
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1241,7 +1242,7 @@ Animator:
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 139303c5ffdc3424fb9cf7736d0fa4b1, type: 2}
-  m_CullingMode: 0
+  m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
@@ -2509,6 +2510,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   foreground: {fileID: 8547535254735565494}
   updateSpeedSeconds: 0.5
+  parent: {fileID: 0}
 --- !u!1 &8650472579565801860
 GameObject:
   m_ObjectHideFlags: 0
