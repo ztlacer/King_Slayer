@@ -9833,6 +9833,7 @@ MonoBehaviour:
   wayPoints7: []
   wayPoints8: []
   MerchantPrefab: {fileID: 8446897834032388293, guid: 898764b3d9cd4524e97dc2c70a0f805e, type: 3}
+  DoctorPrefab: {fileID: 4746823211974974466, guid: d524f382d7ff56d41a6c8c9e29d20294, type: 3}
   EnemyPrefab: {fileID: 3560365751083683863, guid: 222d4c203e608f94bb23132758b15b14, type: 3}
   randSeed: 0
 --- !u!114 &696652813
@@ -25148,11 +25149,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 585693826245370973, guid: 3d525e6ffced1174e9c4b28ba602f838, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.00008682776
+      value: 0.00008683697
       objectReference: {fileID: 0}
     - target: {fileID: 585693826245370973, guid: 3d525e6ffced1174e9c4b28ba602f838, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000008636458
+      value: -0.000008637376
       objectReference: {fileID: 0}
     - target: {fileID: 585693826718620814, guid: 3d525e6ffced1174e9c4b28ba602f838, type: 3}
       propertyPath: m_Name
@@ -25241,6 +25242,38 @@ PrefabInstance:
     - target: {fileID: 585693827813091467, guid: 3d525e6ffced1174e9c4b28ba602f838, type: 3}
       propertyPath: m_LocalRotation.z
       value: -0.000011787458
+      objectReference: {fileID: 0}
+    - target: {fileID: 7216299759027774893, guid: 3d525e6ffced1174e9c4b28ba602f838, type: 3}
+      propertyPath: goldUI
+      value: 
+      objectReference: {fileID: 656819601511371239, guid: 194c0800c828aa94fb3c819839efd05b, type: 3}
+    - target: {fileID: 7216299759027774893, guid: 3d525e6ffced1174e9c4b28ba602f838, type: 3}
+      propertyPath: playerStats
+      value: 
+      objectReference: {fileID: 11400000, guid: d742020996d217d4cb20cdfd8bcda90c, type: 2}
+    - target: {fileID: 7216299759027774893, guid: 3d525e6ffced1174e9c4b28ba602f838, type: 3}
+      propertyPath: X_GOLD_START
+      value: -140
+      objectReference: {fileID: 0}
+    - target: {fileID: 7216299759027774893, guid: 3d525e6ffced1174e9c4b28ba602f838, type: 3}
+      propertyPath: Y_GOLD_START
+      value: -170
+      objectReference: {fileID: 0}
+    - target: {fileID: 7216299760077269106, guid: 3d525e6ffced1174e9c4b28ba602f838, type: 3}
+      propertyPath: goldUI
+      value: 
+      objectReference: {fileID: 656819601511371239, guid: 194c0800c828aa94fb3c819839efd05b, type: 3}
+    - target: {fileID: 7216299760077269106, guid: 3d525e6ffced1174e9c4b28ba602f838, type: 3}
+      propertyPath: playerStats
+      value: 
+      objectReference: {fileID: 11400000, guid: d742020996d217d4cb20cdfd8bcda90c, type: 2}
+    - target: {fileID: 7216299760077269106, guid: 3d525e6ffced1174e9c4b28ba602f838, type: 3}
+      propertyPath: X_GOLD_START
+      value: -140
+      objectReference: {fileID: 0}
+    - target: {fileID: 7216299760077269106, guid: 3d525e6ffced1174e9c4b28ba602f838, type: 3}
+      propertyPath: Y_GOLD_START
+      value: -170
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3d525e6ffced1174e9c4b28ba602f838, type: 3}

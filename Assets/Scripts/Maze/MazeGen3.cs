@@ -80,6 +80,8 @@ public class MazeGen3 : MonoBehaviour
 
     public GameObject MerchantPrefab;
 
+    public GameObject DoctorPrefab;
+
     public GameObject EnemyPrefab;
 
     public int randSeed;
@@ -449,6 +451,8 @@ public class MazeGen3 : MonoBehaviour
 
                 Instantiate(MerchantPrefab, new Vector3(startX * coordSize + (float)worldTransX + 40, 1.39f, startZ * coordSize + (float)worldTransZ + 25), Quaternion.identity);
 
+                Instantiate(DoctorPrefab, new Vector3(startX * coordSize + (float)worldTransX + 80, 1.39f, startZ * coordSize + (float)worldTransZ + 25), Quaternion.identity);
+
 
             }
 
@@ -456,18 +460,24 @@ public class MazeGen3 : MonoBehaviour
             {
                 Towns2[i].transform.position = new Vector3(startX * coordSize + (float)worldTransX + 40, -15, startZ * coordSize + (float)worldTransZ + 25);
                 Instantiate(MerchantPrefab, new Vector3(startX * coordSize + (float)worldTransX + 40, 1.39f, startZ * coordSize + (float)worldTransZ + 25), Quaternion.identity);
+
+                Instantiate(DoctorPrefab, new Vector3(startX * coordSize + (float)worldTransX + 80, 1.39f, startZ * coordSize + (float)worldTransZ + 25), Quaternion.identity);
             }
 
             if (level == 3)
             {
                 Towns3[i].transform.position = new Vector3(startX * coordSize + (float)worldTransX + 40, -15, startZ * coordSize + (float)worldTransZ + 35);
                 Instantiate(MerchantPrefab, new Vector3(startX * coordSize + (float)worldTransX + 40, 1.39f, startZ * coordSize + (float)worldTransZ + 25), Quaternion.identity);
+
+                Instantiate(DoctorPrefab, new Vector3(startX * coordSize + (float)worldTransX + 80, 1.39f, startZ * coordSize + (float)worldTransZ + 25), Quaternion.identity);
             }
 
             if (level == 4)
             {
                 Towns4[i].transform.position = new Vector3(startX * coordSize + (float)worldTransX + 40, -15, startZ * coordSize + (float)worldTransZ + 35);
                 Instantiate(MerchantPrefab, new Vector3(startX * coordSize + (float)worldTransX + 40, 1.39f, startZ * coordSize + (float)worldTransZ + 25), Quaternion.identity);
+
+                Instantiate(DoctorPrefab, new Vector3(startX * coordSize + (float)worldTransX + 80, 1.39f, startZ * coordSize + (float)worldTransZ + 25), Quaternion.identity);
             }
 
             for (int j = 0; j < subZoneDepth; j++)
@@ -1034,143 +1044,6 @@ public class MazeGen3 : MonoBehaviour
         return false;
     }
 
-    void generateWayPoints(int wayPointCount, int gridWidth, int gridDepth, double worldTransX, double worldTransZ, float coordSize, GameObject[] wayPoints, int[][] takenX, int[][] takenZ, int waypointSet)
-    {
-        int[] xValues = new int[wayPointCount];
-        int[] zValues = new int[wayPointCount];
-
-        
-
-        xValues[0] = Random.Range(0, gridWidth - 1);
-        zValues[0] = Random.Range(0, gridDepth - 1);
-
-        int rendered = 1;
-        bool rendering = true;
-
-        for (int i = 1; i < wayPointCount; i++)
-        {
-            int lastIndex = i - 1;
-            int lastX = xValues[lastIndex];
-            int lastZ = zValues[lastIndex];
-
-            bool moved = move(xValues, zValues, lastX, lastZ, rendered, rendering, takenX, takenZ, i);
-
-            if (moved)
-            {
-                rendered++;
-            }
-            else
-            {
-                bool resultFound = false;
-                while (!resultFound)
-                {
-
-                    if (lastIndex - 1 < 0)
-                    {
-
-                        rendering = false;
-                        resultFound = true;
-
-                    }
-                    else
-                    {
-                        lastIndex--;
-                        lastX = xValues[lastIndex];
-                        lastZ = zValues[lastIndex];
-                        moved = move(xValues, zValues, lastX, lastZ, rendered, rendering, takenX, takenZ, i);
-                        if (moved)
-                        {
-
-                            rendered++;
-                            resultFound = true;
-
-                        } // end if
-
-                    } // end if else 
-
-                } // end while
-
-            } // end for loop
-
-        } // end method
-
-        for (int i = 0; i < rendered; i++)
-        {
-            var x = worldTransX + coordSize * xValues[i] - coordSize / 2;
-            var z = worldTransZ + coordSize * zValues[i] - coordSize;
-            wayPoints[i].transform.position = new Vector3((float)x, 5, (float)z);
-
-        }
-
-    } // end method
-
-    void generateWaypoints(int wayPointCount, int gridWidth, int gridDepth, double worldTransX, double worldTransZ, float coordSize, GameObject[] wayPoints, int[][] takenX, int[][] takenZ)
-    {
-        int[] xValues = new int[wayPointCount];
-        int[] zValues = new int[wayPointCount];
-
-        xValues[0] = Random.Range(0, gridWidth - 1);
-        zValues[0] = Random.Range(0, gridDepth - 1);
-
-        int rendered = 1;
-        bool rendering = true;
-
-        for (int i = 1; i < wayPointCount; i++)
-        {
-            int lastIndex = i - 1;
-            int lastX = xValues[lastIndex];
-            int lastZ = zValues[lastIndex];
-
-            bool moved = move(xValues, zValues, lastX, lastZ, rendered, rendering, takenX, takenZ, i);
-
-            if (moved)
-            {
-                rendered++;
-            }
-            else
-            {
-                bool resultFound = false;
-                while (!resultFound)
-                {
-
-                    if (lastIndex - 1 < 0)
-                    {
-
-                        rendering = false;
-                        resultFound = true;
-
-                    }
-                    else
-                    {
-                        lastIndex--;
-                        lastX = xValues[lastIndex];
-                        lastZ = zValues[lastIndex];
-                        moved = move(xValues, zValues, lastX, lastZ, rendered, rendering, takenX, takenZ, i);
-                        if (moved)
-                        {
-
-                            rendered++;
-                            resultFound = true;
-
-                        } // end if
-
-                    } // end if else 
-
-                } // end while
-
-            } // end for loop
-
-        } // end method
-
-        for (int i = 0; i < rendered; i++)
-        {
-            var x = worldTransX + coordSize * xValues[i] - coordSize / 2;
-            var z = worldTransZ + coordSize * zValues[i] - coordSize;
-            wayPoints[i].transform.position = new Vector3((float)x, 5, (float)z);
-
-        }
-
-    } // end method
 
     // Need to check if subzone exists & 
     void generateGates(int GateCount, int gridWidth, int gridDepth, double worldTransX, double worldTransZ, float coordSize, GameObject[] Gates, bool dec)

@@ -7,13 +7,16 @@ public class PlayerInventory : MonoBehaviour
 {
     public InventoryObject inventory;
     public bool isTriggering = false;
-    public BlackSmithInventory shopInv;
+    public InventoryObject shopInv;
+    public BlackSmithInventory blacksmith;
+    public DoctorInventory doctor;
     public GameObject screen;
     public GameObject shopScreen;
     [SerializeField] GameObject messagePrefab;
-    public bool shopOpen = false;
     public DisplayInventory display;
     public StatObject playerStats;
+
+
     public EquipmentObject sword;
     public EquipmentObject armor;
     public EquipmentObject cloak;
@@ -56,51 +59,52 @@ public class PlayerInventory : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E))
             {
                 print("e");
-                if (shopInv.screen.activeSelf)
+                if (shopScreen.activeSelf)
                 {
-                    shopInv.screen.SetActive(false);
+                    shopScreen.SetActive(false);
                 }
                 else
                 {
-                    shopInv.screen.SetActive(true);
+                    shopScreen.SetActive(true);
                 }
 
             }
             if (Input.GetKeyDown(KeyCode.RightArrow))
             {
-                if (shopInv.inventory.currentContainerLook < shopInv.inventory.Container.Count - 1)
+                if (shopInv != null && shopInv.currentContainerLook < shopInv.Container.Count - 1)
                 {
-                    shopInv.inventory.currentContainerLook += 1;
+                    shopInv.currentContainerLook += 1;
                 }
 
             }
             if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
-                if (shopInv.inventory.currentContainerLook > 0)
+                if (shopInv != null && shopInv.currentContainerLook > 0)
                 {
-                    shopInv.inventory.currentContainerLook -= 1;
+                    shopInv.currentContainerLook -= 1;
                 }
+
             }
-            if (shopInv != null && shopInv.screen.activeSelf && Input.GetKeyDown(KeyCode.B))
+            if (shopInv != null && shopScreen.activeSelf && Input.GetKeyDown(KeyCode.B))
             {
-                if (shopInv.inventory.Container[shopInv.inventory.currentContainerLook].amount > 0)
+                if (shopInv.Container[shopInv.currentContainerLook].amount > 0)
                 {
-                    if (playerStats.goldAmount >= shopInv.inventory.Container[shopInv.inventory.currentContainerLook].item.cost)
+                    if (playerStats.goldAmount >= shopInv.Container[shopInv.currentContainerLook].item.cost)
                     {
-                        inventory.AddItem(shopInv.inventory.Container[shopInv.inventory.currentContainerLook].item, 1);
-                        shopInv.inventory.Container[shopInv.inventory.currentContainerLook].RemoveAmount(1);
-                        playerStats.changeGold(-shopInv.inventory.Container[shopInv.inventory.currentContainerLook].item.cost);
-                        if (shopInv.inventory.Container[shopInv.inventory.currentContainerLook].item.type == ItemType.Equipment) 
+                        inventory.AddItem(shopInv.Container[shopInv.currentContainerLook].item, 1);
+                        shopInv.Container[shopInv.currentContainerLook].RemoveAmount(1);
+                        playerStats.changeGold(-shopInv.Container[shopInv.currentContainerLook].item.cost);
+                        if (shopInv.Container[shopInv.currentContainerLook].item.type == ItemType.Equipment) 
                         {
-                            if (shopInv.inventory.Container[shopInv.inventory.currentContainerLook].item.name == "Armor")
+                            if (shopInv.Container[shopInv.currentContainerLook].item.name == "Armor")
                             {
                                 playerStats.Defense += armor.defenseBonus;
                             }
-                            if (shopInv.inventory.Container[shopInv.inventory.currentContainerLook].item.name == "Sword")
+                            if (shopInv.Container[shopInv.currentContainerLook].item.name == "Sword")
                             {
                                 playerStats.Attack += sword.atkBonus;
                             }
-                            if (shopInv.inventory.Container[shopInv.inventory.currentContainerLook].item.name == "Cloak")
+                            if (shopInv.Container[shopInv.currentContainerLook].item.name == "Cloak")
                             {
                                 playerStats.Attack += cloak.stealthBonus;
                             }
@@ -127,18 +131,28 @@ public class PlayerInventory : MonoBehaviour
 
     public void OnTriggerStay(Collider other)
     {
-        print("foundBlacksmith");
         var shopInventory = other.GetComponent<BlackSmithInventory>();
         
         if (!isTriggering && shopInventory)
         {
             shopInventory.screen = shopScreen;
             //print(shopInventory.screen.name);
-            shopInv = shopInventory;
+            shopInv = shopInventory.inventory;
             isTriggering = true;
-            display.inventory = shopInv.inventory;
+            display.inventory = shopInv;
         }
-        
+
+        var DocInventory = other.GetComponent<DoctorInventory>();
+
+        if (!isTriggering && DocInventory)
+        {
+            DocInventory.screen = shopScreen;
+            //print(shopInventory.screen.name);
+            shopInv = DocInventory.inventory;
+            isTriggering = true;
+            display.inventory = shopInv;
+        }
+
     }
 
     public void OnTriggerExit(Collider other)
@@ -147,20 +161,39 @@ public class PlayerInventory : MonoBehaviour
         
         if (isTriggering && shopInventory)
         {
-            if (shopInv.screen.activeSelf)
+            if (shopInventory.screen.activeSelf)
             {
-                shopInv.screen.SetActive(false);
+                shopInventory.screen.SetActive(false);
+            }
+            print("exit");
+            shopInv = null;
+            isTriggering = false;
+
+        }
+
+        var DocInventory = other.GetComponent<DoctorInventory>();
+
+        if (isTriggering && DocInventory)
+        {
+            if (DocInventory.screen.activeSelf)
+            {
+                DocInventory.screen.SetActive(false);
             }
             print("exit");
             shopInv = null;
             isTriggering = false;
         }
-        
+
     }
 
     private void OnApplicationQuit()
     {
         inventory.Container.Clear();
+        playerStats.goldAmount = 0;
+        playerStats.Stealth = 20;
+        playerStats.Defense = 20;
+        playerStats.Attack = 20;
+        playerStats.Health = 100;
     }
 
     private void spawnMessage(string message, float x, float y)

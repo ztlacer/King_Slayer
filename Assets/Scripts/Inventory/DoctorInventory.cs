@@ -2,29 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BlackSmithInventory : MonoBehaviour
+public class DoctorInventory : MonoBehaviour
 {
+
     public InventoryObject inventory;
     public GameObject screen;
     public int currentContainerLook;
-    public ItemObject armor;
-    public ItemObject sword;
+    public ItemObject potion;
+    public ItemObject meat;
 
 
-    public void Start()
+    // Start is called before the first frame update
+    void Start()
     {
         screen = GameObject.Find("ShopScreen");
         //currentContainerLook = 0;
         //screen.SetActive(false);
         inventory = new InventoryObject();
-        inventory.AddItem(armor, 1);
-        inventory.AddItem(sword, 1);
+        inventory.AddItem(potion, 3);
+        inventory.AddItem(meat, 3);
     }
 
     private void OnApplicationQuit()
     {
         inventory.Container.Clear();
-        
-    }
 
+    }
 }
