@@ -62,10 +62,16 @@ public class PlayerInventory : MonoBehaviour
                 if (shopScreen.activeSelf)
                 {
                     shopScreen.SetActive(false);
+                    screen.SetActive(false);
+                    // Pause the game while screen is up
+                    Time.timeScale = 1;
                 }
                 else
                 {
                     shopScreen.SetActive(true);
+                    screen.SetActive(true);
+                    Time.timeScale = 0;
+
                 }
 
             }
@@ -114,16 +120,21 @@ public class PlayerInventory : MonoBehaviour
             }
 
         }
-        if (Input.GetKeyDown(KeyCode.I))
+        if (Input.GetKeyDown(KeyCode.I) && !isTriggering)
         {
             print("i");
             if (screen.activeSelf)
             {
                 screen.SetActive(false);
+                // Unpause game if you turn off 
+                Time.timeScale = 1;
             }
             else
             {
+                
                 screen.SetActive(true);
+                // pause game
+                Time.timeScale = 0;
             }
 
         }

@@ -500,10 +500,11 @@ MonoBehaviour:
   inventory: {fileID: 11400000, guid: a9be18cb04f953c44a576daa767e72de, type: 2}
   isTriggering: 0
   shopInv: {fileID: 0}
+  blacksmith: {fileID: 0}
+  doctor: {fileID: 0}
   screen: {fileID: 7216299759027774865}
   shopScreen: {fileID: 7216299760077269104}
   messagePrefab: {fileID: 1171712415548316587, guid: 8d92ffdf254dfad429e00b7b54137dc9, type: 3}
-  shopOpen: 0
   display: {fileID: 7216299759027774893}
   playerStats: {fileID: 11400000, guid: d742020996d217d4cb20cdfd8bcda90c, type: 2}
   sword: {fileID: 11400000, guid: 245c8e6d2946468408406b04590cdb4d, type: 2}
@@ -2443,6 +2444,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 585693826718620815}
     m_Modifications:
+    - target: {fileID: 7274111818448690582, guid: 11092f787cb83fc4285b753779c543aa, type: 3}
+      propertyPath: playerStats
+      value: 
+      objectReference: {fileID: 11400000, guid: d742020996d217d4cb20cdfd8bcda90c, type: 2}
     - target: {fileID: 7274111819410227456, guid: 11092f787cb83fc4285b753779c543aa, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -2531,6 +2536,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: InventoryUI
       objectReference: {fileID: 0}
+    - target: {fileID: 7274111819514957897, guid: 11092f787cb83fc4285b753779c543aa, type: 3}
+      propertyPath: playerStats
+      value: 
+      objectReference: {fileID: 11400000, guid: d742020996d217d4cb20cdfd8bcda90c, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 11092f787cb83fc4285b753779c543aa, type: 3}
 --- !u!224 &7216299760056432955 stripped

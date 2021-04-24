@@ -46,10 +46,10 @@ public class DisplayInventory : MonoBehaviour
             var obj = Instantiate(inventory.Container[i].item.prefab, Vector3.zero, Quaternion.identity, transform);
             obj.GetComponent<RectTransform>().localPosition = GetPosition(i);
             obj.GetComponentInChildren<TextMeshProUGUI>().text = inventory.Container[i].amount.ToString("n0");
-            obj.GetComponentInChildren<TextMeshProUGUI>().color = Color.white;
+            obj.GetComponentInChildren<TextMeshProUGUI>().color = Color.black;
             if (i == inventory.currentContainerLook)
             {
-                obj.GetComponentInChildren<TextMeshProUGUI>().color = Color.black;
+                obj.GetComponentInChildren<TextMeshProUGUI>().color = Color.white;
             }
         }
     }
@@ -71,10 +71,10 @@ public class DisplayInventory : MonoBehaviour
             if (itemsDisplayed.ContainsKey(inventory.Container[i]))
             {
                 itemsDisplayed[inventory.Container[i]].GetComponentInChildren<TextMeshProUGUI>().text = inventory.Container[i].amount.ToString("n0");
-                itemsDisplayed[inventory.Container[i]].GetComponentInChildren<TextMeshProUGUI>().color = Color.white;
+                itemsDisplayed[inventory.Container[i]].GetComponentInChildren<TextMeshProUGUI>().color = Color.black;
                 if (i == inventory.currentContainerLook)
                 {
-                    itemsDisplayed[inventory.Container[i]].GetComponentInChildren<TextMeshProUGUI>().color = Color.black;
+                    itemsDisplayed[inventory.Container[i]].GetComponentInChildren<TextMeshProUGUI>().color = Color.white;
                     print("color change");
                 }
             }

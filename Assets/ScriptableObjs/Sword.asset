@@ -16,7 +16,7 @@ MonoBehaviour:
   type: 1
   description: Swingy Stingy
   name: Sword
-  cost: 0
+  cost: 10
   atkBonus: 20
   defenseBonus: 0
   stealthBonus: 0
