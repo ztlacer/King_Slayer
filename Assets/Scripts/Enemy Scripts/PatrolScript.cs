@@ -6,6 +6,8 @@ using UnityEngine.AI;
 public class PatrolScript : MonoBehaviour
 {
 
+    [SerializeField] private Animator animator;
+
     public float speed;
     private float waitTime;
     public float startWaitTime;
@@ -137,6 +139,8 @@ public class PatrolScript : MonoBehaviour
         if (prioQueue.Peek() == 0)
         {
             //transform.position = Vector3.MoveTowards(transform.position,  patrolLocations[nextSpot].position, speed * Time.deltaTime);
+            agent.isStopped = false;
+            animator.SetBool("isMoving", true);
             agent.SetDestination(patrolLocations[nextSpot].position);
 
 
@@ -155,6 +159,7 @@ public class PatrolScript : MonoBehaviour
                         nextSpot = Random.Range(0, patrolLocations.Length);
                     }
                     while (nextSpot != lastSpot + 1 && nextSpot != lastSpot - 1);
+                    animator.SetBool("isMoving", false);
                     waitTime = startWaitTime;
                     lookDir = patrolLocations[nextSpot].position - transform.position;
                     currentAction = false;
@@ -176,6 +181,8 @@ public class PatrolScript : MonoBehaviour
                     firstWander = false;
                 }
                 Vector3 newVec = new Vector3(transform.position.x + (float)Random.Range(-3, 3), transform.position.y, transform.position.z + Random.Range(-3, 3));
+                agent.isStopped = false;
+                animator.SetBool("isMoving", true);
                 agent.SetDestination(newVec);
                 setLocation = true;
             }

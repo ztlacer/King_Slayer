@@ -141,7 +141,6 @@ GameObject:
   - component: {fileID: 1128842285739977186}
   - component: {fileID: 4036825634271897159}
   - component: {fileID: 2297214932441584269}
-  - component: {fileID: 585693826420338972}
   - component: {fileID: 585693826420338971}
   m_Layer: 0
   m_Name: Sword
@@ -217,22 +216,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!54 &585693826420338972
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 351743387806266200}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!65 &585693826420338971
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1466,6 +1449,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+  damagingWeapon: enemyWeapon
 --- !u!65 &1053329738798363004
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1477,8 +1461,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 3.2306938, z: 1}
-  m_Center: {x: 0, y: 1.1153467, z: 0}
+  m_Size: {x: 2.0406241, y: 3.2306938, z: 2.3530807}
+  m_Center: {x: -0.059788227, y: 1.1153467, z: -0.081558645}
 --- !u!1 &2916887235689329600
 GameObject:
   m_ObjectHideFlags: 0

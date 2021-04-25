@@ -5,6 +5,8 @@ using UnityEngine.AI;
 
 public class EnemySight : MonoBehaviour
 {
+
+    [SerializeField] private Animator animator;
     public float speed;
 
     public bool passedThrough;
@@ -14,6 +16,9 @@ public class EnemySight : MonoBehaviour
     public Vector3 lastKnownLoc;
 
     public NavMeshAgent agent;
+
+    // Elapsed time to control animations when the enemy attacks
+    float elapsedTime = 0;
 
 
     // Start is called before the first frame update
@@ -25,29 +30,44 @@ public class EnemySight : MonoBehaviour
 
     }
 
-
+    private void Update()
+    {
+        // check elapsed time and stuff.
+        if (elapsedTime > 0 && elapsedTime < 1.667) // length of attack anim
+        {
+            elapsedTime += Time.deltaTime;
+        }
+        else if (elapsedTime > 1.667)
+        {
+            print("reset animation");
+            elapsedTime = 0;
+            animator.SetBool("isAttacking", false);
+        }
+    }
 
 
     void OnTriggerStay(Collider other)
     {
-        // passedThrough = true;
-        //  other.GetComponent<Rigidbody>().AddForce(Vector3.up * 12, ForceMode.Acceleration);
         
         if (other.gameObject.tag == "Player")
         {
-            //Debug.Log("Colliding!!");
-           // Debug.Log("here");
             passedThrough = true;
             lastKnownLoc = other.transform.position;
-
+            agent.isStopped = false;
+            animator.SetBool("isMoving", true);
+            agent.SetDestination(lastKnownLoc);
+            //lastKnownLoc.x -= 2;
+            //lastKnownLoc.z -= 2;
             if (agent.remainingDistance <= agent.stoppingDistance)
             {
-                return;
-            }
-            else
-            {
-                //transform.position = Vector3.MoveTowards(transform.position, lastKnownLoc, speed * Time.deltaTime);
-                agent.SetDestination(lastKnownLoc);
+                agent.isStopped = true;
+                animator.SetBool("isMoving", false);
+                agent.velocity = Vector3.zero;
+                if (elapsedTime == 0)
+                {
+                    animator.SetBool("isAttacking", true);
+                    elapsedTime += Time.deltaTime;
+                }
             }
         }
     }

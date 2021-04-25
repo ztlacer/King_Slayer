@@ -127,15 +127,6 @@ public class PlayerMove : MonoBehaviour
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
             Vector3 playerVelocity = moveDir.normalized * movementSpeed * Time.deltaTime;
-            if (controller.isGrounded)
-            {
-                playerVelocity.y = 0;
-
-            } else
-            {
-                playerVelocity.y += gravity * Time.deltaTime;
-
-            }
             controller.Move(playerVelocity);
 
 
@@ -143,9 +134,18 @@ public class PlayerMove : MonoBehaviour
         }
 
 
+        Vector3 gravityVec = new Vector3();
+        if (controller.isGrounded)
+        {
+            gravityVec.y = 0;
 
+        }
+        else
+        {
+            gravityVec.y += gravity * Time.deltaTime;
 
+        }
 
-
+        controller.Move(gravityVec);
     }
 }

@@ -10673,7 +10673,16 @@ MonoBehaviour:
   SubZones3: []
   SubZones4: []
   wayPoints1: []
+  wayPoints2: []
+  wayPoints3: []
+  wayPoints4: []
+  wayPoints5: []
+  wayPoints6: []
+  wayPoints7: []
+  wayPoints8: []
   MerchantPrefab: {fileID: 8446897834032388293, guid: 898764b3d9cd4524e97dc2c70a0f805e, type: 3}
+  DoctorPrefab: {fileID: 4746823211974974466, guid: d524f382d7ff56d41a6c8c9e29d20294, type: 3}
+  EnemyPrefab: {fileID: 6955059208961391902, guid: 222d4c203e608f94bb23132758b15b14, type: 3}
   randSeed: 0
 --- !u!114 &696652813
 MonoBehaviour:
