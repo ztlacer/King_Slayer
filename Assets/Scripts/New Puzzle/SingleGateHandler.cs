@@ -26,7 +26,7 @@ public class SingleGateHandler : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.P))
             {
-                print("E was pressed!");
+                print("P was pressed!");
                 gateCollision.deActivate();
                 puzzleDisplay.Activate();
                 puzzleDisplay.ScrambleByGate(gateId);
@@ -37,8 +37,9 @@ public class SingleGateHandler : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "gateCollider")
+        if (other.gameObject.tag == "Player")
         {
+            print("triggerrred Enter");
             gateCollision.Activate();
             active = true;
         }
@@ -56,8 +57,9 @@ public class SingleGateHandler : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "gateCollider")
+        if (other.gameObject.tag == "Player")
         {
+            print("OntriggerExit");
             gateCollision.deActivate();
             active = false;
         }
