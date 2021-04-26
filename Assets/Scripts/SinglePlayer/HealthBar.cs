@@ -9,19 +9,23 @@ public class HealthBar : MonoBehaviour
 
     [SerializeField] private float updateSpeedSeconds = .5f;
 
+    [SerializeField] private Health health;
+
     public GameObject parent;
+
+
 
     private void Awake()
     {
-        GetComponentInParent<Health>().onHealthPctChanged += HandleHealthChanged;
+        health.onHealthPctChanged += HandleHealthChanged;
     }
 
-    private void HandleHealthChanged(float pct)
+    public virtual void HandleHealthChanged(float pct)
     {
         StartCoroutine(ChangeToPct(pct));
     }
 
-    private IEnumerator ChangeToPct(float pct)
+    protected IEnumerator ChangeToPct(float pct)
     {
         float preChangePct = foreground.fillAmount;
 

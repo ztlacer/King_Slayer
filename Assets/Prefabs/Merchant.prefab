@@ -2193,6 +2193,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   foreground: {fileID: 8446897834973513500}
   updateSpeedSeconds: 0.5
+  health: {fileID: 8446897835560610821}
   parent: {fileID: 8446897834032388293}
 --- !u!1 &8446897835449253997
 GameObject:
@@ -2333,6 +2334,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+  damagingWeapon: 
 --- !u!65 &8446897835560610822
 BoxCollider:
   m_ObjectHideFlags: 0

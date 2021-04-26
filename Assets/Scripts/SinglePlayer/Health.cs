@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 using System;
 
 public class Health : MonoBehaviour
@@ -8,6 +9,8 @@ public class Health : MonoBehaviour
     [SerializeField] private int maxHealth = 100;
 
     [SerializeField] private string damagingWeapon;
+
+    //[SerializeField] private TextMesh text;
 
     private int currentHealth;
 
@@ -25,6 +28,7 @@ public class Health : MonoBehaviour
 
         float currentHealthPct = (float)currentHealth / (float)maxHealth;
         onHealthPctChanged(currentHealthPct);
+        //text.text = currentHealthPct.ToString() + "%";
 
     }
 
