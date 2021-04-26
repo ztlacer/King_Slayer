@@ -7,6 +7,7 @@ public class EnemySight : MonoBehaviour
 {
 
     [SerializeField] private Animator animator;
+    [SerializeField] public AudioClip clip;
     public float speed;
 
     public bool passedThrough;
@@ -72,11 +73,22 @@ public class EnemySight : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+
+            MusicTransition.instance.SwapTrack(clip);
+        }
+
+    }
+
     void OnTriggerExit(Collider other)
     {
         if (other.gameObject.tag == "Player")
         {
             exited = true;
+            MusicTransition.instance.returnToDefault();
         }
         
     }

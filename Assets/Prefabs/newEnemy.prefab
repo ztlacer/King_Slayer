@@ -429,6 +429,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 7578937281671870191}
+  clip: {fileID: 8300000, guid: 36280d49368ff004292f3940f2106d77, type: 3}
   speed: 10
   passedThrough: 0
   exited: 0
