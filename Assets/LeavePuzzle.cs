@@ -4,11 +4,17 @@ using UnityEngine;
 
 public class LeavePuzzle : MonoBehaviour
 {
-    public GameObject puzzleDisplay;
+    public DisplayPuzzle puzzleDisplay;
+    public GateCollisionOptions gateCollision;
 
     public void goBack()
     {
-        puzzleDisplay.SetActive(false);
+        puzzleDisplay.deActivate();
         Time.timeScale = 1;
+       // gateCollision.Activate();
+       if (puzzleDisplay.unlocked() == false)
+        {
+            gateCollision.Activate();
+        }
     }
 }

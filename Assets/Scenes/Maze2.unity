@@ -11883,6 +11883,7 @@ MonoBehaviour:
   onLeft: 0
   gatesCount: 16
   gateId: -1
+  justUnlocked: 0
   unlockMessage: {fileID: 720584578}
 --- !u!114 &824587363
 MonoBehaviour:
@@ -16721,7 +16722,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54b8aaaedbd3140dc827410d99a0b57b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  puzzleDisplay: {fileID: 824587359}
+  puzzleDisplay: {fileID: 824587361}
+  gateCollision: {fileID: 665507917}
 --- !u!4 &1209986551 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 498910, guid: 95912207be78d97489d179f9b2e675e5, type: 3}
@@ -17616,7 +17618,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54b8aaaedbd3140dc827410d99a0b57b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  puzzleDisplay: {fileID: 824587359}
+  puzzleDisplay: {fileID: 0}
+  gateCollision: {fileID: 0}
 --- !u!114 &1267003024
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25608,11 +25611,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 585693827813091467, guid: 3d525e6ffced1174e9c4b28ba602f838, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.00008380494
+      value: 0.000083805215
       objectReference: {fileID: 0}
     - target: {fileID: 585693827813091467, guid: 3d525e6ffced1174e9c4b28ba602f838, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.00002450737
+      value: -0.000024507448
       objectReference: {fileID: 0}
     - target: {fileID: 6418377664712806024, guid: 3d525e6ffced1174e9c4b28ba602f838, type: 3}
       propertyPath: m_TagString

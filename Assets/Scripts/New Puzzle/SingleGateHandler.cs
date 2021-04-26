@@ -32,6 +32,7 @@ public class SingleGateHandler : MonoBehaviour
                 puzzleDisplay.ScrambleByGate(gateId);
             }
         }
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -42,6 +43,16 @@ public class SingleGateHandler : MonoBehaviour
             active = true;
         }
     }
+
+    /*private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.tag == "gateCollider" && active == false)
+        {
+            gateCollision.Activate();
+            active = true;
+        }
+        
+    }*/
 
     private void OnTriggerExit(Collider other)
     {
