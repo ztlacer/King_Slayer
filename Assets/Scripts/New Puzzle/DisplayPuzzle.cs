@@ -30,6 +30,7 @@ public class DisplayPuzzle : MonoBehaviour
     public bool onLeft;
     public int gatesCount = 16;
     public int gateId = -1;
+    public bool justUnlocked = false;
     //public TMPro.TextMeshPro unlockMessage;
     public Text unlockMessage;
     // Start is called before the first frame update
@@ -44,6 +45,7 @@ public class DisplayPuzzle : MonoBehaviour
         //Time.timeScale = 0;
         unlockMessage.text = "";
         gameObject.SetActive(false);
+        justUnlocked = false;
     }
 
     public void Activate()
@@ -51,6 +53,25 @@ public class DisplayPuzzle : MonoBehaviour
         gameObject.SetActive(true);
         Time.timeScale = 0;
         unlockMessage.text = "";
+        justUnlocked = false;
+    }
+
+    public void deActivate()
+    {
+        gameObject.SetActive(false);
+        Time.timeScale = 0;
+    }
+
+    public bool unlocked()
+    {
+        if (justUnlocked)
+        {
+            justUnlocked = false;
+            return true;
+        } else
+        {
+            return false;
+        }
     }
 
     public void Authenticate()
@@ -130,6 +151,7 @@ public class DisplayPuzzle : MonoBehaviour
             if (gateId > -1 && gateId < gatesCount)
             {
                 Destroy(Gates[gateId]);
+                justUnlocked = true;
             } 
         }
         //return true;
@@ -163,33 +185,6 @@ public class DisplayPuzzle : MonoBehaviour
 
     void Scramble(int up1, int up2, int up3, int up4, int right1, int right2, int right3, int right4 )
     {
-        // up 1
-        selectedSlot = puzzle.Container.Items[0];
-        for (int i = 0; i < up1; i++)
-        {
-            moveUp();
-        }
-
-        // up 2
-        selectedSlot = puzzle.Container.Items[1];
-        for (int i = 0; i < up2; i++)
-        {
-            moveUp();
-        }
-
-        // up 3
-        selectedSlot = puzzle.Container.Items[2];
-        for (int i = 0; i < up3; i++)
-        {
-            moveUp();
-        }
-
-        // up 4
-        selectedSlot = puzzle.Container.Items[3];
-        for (int i = 0; i < up4; i++)
-        {
-            moveUp();
-        }
 
         // right 1
         selectedSlot = puzzle.Container.Items[0];
@@ -217,6 +212,34 @@ public class DisplayPuzzle : MonoBehaviour
         for (int i = 0; i < right4; i++)
         {
             moveRight();
+        }
+
+        // up 1
+        selectedSlot = puzzle.Container.Items[0];
+        for (int i = 0; i < up1; i++)
+        {
+            moveUp();
+        }
+
+        // up 2
+        selectedSlot = puzzle.Container.Items[1];
+        for (int i = 0; i < up2; i++)
+        {
+            moveUp();
+        }
+
+        // up 3
+        selectedSlot = puzzle.Container.Items[2];
+        for (int i = 0; i < up3; i++)
+        {
+            moveUp();
+        }
+
+        // up 4
+        selectedSlot = puzzle.Container.Items[3];
+        for (int i = 0; i < up4; i++)
+        {
+            moveUp();
         }
 
     }
