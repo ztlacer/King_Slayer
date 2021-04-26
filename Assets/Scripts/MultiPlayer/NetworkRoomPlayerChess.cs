@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using Mirror;
 using TMPro;
 using UnityEngine.UI;
@@ -11,6 +12,7 @@ public class NetworkRoomPlayerChess : NetworkBehaviour
 {
     [Header("UI")]
     [SerializeField] private GameObject lobbyUI = null;
+    [SerializeField] private GameObject readyButton = null;
     [SerializeField] private TMP_Text[] playerNameTexts = new TMP_Text[2];
     [SerializeField] private TMP_Text[] playerReadyTexts = new TMP_Text[2];
     [SerializeField] private Button startGameButton = null;
@@ -45,6 +47,9 @@ public class NetworkRoomPlayerChess : NetworkBehaviour
         CmdSetDisplayName(PlayerNameInput.DisplayName);
 
         lobbyUI.SetActive(true);
+
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(readyButton);
     }
 
     public override void OnStartClient()

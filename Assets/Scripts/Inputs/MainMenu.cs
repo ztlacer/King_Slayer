@@ -10,11 +10,15 @@ public class MainMenu : MonoBehaviour
     [Header("UI")]
     [SerializeField] private GameObject landingPagePanel = null;
 
+    [SerializeField] private GameObject eventSystem = null;
+
     public void HostLobby()
     {
         networkManager.StartHost();
 
         landingPagePanel.SetActive(false);
+
+        //eventSystem.GetComponent<Menu>().goToLobby();
     }
 
     public void StartSingle(string scene)
