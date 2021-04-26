@@ -36,6 +36,9 @@ public class DisplayPuzzle : MonoBehaviour
     // Start is called before the first frame update
 
     public StatObject statObject;
+    public Text goldText;
+    public Image goldImg1;
+    public Image goldImg2;
 
     void Start()
     {
@@ -49,6 +52,9 @@ public class DisplayPuzzle : MonoBehaviour
         unlockMessage.text = "";
         gameObject.SetActive(false);
         justUnlocked = false;
+        goldText.enabled = false;
+        goldImg1.enabled = false;
+        goldImg2.enabled = false;
     }
 
     public void Activate()
@@ -57,12 +63,18 @@ public class DisplayPuzzle : MonoBehaviour
         Time.timeScale = 0;
         unlockMessage.text = "";
         justUnlocked = false;
+        goldText.enabled = false;
+        goldImg1.enabled = false;
+        goldImg2.enabled = false;
     }
 
     public void deActivate()
     {
         gameObject.SetActive(false);
         Time.timeScale = 1;
+        goldText.enabled = false;
+        goldImg1.enabled = false;
+        goldImg2.enabled = false;
     }
 
     public bool unlocked()
@@ -133,6 +145,9 @@ public class DisplayPuzzle : MonoBehaviour
         {
             unlockMessage.text = "Success!";
             unlockMessage.color = Color.white;
+            goldText.enabled = true;
+            goldImg1.enabled = true;
+            goldImg2.enabled = true;
             print("success");
             if (gateId > -1 && gateId < gatesCount)
             {
