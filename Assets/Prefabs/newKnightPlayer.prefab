@@ -375,7 +375,7 @@ MonoBehaviour:
   cam: {fileID: 0}
   turnSmoothTime: 0.1
   crouchSpeedMultiplier: 0.24
-  animator: {fileID: 0}
+  animator: {fileID: 585693827079982199}
 --- !u!143 &585693826718620848
 CharacterController:
   m_ObjectHideFlags: 0
@@ -2603,6 +2603,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 585693826718620815}
     m_Modifications:
     - target: {fileID: 7274111818448690582, guid: 11092f787cb83fc4285b753779c543aa, type: 3}
+      propertyPath: goldUI
+      value: 
+      objectReference: {fileID: 656819601511371239, guid: 194c0800c828aa94fb3c819839efd05b, type: 3}
+    - target: {fileID: 7274111818448690582, guid: 11092f787cb83fc4285b753779c543aa, type: 3}
       propertyPath: playerStats
       value: 
       objectReference: {fileID: 11400000, guid: d742020996d217d4cb20cdfd8bcda90c, type: 2}
@@ -2694,6 +2698,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: InventoryUI
       objectReference: {fileID: 0}
+    - target: {fileID: 7274111819514957897, guid: 11092f787cb83fc4285b753779c543aa, type: 3}
+      propertyPath: goldUI
+      value: 
+      objectReference: {fileID: 656819601511371239, guid: 194c0800c828aa94fb3c819839efd05b, type: 3}
     - target: {fileID: 7274111819514957897, guid: 11092f787cb83fc4285b753779c543aa, type: 3}
       propertyPath: playerStats
       value: 
