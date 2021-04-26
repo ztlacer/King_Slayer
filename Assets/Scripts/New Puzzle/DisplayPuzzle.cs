@@ -59,7 +59,7 @@ public class DisplayPuzzle : MonoBehaviour
     public void deActivate()
     {
         gameObject.SetActive(false);
-        Time.timeScale = 0;
+        Time.timeScale = 1;
     }
 
     public bool unlocked()
@@ -92,23 +92,6 @@ public class DisplayPuzzle : MonoBehaviour
         int id13 = puzzle.Container.Items[13].ID;
         int id14 = puzzle.Container.Items[14].ID;
         int id15 = puzzle.Container.Items[15].ID;
-
-        print("id0: " + id0 + "   type:" + puzzle.database.GetItem[id0].type);
-        print("id1: " + id1 + "   type:" + puzzle.database.GetItem[id1].type);
-        print("id2: " + id2 + "   type:" + puzzle.database.GetItem[id2].type);
-        print("id3: " + id3 + "   type:" + puzzle.database.GetItem[id3].type);
-        print("id4: " + id4 + "   type:" + puzzle.database.GetItem[id4].type);
-        print("id5: " + id5 + "   type:" + puzzle.database.GetItem[id5].type);
-        print("id6: " + id6 + "   type:" + puzzle.database.GetItem[id6].type);
-        print("id7: " + id7 + "   type:" + puzzle.database.GetItem[id7].type);
-        print("id8: " + id8 + "   type:" + puzzle.database.GetItem[id8].type);
-        print("id9: " + id9 + "   type:" + puzzle.database.GetItem[id9].type);
-        print("id10: " + id10 + "   type:" + puzzle.database.GetItem[id10].type);
-        print("id11: " + id11 + "   type:" + puzzle.database.GetItem[id11].type);
-        print("id12: " + id12 + "   type:" + puzzle.database.GetItem[id12].type);
-        print("id13: " + id13 + "   type:" + puzzle.database.GetItem[id13].type);
-        print("id14: " + id11 + "   type:" + puzzle.database.GetItem[id14].type);
-        print("id15: " + id15 + "   type:" + puzzle.database.GetItem[id15].type);
 
         if (puzzle.database.GetItem[id0].type != PuzzleItemType.Queen || puzzle.database.GetItem[id1].type != PuzzleItemType.Bishop
             || puzzle.database.GetItem[id2].type != PuzzleItemType.Knight || puzzle.database.GetItem[id3].type != PuzzleItemType.Brook)
