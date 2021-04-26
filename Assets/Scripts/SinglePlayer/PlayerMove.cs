@@ -27,6 +27,10 @@ public class PlayerMove : MonoBehaviour
 
     private bool isSneaking = false;
 
+    public Animator animator;
+
+    float elapsedTime = 0;
+
     private Controls controls;
     private Controls Controls
     {
@@ -42,59 +46,100 @@ public class PlayerMove : MonoBehaviour
 
         Controls.Player.Move.performed += ctx => SetMovement(ctx.ReadValue<Vector2>());
         Controls.Player.Move.canceled += ctx => ResetMovement();
+        Controls.Player.Sneak.performed += ctx => SetSneaking();
+        Controls.Player.Sneak.canceled += ctx => resetSneaking();
+        Controls.Player.Pause.performed += ctx => PauseGame();
+        Controls.Player.Fire.performed += ctx => attack();
     }
-
-    public void disableMovement()
-    {
-
-    } 
-
-
     private void OnEnable() => Controls.Enable();
 
     private void OnDisable() => Controls.Disable();
 
-    private void SetMovement(Vector2 movement) => previousInput = movement;
-
-    private void ResetMovement() => previousInput = Vector2.zero;
-
-
-    private void OnMove(InputValue inputAction)
-    {
-        Vector2 direction = inputAction.Get<Vector2>();
-        horizontalX = direction.x;
-        horizontalZ = direction.y;
-
+    private void SetMovement(Vector2 movement) {
+        horizontalX = movement.x;
+        horizontalZ = movement.y;
         isMoving = horizontalX == 0 && horizontalZ == 0 ? false : true;
     }
 
+    private void ResetMovement()
+    {
+        isMoving = false;
+        horizontalX = 0;
+        horizontalZ = 0;
+    }
+
+    private void SetSneaking()
+    {
+        isSneaking = true;
+        animator.SetBool("isSneaking", true);
+    }
+
+    private void resetSneaking()
+    {
+        isSneaking = false;
+        animator.SetBool("isSneaking", false);
+    }
+
+    private void PauseGame() => Time.timeScale = Time.timeScale == 0 ? 1 : 0;
+
+    private void attack()
+    {
+        if (elapsedTime == 0)
+        {
+            animator.SetBool("isAttacking", true);
+            elapsedTime += Time.deltaTime;
+        }
+    }
+
+
+
+    //private void OnMove(InputValue inputAction)
+    //{
+    //    Vector2 direction = inputAction.Get<Vector2>();
+    //    horizontalX = direction.x;
+    //    horizontalZ = direction.y;
+
+    //    isMoving = horizontalX == 0 && horizontalZ == 0 ? false : true;
+    //}
+
     void Update()
     {
+        animator.SetBool("isMoving", isMoving);
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (elapsedTime > 0 && elapsedTime < 1.667) // length of attack anim
         {
-            if (Time.timeScale == 0)
-            {
-                Time.timeScale = 1;
-            } else
-            {
-                Time.timeScale = 0;
-
-            }
+            elapsedTime += Time.deltaTime;
         }
+        else if (elapsedTime > 1.667)
+        {
+            print("reset animation");
+            elapsedTime = 0;
+            animator.SetBool("isAttacking", false);
+        }
+        //if (Input.GetKeyDown(KeyCode.Escape))
+        //{
+        //    if (Time.timeScale == 0)
+        //    {
+        //        Time.timeScale = 1;
+        //    } else
+        //    {
+        //        Time.timeScale = 0;
+
+        //    }
+        //}
         Vector3 direction = new Vector3(horizontalX, 0f, horizontalZ).normalized;
 
         // If there is any magnitude at which the player is moving then animate it running
         //animator.SetBool("isMoving", direction.magnitude > 0);
 
-        if (Keyboard.current.ctrlKey.wasPressedThisFrame) // if the player is crouching, reduce movement speed
-        {
-            isSneaking = true;
-        }
-        else if (Keyboard.current.ctrlKey.wasReleasedThisFrame)
-        {
-            isSneaking = false;
-        }
+        //if (Keyboard.current.ctrlKey.wasPressedThisFrame) // if the player is crouching, reduce movement speed
+        //{
+        //    isSneaking = true;
+        //}
+        //else if (Keyboard.current.ctrlKey.wasReleasedThisFrame)
+        //{
+        //    isSneaking = false;
+        //}
         // test
 
         if (isMoving)
@@ -126,7 +171,7 @@ public class PlayerMove : MonoBehaviour
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, realTurnTime);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
-            Vector3 playerVelocity = moveDir.normalized * movementSpeed * Time.deltaTime;
+            Vector3 playerVelocity = moveDir.normalized * realSpeed * Time.deltaTime;
             controller.Move(playerVelocity);
 
 

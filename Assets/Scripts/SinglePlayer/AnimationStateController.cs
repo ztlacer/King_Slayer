@@ -10,11 +10,27 @@ public class AnimationStateController : MonoBehaviour
     bool isMoving = false;
 
     float elapsedTime = 0;
+
+    private Controls controls;
+    private Controls Controls
+    {
+        get
+        {
+            if (controls != null) { return controls; }
+            return controls = new Controls();
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {
+        Controls.Player.Sneak.performed += ctx => SetSneaking();
+        Controls.Player.Sneak.canceled += ctx => resetSneaking();
 
     }
+
+    private void SetSneaking() => animator.SetBool("isSneaking", true);
+
+    private void resetSneaking() => animator.SetBool("isSneaking", false);
 
     private void OnMove(InputValue inputAction)
     {
@@ -38,18 +54,19 @@ public class AnimationStateController : MonoBehaviour
             elapsedTime += Time.deltaTime;
         }
     }
+
     // Update is called once per frame
     void Update()
     {
         animator.SetBool("isMoving", isMoving);
-        if (Keyboard.current.ctrlKey.wasPressedThisFrame)
-        {
-            animator.SetBool("isSneaking", true);
-        }
-        else if (Keyboard.current.ctrlKey.wasReleasedThisFrame)
-        {
-            animator.SetBool("isSneaking", false);
-        }
+        //if (Keyboard.current.ctrlKey.wasPressedThisFrame)
+        //{
+        //    animator.SetBool("isSneaking", true);
+        //}
+        //else if (Keyboard.current.ctrlKey.wasReleasedThisFrame)
+        //{
+        //    animator.SetBool("isSneaking", false);
+        //}
 
         // check elapsed time and stuff.
         if (elapsedTime > 0 && elapsedTime < 1.667) // length of attack anim
