@@ -34,6 +34,9 @@ public class DisplayPuzzle : MonoBehaviour
     //public TMPro.TextMeshPro unlockMessage;
     public Text unlockMessage;
     // Start is called before the first frame update
+
+    public StatObject statObject;
+
     void Start()
     {
         if (puzzle.database == null)
@@ -135,6 +138,7 @@ public class DisplayPuzzle : MonoBehaviour
             {
                 Destroy(Gates[gateId]);
                 justUnlocked = true;
+                statObject.changeGold(10);
             } 
         }
         //return true;
