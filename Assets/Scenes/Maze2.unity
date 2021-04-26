@@ -1395,7 +1395,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 69906661}
-  m_LocalRotation: {x: 0.26317355, y: 0.00008417339, z: -0.000022961643, w: 0.9647485}
+  m_LocalRotation: {x: 0.26317355, y: 0.00008417359, z: -0.000022961694, w: 0.9647485}
   m_LocalPosition: {x: -31.001589, y: 13.82, z: -85.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -4490,7 +4490,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzleDisplay: {fileID: 824587361}
+  gateCollision: {fileID: 665507917}
   gateId: 8
+  active: 0
 --- !u!65 &353374953
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4499,7 +4501,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 353374950}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -5834,6 +5836,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 824587360}
+  - {fileID: 665507916}
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6216,7 +6219,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzleDisplay: {fileID: 824587361}
+  gateCollision: {fileID: 665507917}
   gateId: 12
+  active: 0
 --- !u!65 &475244625
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6225,7 +6230,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 475244622}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -7103,6 +7108,81 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f387e3becdf054b2ab9a72636f5d2b77, type: 3}
+--- !u!1 &520437488
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 520437489}
+  - component: {fileID: 520437491}
+  - component: {fileID: 520437490}
+  m_Layer: 5
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &520437489
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 520437488}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 665507916}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -264.766, y: 226.88}
+  m_SizeDelta: {x: 410.271, y: 40.932}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &520437490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 520437488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &520437491
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 520437488}
+  m_CullTransparentMesh: 1
 --- !u!1001 &521318904
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9123,6 +9203,96 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2578427a6b8557e46bc48f4ef43b5816, type: 3}
+--- !u!1 &665507915
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 665507916}
+  - component: {fileID: 665507919}
+  - component: {fileID: 665507918}
+  - component: {fileID: 665507917}
+  m_Layer: 5
+  m_Name: Collision
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &665507916
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 665507915}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 520437489}
+  - {fileID: 1101318310}
+  m_Father: {fileID: 442689201}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0.508, y: 1}
+  m_AnchoredPosition: {x: 253.5, y: 0}
+  m_SizeDelta: {x: 507, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &665507917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 665507915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ee5d27d4a10f400b95d7bf2cabf0238, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &665507918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 665507915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &665507919
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 665507915}
+  m_CullTransparentMesh: 1
 --- !u!1 &665752248
 GameObject:
   m_ObjectHideFlags: 0
@@ -10342,6 +10512,40 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 498910, guid: 95912207be78d97489d179f9b2e675e5, type: 3}
   m_PrefabInstance: {fileID: 1325321175}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &743561108 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7140539448996524691, guid: 3d525e6ffced1174e9c4b28ba602f838, type: 3}
+  m_PrefabInstance: {fileID: 1923965600}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &743561112
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 743561108}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &743561113
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 743561108}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!4 &744173065 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 2578427a6b8557e46bc48f4ef43b5816, type: 3}
@@ -12815,7 +13019,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzleDisplay: {fileID: 824587361}
+  gateCollision: {fileID: 665507917}
   gateId: 14
+  active: 0
 --- !u!65 &960875253
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12824,7 +13030,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 960875250}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -14441,7 +14647,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzleDisplay: {fileID: 824587361}
+  gateCollision: {fileID: 665507917}
   gateId: 10
+  active: 0
 --- !u!65 &1083994411
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14450,7 +14658,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1083994408}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -14504,6 +14712,87 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1083994408}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1101318309
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1101318310}
+  - component: {fileID: 1101318312}
+  - component: {fileID: 1101318311}
+  m_Layer: 5
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1101318310
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1101318309}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 665507916}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -243.81622, y: 222.34076}
+  m_SizeDelta: {x: 432.3799, y: 31.858}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1101318311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1101318309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.9811321, g: 0.83109945, b: 0.26379493, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: e3265ab4bf004d28a9537516768c1c75, type: 3}
+    m_FontSize: 25
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 'Press "P" To Attempt Gate Puzzle!
+
+'
+--- !u!222 &1101318312
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1101318309}
+  m_CullTransparentMesh: 1
 --- !u!1001 &1106322620
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14970,7 +15259,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzleDisplay: {fileID: 824587361}
+  gateCollision: {fileID: 665507917}
   gateId: 7
+  active: 0
 --- !u!65 &1129234918
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14979,7 +15270,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1129234915}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -15338,7 +15629,7 @@ GameObject:
   - component: {fileID: 1159722926}
   m_Layer: 0
   m_Name: Gate (1)
-  m_TagString: Untagged
+  m_TagString: gateCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15370,7 +15661,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzleDisplay: {fileID: 824587361}
+  gateCollision: {fileID: 665507917}
   gateId: 1
+  active: 0
 --- !u!65 &1159722927
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15379,7 +15672,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1159722924}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -15543,7 +15836,7 @@ GameObject:
   - component: {fileID: 1162490618}
   m_Layer: 0
   m_Name: Gate (0)
-  m_TagString: Untagged
+  m_TagString: gateCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15561,7 +15854,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzleDisplay: {fileID: 824587361}
+  gateCollision: {fileID: 665507917}
   gateId: 0
+  active: 0
 --- !u!65 &1162490619
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15570,7 +15865,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1162490617}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -16167,7 +16462,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzleDisplay: {fileID: 824587361}
+  gateCollision: {fileID: 665507917}
   gateId: 9
+  active: 0
 --- !u!65 &1200273785
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16176,7 +16473,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1200273782}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -16726,7 +17023,7 @@ GameObject:
   - component: {fileID: 1236074822}
   m_Layer: 0
   m_Name: Gate (2)
-  m_TagString: Untagged
+  m_TagString: gateCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16758,7 +17055,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzleDisplay: {fileID: 824587361}
+  gateCollision: {fileID: 665507917}
   gateId: 2
+  active: 0
 --- !u!65 &1236074823
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16767,7 +17066,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1236074820}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -17130,7 +17429,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzleDisplay: {fileID: 824587361}
+  gateCollision: {fileID: 665507917}
   gateId: 6
+  active: 0
 --- !u!65 &1259668979
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17139,7 +17440,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1259668976}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -17622,7 +17923,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzleDisplay: {fileID: 824587361}
+  gateCollision: {fileID: 665507917}
   gateId: 5
+  active: 0
 --- !u!65 &1275014670
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17631,7 +17934,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1275014667}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -17827,7 +18130,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzleDisplay: {fileID: 824587361}
+  gateCollision: {fileID: 665507917}
   gateId: 11
+  active: 0
 --- !u!65 &1278263655
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17836,7 +18141,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1278263652}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -21914,6 +22219,24 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2954617573520319050, guid: a07d949edaa104f3faa3a5b9b062015e, type: 3}
   m_PrefabInstance: {fileID: 1616619766}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1618767060 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6418377664712806024, guid: 3d525e6ffced1174e9c4b28ba602f838, type: 3}
+  m_PrefabInstance: {fileID: 1923965600}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1618767063
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1618767060}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.021353012, y: 0.016768772, z: 0.037543993}
+  m_Center: {x: -0.0011828309, y: 0.0007124536, z: 0.017352972}
 --- !u!4 &1625028571 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4601606721150220, guid: f387e3becdf054b2ab9a72636f5d2b77, type: 3}
@@ -22090,7 +22413,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzleDisplay: {fileID: 824587361}
+  gateCollision: {fileID: 665507917}
   gateId: 13
+  active: 0
 --- !u!65 &1638926217
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -22099,7 +22424,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1638926214}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -24926,7 +25251,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzleDisplay: {fileID: 824587361}
+  gateCollision: {fileID: 665507917}
   gateId: 15
+  active: 0
 --- !u!65 &1909891310
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -24935,7 +25262,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1909891307}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -25149,11 +25476,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 585693826245370973, guid: 3d525e6ffced1174e9c4b28ba602f838, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000084600484
+      value: 0.000084647036
       objectReference: {fileID: 0}
     - target: {fileID: 585693826245370973, guid: 3d525e6ffced1174e9c4b28ba602f838, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000021437007
+      value: -0.000021448803
       objectReference: {fileID: 0}
     - target: {fileID: 585693826718620814, guid: 3d525e6ffced1174e9c4b28ba602f838, type: 3}
       propertyPath: m_Name
@@ -25253,11 +25580,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 585693827427430689, guid: 3d525e6ffced1174e9c4b28ba602f838, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000084196676
+      value: 0.000084197054
       objectReference: {fileID: 0}
     - target: {fileID: 585693827427430689, guid: 3d525e6ffced1174e9c4b28ba602f838, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000022967986
+      value: -0.00002296809
       objectReference: {fileID: 0}
     - target: {fileID: 585693827813091467, guid: 3d525e6ffced1174e9c4b28ba602f838, type: 3}
       propertyPath: m_LocalPosition.x
@@ -25281,11 +25608,47 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 585693827813091467, guid: 3d525e6ffced1174e9c4b28ba602f838, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000083800216
+      value: 0.00008380494
       objectReference: {fileID: 0}
     - target: {fileID: 585693827813091467, guid: 3d525e6ffced1174e9c4b28ba602f838, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000024505991
+      value: -0.00002450737
+      objectReference: {fileID: 0}
+    - target: {fileID: 6418377664712806024, guid: 3d525e6ffced1174e9c4b28ba602f838, type: 3}
+      propertyPath: m_TagString
+      value: Body
+      objectReference: {fileID: 0}
+    - target: {fileID: 7140539448996524688, guid: 3d525e6ffced1174e9c4b28ba602f838, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7140539448996524688, guid: 3d525e6ffced1174e9c4b28ba602f838, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7140539448996524688, guid: 3d525e6ffced1174e9c4b28ba602f838, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7140539448996524691, guid: 3d525e6ffced1174e9c4b28ba602f838, type: 3}
+      propertyPath: m_Name
+      value: gateCollider
+      objectReference: {fileID: 0}
+    - target: {fileID: 7140539448996524691, guid: 3d525e6ffced1174e9c4b28ba602f838, type: 3}
+      propertyPath: m_TagString
+      value: gateCollider
+      objectReference: {fileID: 0}
+    - target: {fileID: 7140539448996524702, guid: 3d525e6ffced1174e9c4b28ba602f838, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7140539448996524702, guid: 3d525e6ffced1174e9c4b28ba602f838, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7140539448996524702, guid: 3d525e6ffced1174e9c4b28ba602f838, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7216299759027774893, guid: 3d525e6ffced1174e9c4b28ba602f838, type: 3}
       propertyPath: goldUI
@@ -25826,7 +26189,7 @@ GameObject:
   - component: {fileID: 1982252638}
   m_Layer: 0
   m_Name: Gate (3)
-  m_TagString: Untagged
+  m_TagString: gateCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25858,7 +26221,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzleDisplay: {fileID: 824587361}
+  gateCollision: {fileID: 665507917}
   gateId: 3
+  active: 0
 --- !u!65 &1982252639
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -25867,7 +26232,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1982252636}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -27834,7 +28199,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzleDisplay: {fileID: 824587361}
+  gateCollision: {fileID: 665507917}
   gateId: 4
+  active: 0
 --- !u!65 &2147339898
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -27843,7 +28210,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2147339895}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}

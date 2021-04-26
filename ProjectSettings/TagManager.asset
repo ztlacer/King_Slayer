@@ -8,6 +8,8 @@ TagManager:
   - weapon
   - playerWeapon
   - enemyWeapon
+  - gateCollider
+  - Body
   layers:
   - Default
   - TransparentFX
