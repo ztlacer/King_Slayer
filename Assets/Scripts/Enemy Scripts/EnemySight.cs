@@ -36,6 +36,7 @@ public class EnemySight : MonoBehaviour
         // check elapsed time and stuff.
         if (elapsedTime > 0 && elapsedTime < 1.667) // length of attack anim
         {
+            agent.velocity = Vector3.zero;
             elapsedTime += Time.deltaTime;
         }
         else if (elapsedTime > 1.667)
