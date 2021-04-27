@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MultiplayerMaze.unity
     guid: fcf0adc2ffcf4b1498ffb83306977897
+  - enabled: 1
+    path: Assets/Scenes/Tutorial.unity
+    guid: aee81616df6a97d4a934b1e02ee9918c
   m_configObjects: {}

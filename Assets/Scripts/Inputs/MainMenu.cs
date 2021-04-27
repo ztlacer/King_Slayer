@@ -18,7 +18,6 @@ public class MainMenu : MonoBehaviour
 
         landingPagePanel.SetActive(false);
 
-        //eventSystem.GetComponent<Menu>().goToLobby();
     }
 
     public void StartSingle(string scene)
