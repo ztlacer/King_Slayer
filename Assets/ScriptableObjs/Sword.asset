@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 4865408144015019368, guid: bdcb1eaf79e0f904db73a0d1efb14f82, type: 3}
   type: 1
-  description: Swingy Stingy
+  description: A sword not much more than what you have now.. At least it's free
+    of rust.
   name: Sword
   cost: 10
   atkBonus: 20

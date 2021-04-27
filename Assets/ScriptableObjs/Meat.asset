@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 3709356534708096603, guid: d09025c6b384e204ea2f5548dd7c9573, type: 3}
   type: 0
-  description: Large drumstick of meat for a moderate health restore.
+  description: Large slab of meat that restores a moderate amount of health.
   name: Meat
   cost: 15
   restoreHealthValue: 15

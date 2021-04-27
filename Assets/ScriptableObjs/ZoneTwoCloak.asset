@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebf2d82100586c046b01568d4d1924db, type: 3}
   m_Name: ZoneTwoCloak
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
+  prefab: {fileID: 7391360094572949266, guid: 0039a3d3c604d2d4b83e3f996b3d084a, type: 3}
   type: 1
   description: 
-  name: 
-  cost: 0
+  name: Cloak
+  cost: 20
   atkBonus: 0
   defenseBonus: 0
-  stealthBonus: 0
+  stealthBonus: 30

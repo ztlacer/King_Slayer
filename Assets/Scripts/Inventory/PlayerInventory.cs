@@ -24,7 +24,6 @@ public class PlayerInventory : MonoBehaviour
     public HealthObject potion;
     public HealthObject meat;
 
-    //public int currentContainerLook = null;
 
 
     public void Start()
@@ -142,6 +141,50 @@ public class PlayerInventory : MonoBehaviour
                 Time.timeScale = 0;
             }
 
+        }
+
+        if (screen.activeSelf && !isTriggering)
+        {
+            if (Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                if (inventory.currentContainerLook < inventory.Container.Count - 1)
+                {
+                    inventory.currentContainerLook += 1;
+                }
+
+            }
+            if (Input.GetKeyDown(KeyCode.LeftArrow))
+            {
+                if (inventory.currentContainerLook > 0)
+                {
+                    inventory.currentContainerLook -= 1;
+                }
+
+            }
+            if (Input.GetKeyDown(KeyCode.U))
+            {
+                if (inventory.Container[inventory.currentContainerLook].item.name == "Potion" )
+                {
+                    if (playerStats.Health < 100)
+                    {
+                        playerStats.Health += potion.restoreHealthValue;
+                        inventory.Container[inventory.currentContainerLook].RemoveAmount(1);
+                    }
+                    if (playerStats.Health > 100)
+                    {
+                        playerStats.Health = 100;
+                    }
+                }
+                if (inventory.Container[inventory.currentContainerLook].item.name == "Meat")
+                {
+                    playerStats.Health += meat.restoreHealthValue;
+                    inventory.Container[inventory.currentContainerLook].RemoveAmount(1);
+                    if (playerStats.Health > 100)
+                    {
+                        playerStats.Health = 100;
+                    }
+                }
+            }
         }
     }
 
