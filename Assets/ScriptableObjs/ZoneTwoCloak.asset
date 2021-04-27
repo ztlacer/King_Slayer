@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ebf2d82100586c046b01568d4d1924db, type: 3}
-  m_Name: New Default Equipment
+  m_Name: ZoneTwoCloak
   m_EditorClassIdentifier: 
   prefab: {fileID: 0}
   type: 1
