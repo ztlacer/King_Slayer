@@ -165,8 +165,11 @@ public class PlayerInventory : MonoBehaviour
             {
                 if (inventory.Container[inventory.currentContainerLook].item.name == "Potion" )
                 {
-                    playerStats.Health += potion.restoreHealthValue;
-                    inventory.Container[inventory.currentContainerLook].RemoveAmount(1);
+                    if (playerStats.Health < 100)
+                    {
+                        playerStats.Health += potion.restoreHealthValue;
+                        inventory.Container[inventory.currentContainerLook].RemoveAmount(1);
+                    }
                     if (playerStats.Health > 100)
                     {
                         playerStats.Health = 100;
