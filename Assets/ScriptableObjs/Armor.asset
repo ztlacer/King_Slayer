@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 9066652364626019798, guid: e8c9fbe84835533448125b79b9b47495, type: 3}
   type: 1
-  description: Gives a large defense bonus to character.
+  description: Leather chestplate, replaces the rags you have on.
   name: Armor
-  cost: 40
+  cost: 10
   atkBonus: 0
   defenseBonus: 20
   stealthBonus: 0

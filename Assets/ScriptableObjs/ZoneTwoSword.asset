@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebf2d82100586c046b01568d4d1924db, type: 3}
   m_Name: ZoneTwoSword
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
+  prefab: {fileID: 6763216075226161864, guid: dc7a26ea9ec4db14ca2bbcc068570c02, type: 3}
   type: 1
   description: 
-  name: 
-  cost: 0
-  atkBonus: 0
+  name: Sword
+  cost: 20
+  atkBonus: 30
   defenseBonus: 0
   stealthBonus: 0
