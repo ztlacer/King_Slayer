@@ -66,6 +66,11 @@ public class MazeGen3 : MonoBehaviour
     public int[][] takenZ3;
     public int[][] takenZ4;
 
+    public float[] zoneStart1;
+    public float[] zoneStart2;
+    public float[] zoneStart3;
+    public float[] zoneStart4;
+
     public GameObject[] wayPoints1;
     public GameObject[] wayPoints2;
     public GameObject[] wayPoints3;
@@ -380,6 +385,11 @@ public class MazeGen3 : MonoBehaviour
             }
         }
 
+        zoneStart1 = new float[8];
+        zoneStart2 = new float[8];
+        zoneStart3 = new float[8];
+        zoneStart4 = new float[8];
+
         //Instantiate(Buildings1[0], transform.position, transform.rotation);
         for (int i = 0; i < 10; i++)
         {
@@ -409,7 +419,7 @@ public class MazeGen3 : MonoBehaviour
         genSubZone(3, 4, 4, 20, 20, 50, -430, -400, transXTaken1, transZTaken1, SubZones1, 1);
         genSubZone(4, 4, 4, 25, 25, 40, -1450, -170, transXTaken2, transZTaken2, SubZones2, 2);
         genSubZone(3, 8, 8, 40, 40, 25, -1442.5, 861.5, transXTaken3, transZTaken3, SubZones3, 3);
-        genSubZone(4, 9, 9, 50, 50, 20, -449, 600, transXTaken4, transZTaken4, SubZones4, 4);
+        genSubZone(4, 8, 8, 50, 50, 20, -449, 600, transXTaken4, transZTaken4, SubZones4, 4);
 
         genMaze(takenX4, takenZ4, transXTaken4, transZTaken4, 4, 9, 9, 50, 50, 0, 0, 0, 2400, -499, 550, 20, -20, -30, -10, -40, Walls4, 4);
         genMaze(takenX3, takenZ3, transXTaken3, transZTaken3, 3, 8, 8, 40, 40, 0, 0, 0, 1520, -1497.5, 804.5, 25, -20, -30, -7.5, -42.5, Walls3, 3);
@@ -418,10 +428,10 @@ public class MazeGen3 : MonoBehaviour
 
         //generateWayPoints(5, 20, 20, -485, -420, 50, wayPoints1, takenX1, takenZ1);
 
-        generateGates(4, 20, 20, -430, -400, 50, Gates1, false);
-        generateGates(4, 25, 25, -1450, -170, 40, Gates2, false);
-        generateGates(4, 40, 40, -1442.5, 861.5, 25, Gates3, true);
-        generateGates(4, 50, 50, -449, 600, 20, Gates4, false);
+        generateGates(8, 20, 20, -430, -400, 50, Gates1, false, 1);
+        generateGates(10, 25, 25, -1450, -170, 40, Gates2, false, 2);
+        generateGates(18, 38, 38, -1442.5, 861.5, 25, Gates3, true, 3);
+        generateGates(20, 48, 48, -449, 600, 20, Gates4, false, 4);
 
         generateWayPoints(5, 2, 19, -485, -420, 50, wayPoints1, takenX1, takenZ1, 0, 18, 0);
         generateWayPoints(5, 19, 19, -485, -420, 50, wayPoints2, takenX1, takenZ1, 17, 17, 5);
@@ -443,6 +453,9 @@ public class MazeGen3 : MonoBehaviour
             // int startZ = Random.Range(i * (gridDepth/subZoneCount), gridDepth - ((gridDepth / subZoneCount) * (subZoneCount - i)) );
             int startZ = Random.Range(i * (gridDepth / subZoneCount), gridDepth - subZoneDepth);
 
+            int index = i * 2;
+            int index2 = i * 2 + 1;
+
             Subzone[i].transform.position = new Vector3(startX * coordSize + (float)worldTransX, (float)0.1, startZ * coordSize + (float)worldTransZ);
 
             if (level == 1)
@@ -457,7 +470,8 @@ public class MazeGen3 : MonoBehaviour
 
                 shopInventory.zone = 1;
 
-
+                zoneStart1[index] = startX * coordSize + (float)worldTransX;
+                zoneStart1[index2] = startZ * coordSize + (float)worldTransZ;
             }
 
             if (level == 2)
@@ -471,6 +485,9 @@ public class MazeGen3 : MonoBehaviour
                 var shopInventory = black.GetComponent<BlackSmithInventory>();
 
                 shopInventory.zone = 2;
+
+                zoneStart2[index] = startX * coordSize + (float)worldTransX;
+                zoneStart2[index2] = startZ * coordSize + (float)worldTransZ;
             }
 
             if (level == 3)
@@ -483,6 +500,9 @@ public class MazeGen3 : MonoBehaviour
                 var shopInventory = black.GetComponent<BlackSmithInventory>();
 
                 shopInventory.zone = 3;
+
+                zoneStart3[index] = startX * coordSize + (float)worldTransX;
+                zoneStart3[index2] = startZ * coordSize + (float)worldTransZ;
             }
 
             if (level == 4)
@@ -495,6 +515,9 @@ public class MazeGen3 : MonoBehaviour
                 var shopInventory = black.GetComponent<BlackSmithInventory>();
 
                 shopInventory.zone = 4;
+
+                zoneStart4[index] = startX * coordSize + (float)worldTransX;
+                zoneStart4[index2] = startZ * coordSize + (float)worldTransZ;
             }
 
             for (int j = 0; j < subZoneDepth; j++)
@@ -1063,7 +1086,7 @@ public class MazeGen3 : MonoBehaviour
 
 
     // Need to check if subzone exists & 
-    void generateGates(int GateCount, int gridWidth, int gridDepth, double worldTransX, double worldTransZ, float coordSize, GameObject[] Gates, bool dec)
+    void generateGates(int GateCount, int gridWidth, int gridDepth, double worldTransX, double worldTransZ, float coordSize, GameObject[] Gates, bool dec, int level)
     {
         float[] gateXs = new float[GateCount];
         float[] gateZs = new float[GateCount];
@@ -1074,9 +1097,10 @@ public class MazeGen3 : MonoBehaviour
 
             while (valid == false)
             {
-                float startX = Random.Range(0, gridWidth - 1) * coordSize - coordSize - coordSize / 2;
+                float startX = Random.Range(0, gridWidth - 2) * coordSize - coordSize - coordSize/2;
 
-                float startZ = Random.Range(0, gridDepth - 1) * coordSize - coordSize - coordSize / 2;
+                float startZ = Random.Range(0, gridDepth - 2) * coordSize - coordSize - coordSize/2;
+
                 if (dec)
                 {
                     startX += coordSize / 2;
@@ -1089,6 +1113,82 @@ public class MazeGen3 : MonoBehaviour
                     if (gateXs[j] == startX && gateZs[j] == startZ)
                     {
                         valid = false;
+                    }
+
+                    if (gateXs[j] < startX && (gateXs[j] + 50) > startX)
+                    {
+                        valid = false;
+                    }
+
+                    if (gateZs[j] < startZ && (gateZs[j] + 50) > startZ)
+                    {
+                        valid = false;
+                    }
+                }
+
+                if (level == 1)
+                {
+                    //print(startX + worldTransX);
+                    //print(startX + worldTransX)
+                    for (int j = 0; j < 4; j++)
+                    {
+                        int index1 = j * 2;
+                        int index2 = j * 2 + 1;
+                        if ((startX + worldTransX) > zoneStart1[index1] && (startX + worldTransX) < (zoneStart1[index1] + 50))
+                        {
+                            if ((startZ + worldTransZ) > zoneStart1[index2] && (startZ + worldTransZ) < (zoneStart1[index2] + 50))
+                            {
+                                valid = false;
+                            }
+                        }
+                    }
+                }
+
+                if (level == 2)
+                {
+                    for (int j = 0; j < 4; j++)
+                    {
+                        int index1 = j * 2;
+                        int index2 = j * 2 + 1;
+                        if ( (startX + worldTransX) > zoneStart2[index1] && (startX + worldTransX) < (zoneStart2[index1] + 50) )
+                        {
+                            if ((startZ + worldTransZ) > zoneStart2[index2] && (startZ + worldTransZ) < (zoneStart2[index2] + 50))
+                            {
+                                valid = false;
+                            }
+                        }  
+                    }
+                }
+
+                if (level == 3)
+                {
+                    for (int j = 0; j < 4; j++)
+                    {
+                        int index1 = j * 2;
+                        int index2 = j * 2 + 1;
+                        if ((startX + worldTransX) > zoneStart3[index1] && (startX + worldTransX) < (zoneStart3[index1] + 50))
+                        {
+                            if ((startZ + worldTransZ) > zoneStart3[index2] && (startZ + worldTransZ) < (zoneStart3[index2] + 50))
+                            {
+                                valid = false;
+                            }
+                        }
+                    }
+                }
+
+                if (level == 4)
+                {
+                    for (int j = 0; j < 4; j++)
+                    {
+                        int index1 = j * 2;
+                        int index2 = j * 2 + 1;
+                        if ((startX + worldTransX) > zoneStart4[index1] && (startX + worldTransX) < (zoneStart4[index1] + 50))
+                        {
+                            if ((startZ + worldTransZ) > zoneStart4[index2] && (startZ + worldTransZ) < (zoneStart4[index2] + 50))
+                            {
+                                valid = false;
+                            }
+                        }
                     }
                 }
 

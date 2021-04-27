@@ -28,7 +28,7 @@ public class DisplayPuzzle : MonoBehaviour
     public bool onUp;
     public bool onRight;
     public bool onLeft;
-    public int gatesCount = 16;
+    public int gatesCount = 56;
     public int gateId = -1;
     public bool justUnlocked = false;
     //public TMPro.TextMeshPro unlockMessage;
