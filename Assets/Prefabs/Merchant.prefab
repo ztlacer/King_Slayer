@@ -516,6 +516,17 @@ MonoBehaviour:
   currentContainerLook: 0
   armor: {fileID: 11400000, guid: 12a198523b796664f88b3cbffe270515, type: 2}
   sword: {fileID: 11400000, guid: 245c8e6d2946468408406b04590cdb4d, type: 2}
+  armor2: {fileID: 11400000, guid: 1a82f311129eecb4ea19e1e819baf12f, type: 2}
+  sword2: {fileID: 11400000, guid: 3b8baf13cb2127f45beec8d69559702a, type: 2}
+  armor3: {fileID: 11400000, guid: 5796e6a09a86fd34baa543be0d0d1669, type: 2}
+  sword3: {fileID: 11400000, guid: 6cf6053d0eb7d804fb0a53df2bafd7fd, type: 2}
+  armor4: {fileID: 11400000, guid: 0e6421b1578383141a9a32c5c60e72b7, type: 2}
+  sword4: {fileID: 11400000, guid: 7bfbf461dc20db94b834f039af0b01c4, type: 2}
+  cloak: {fileID: 11400000, guid: 48b0f4cd182c7714b840bbf728985c12, type: 2}
+  cloak2: {fileID: 11400000, guid: 15ff524eabfb90b498dcb46c029ace16, type: 2}
+  cloak3: {fileID: 11400000, guid: b0b66f590fd494b42b3f2c96c859a54d, type: 2}
+  cloak4: {fileID: 11400000, guid: 8899e7ac66a901149822cede1b117d3f, type: 2}
+  zone: 0
 --- !u!1 &8446897834043869405
 GameObject:
   m_ObjectHideFlags: 0
@@ -2333,6 +2344,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+  damagingWeapon: 
 --- !u!65 &8446897835560610822
 BoxCollider:
   m_ObjectHideFlags: 0

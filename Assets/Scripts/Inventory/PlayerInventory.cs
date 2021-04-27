@@ -12,6 +12,7 @@ public class PlayerInventory : MonoBehaviour
     public DoctorInventory doctor;
     public GameObject screen;
     public GameObject shopScreen;
+    public GameObject DescriptionScreen;
     [SerializeField] GameObject messagePrefab;
     public DisplayInventory display;
     public StatObject playerStats;
@@ -32,6 +33,7 @@ public class PlayerInventory : MonoBehaviour
         //shopScreen = GameObject.Find("ShopScreen");
         shopScreen.SetActive(false);
         screen.SetActive(false);
+        DescriptionScreen.SetActive(false);
         //shopScreen = GameObject.Find("ShopScreen");
         //shopScreen.SetActive(false);
     }
@@ -63,13 +65,16 @@ public class PlayerInventory : MonoBehaviour
                 {
                     shopScreen.SetActive(false);
                     screen.SetActive(false);
+                    DescriptionScreen.SetActive(false);
                     // Pause the game while screen is up
                     Time.timeScale = 1;
+                    display.clearItems();
                 }
                 else
                 {
                     shopScreen.SetActive(true);
                     screen.SetActive(true);
+                    DescriptionScreen.SetActive(true);
                     Time.timeScale = 0;
 
                 }
@@ -175,6 +180,7 @@ public class PlayerInventory : MonoBehaviour
             if (shopInventory.screen.activeSelf)
             {
                 shopInventory.screen.SetActive(false);
+                DescriptionScreen.SetActive(false);
             }
             print("exit");
             shopInv = null;
@@ -189,6 +195,7 @@ public class PlayerInventory : MonoBehaviour
             if (DocInventory.screen.activeSelf)
             {
                 DocInventory.screen.SetActive(false);
+                DescriptionScreen.SetActive(false);
             }
             print("exit");
             shopInv = null;

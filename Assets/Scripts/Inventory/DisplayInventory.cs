@@ -11,6 +11,8 @@ public class DisplayInventory : MonoBehaviour
 
     public GameObject goldUI;
 
+    public TextMeshProUGUI itemDescription;
+
     public int X_START;
     public int Y_START;
     public int X_SPACE_BETWEEN_ITEM;
@@ -20,6 +22,7 @@ public class DisplayInventory : MonoBehaviour
     public int Y_GOLD_START;
     int localGoldAmount;
     Dictionary<InventorySlot, GameObject> itemsDisplayed = new Dictionary<InventorySlot, GameObject>();
+
 
     // Start is called before the first frame update
     void Start()
@@ -33,6 +36,10 @@ public class DisplayInventory : MonoBehaviour
     {
 
         UpdateDisplay();
+    }
+    public void clearItems()
+    {
+        itemsDisplayed.Clear();
     }
     public void CreateDisplay()
     {
@@ -50,6 +57,7 @@ public class DisplayInventory : MonoBehaviour
             if (i == inventory.currentContainerLook)
             {
                 obj.GetComponentInChildren<TextMeshProUGUI>().color = Color.white;
+                
             }
         }
     }
@@ -75,7 +83,7 @@ public class DisplayInventory : MonoBehaviour
                 if (i == inventory.currentContainerLook)
                 {
                     itemsDisplayed[inventory.Container[i]].GetComponentInChildren<TextMeshProUGUI>().color = Color.white;
-                    print("color change");
+                    itemDescription.text = inventory.Container[i].item.description;
                 }
             }
             else
@@ -87,6 +95,7 @@ public class DisplayInventory : MonoBehaviour
                 if (i == inventory.currentContainerLook)
                 {
                     obj.GetComponentInChildren<TextMeshProUGUI>().outlineColor = new Color32(0, 0, 0, 255);
+                    itemDescription.text = inventory.Container[i].item.description;
                 }
             }
         }
