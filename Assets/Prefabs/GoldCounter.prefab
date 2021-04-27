@@ -103,6 +103,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3709356534708096601, guid: d09025c6b384e204ea2f5548dd7c9573, type: 3}
+      propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3709356534708096601, guid: d09025c6b384e204ea2f5548dd7c9573, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 3709356534708096601, guid: d09025c6b384e204ea2f5548dd7c9573, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3709356534708096601, guid: d09025c6b384e204ea2f5548dd7c9573, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3709356534708096601, guid: d09025c6b384e204ea2f5548dd7c9573, type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3709356534708096603, guid: d09025c6b384e204ea2f5548dd7c9573, type: 3}
       propertyPath: m_Name
       value: GoldCounter
@@ -132,8 +152,24 @@ PrefabInstance:
       value: -30.214844
       objectReference: {fileID: 0}
     - target: {fileID: 3709356535774333581, guid: d09025c6b384e204ea2f5548dd7c9573, type: 3}
+      propertyPath: m_fontColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3709356535774333581, guid: d09025c6b384e204ea2f5548dd7c9573, type: 3}
+      propertyPath: m_fontColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3709356535774333581, guid: d09025c6b384e204ea2f5548dd7c9573, type: 3}
+      propertyPath: m_fontColor.r
+      value: 0.92346203
+      objectReference: {fileID: 0}
+    - target: {fileID: 3709356535774333581, guid: d09025c6b384e204ea2f5548dd7c9573, type: 3}
       propertyPath: m_enableAutoSizing
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3709356535774333581, guid: d09025c6b384e204ea2f5548dd7c9573, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278255595
       objectReference: {fileID: 0}
     - target: {fileID: 3709356535774333581, guid: d09025c6b384e204ea2f5548dd7c9573, type: 3}
       propertyPath: m_enableWordWrapping

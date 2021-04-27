@@ -92,8 +92,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3709356534708096601, guid: d09025c6b384e204ea2f5548dd7c9573, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ea5377aeb29d75f48b8f0e6173682c53, type: 3}
+    - target: {fileID: 3709356534708096601, guid: d09025c6b384e204ea2f5548dd7c9573, type: 3}
       propertyPath: m_Color.b
-      value: 0.042452812
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3709356534708096601, guid: d09025c6b384e204ea2f5548dd7c9573, type: 3}
       propertyPath: m_Color.g
@@ -101,11 +105,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3709356534708096601, guid: d09025c6b384e204ea2f5548dd7c9573, type: 3}
       propertyPath: m_Color.r
-      value: 0.051851686
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3709356534708096603, guid: d09025c6b384e204ea2f5548dd7c9573, type: 3}
       propertyPath: m_Name
       value: potion
+      objectReference: {fileID: 0}
+    - target: {fileID: 3709356535774333580, guid: d09025c6b384e204ea2f5548dd7c9573, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d09025c6b384e204ea2f5548dd7c9573, type: 3}

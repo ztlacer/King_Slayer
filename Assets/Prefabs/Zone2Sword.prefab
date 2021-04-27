@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &4491881737222326462
+--- !u!1001 &2188366523513434016
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -9,23 +9,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4865408144015019368, guid: bdcb1eaf79e0f904db73a0d1efb14f82, type: 3}
       propertyPath: m_Name
-      value: armor
+      value: Zone2Sword
       objectReference: {fileID: 0}
     - target: {fileID: 4865408144015019370, guid: bdcb1eaf79e0f904db73a0d1efb14f82, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 65eadd9115533da42b5008d83e927064, type: 3}
-    - target: {fileID: 4865408144015019370, guid: bdcb1eaf79e0f904db73a0d1efb14f82, type: 3}
       propertyPath: m_Color.b
-      value: 1
+      value: 0.043137256
       objectReference: {fileID: 0}
     - target: {fileID: 4865408144015019370, guid: bdcb1eaf79e0f904db73a0d1efb14f82, type: 3}
       propertyPath: m_Color.g
-      value: 1
+      value: 0.3019608
       objectReference: {fileID: 0}
     - target: {fileID: 4865408144015019370, guid: bdcb1eaf79e0f904db73a0d1efb14f82, type: 3}
       propertyPath: m_Color.r
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4865408144015019371, guid: bdcb1eaf79e0f904db73a0d1efb14f82, type: 3}
       propertyPath: m_Pivot.x
