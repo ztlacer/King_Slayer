@@ -6,6 +6,7 @@ using UnityEngine.Audio;
 public class MusicTransition : MonoBehaviour
 {
     [SerializeField]public AudioClip defaultAudio;
+    [SerializeField] private float maxVolume;
     private AudioSource clip1, clip2;
     private bool isPlayingClip1;
     public static MusicTransition instance;
@@ -47,11 +48,12 @@ public class MusicTransition : MonoBehaviour
         {
             clip2.clip = newClip;
             clip2.Play();
+            clip2.loop = true;
 
             while(timeElapse < timeToFade)
             {
-                clip2.volume = Mathf.Lerp(0, 1, timeElapse / timeToFade);
-                clip1.volume = Mathf.Lerp(1, 0, timeElapse / timeToFade);
+                clip2.volume = Mathf.Lerp(0, maxVolume, timeElapse / timeToFade);
+                clip1.volume = Mathf.Lerp(maxVolume, 0, timeElapse / timeToFade);
                 timeElapse += Time.deltaTime;
                 yield return null;
             }
@@ -62,11 +64,12 @@ public class MusicTransition : MonoBehaviour
         {
             clip1.clip = newClip;
             clip1.Play();
+            clip1.loop = true;
 
             while (timeElapse < timeToFade)
             {
-                clip1.volume = Mathf.Lerp(0, 1, timeElapse / timeToFade);
-                clip2.volume = Mathf.Lerp(1, 0, timeElapse / timeToFade);
+                clip1.volume = Mathf.Lerp(0, maxVolume, timeElapse / timeToFade);
+                clip2.volume = Mathf.Lerp(maxVolume, 0, timeElapse / timeToFade);
                 timeElapse += Time.deltaTime;
                 yield return null;
             }
