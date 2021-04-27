@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 using Cinemachine;
 
 public class PlayerMove : MonoBehaviour
@@ -8,6 +10,7 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private float movementSpeed = 5f;
     [SerializeField] private float gravity = -10f;
     [SerializeField] private CharacterController controller = null;
+    [SerializeField] private GameObject inventoryUI;
 
     private Vector2 previousInput;
 
@@ -80,7 +83,13 @@ public class PlayerMove : MonoBehaviour
         animator.SetBool("isSneaking", false);
     }
 
-    private void PauseGame() => Time.timeScale = Time.timeScale == 0 ? 1 : 0;
+    public void PauseGame()
+    {
+        inventoryUI.SetActive(!inventoryUI.activeInHierarchy);
+        Time.timeScale = Time.timeScale == 0 ? 1 : 0;
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(inventoryUI.transform.GetChild(0).gameObject);
+    }
 
     private void attack()
     {
