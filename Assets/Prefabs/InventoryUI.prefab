@@ -1031,12 +1031,8 @@ RectTransform:
   - {fileID: 7274111819514957898}
   - {fileID: 8336839701618402362}
   - {fileID: 4395736551453361688}
-<<<<<<< Updated upstream
   - {fileID: 7142084346212622735}
   - {fileID: 998565671045301856}
-=======
-  - {fileID: 4412370818035949865}
->>>>>>> Stashed changes
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1220,7 +1216,6 @@ MonoBehaviour:
   Y_SPACE_BETWEEN_ITEMS: 100
   X_GOLD_START: 0
   Y_GOLD_START: 0
-<<<<<<< Updated upstream
 --- !u!1 &8438421005832340918
 GameObject:
   m_ObjectHideFlags: 0
@@ -1434,7 +1429,3 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
-=======
-  X_EQUIPMENT_START: 0
-  Y_EQUIPMENT_START: 0
->>>>>>> Stashed changes
