@@ -130,6 +130,8 @@ MonoBehaviour:
   Y_SPACE_BETWEEN_ITEMS: 100
   X_GOLD_START: 0
   Y_GOLD_START: 0
+  X_EQUIPMENT_START: 0
+  Y_EQUIPMENT_START: 0
 --- !u!1 &284402320387141650
 GameObject:
   m_ObjectHideFlags: 0
@@ -350,6 +352,8 @@ MonoBehaviour:
   Y_SPACE_BETWEEN_ITEMS: 100
   X_GOLD_START: 0
   Y_GOLD_START: 0
+  X_EQUIPMENT_START: 0
+  Y_EQUIPMENT_START: 0
 --- !u!1 &346599914357946752
 GameObject:
   m_ObjectHideFlags: 0
@@ -1239,8 +1243,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7074565191994594016}
-  - component: {fileID: 7663019493445358207}
   - component: {fileID: 7586658628660164689}
+  - component: {fileID: 434064404394603484}
+  - component: {fileID: 7135155752076869132}
   m_Layer: 0
   m_Name: hurtbox
   m_TagString: Untagged
@@ -1262,21 +1267,6 @@ Transform:
   m_Father: {fileID: 7529279778496063520}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7663019493445358207
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4814631257699082437}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 776ae60cedc20e0479551e4d817dddc6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 100
-  damagingWeapon: enemyWeapon
-  playerStats: {fileID: 11400000, guid: d742020996d217d4cb20cdfd8bcda90c, type: 2}
 --- !u!65 &7586658628660164689
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1290,6 +1280,42 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.0406241, y: 3.2306938, z: 2.3530807}
   m_Center: {x: -0.059788227, y: 1.1153467, z: -0.081558645}
+--- !u!114 &434064404394603484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4814631257699082437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eed246ed990c97049a6ee888560ec8ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  damagingWeapon: enemyWeapon
+  playerStats: {fileID: 11400000, guid: d742020996d217d4cb20cdfd8bcda90c, type: 2}
+--- !u!65 &7586658628660164689
+BoxCollider:
+  currentHealth: 100
+  ownStats: {fileID: 11400000, guid: d742020996d217d4cb20cdfd8bcda90c, type: 2}
+  enemyStats: {fileID: 0}
+--- !u!54 &7135155752076869132
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4814631257699082437}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &4840042481558998134
 GameObject:
   m_ObjectHideFlags: 0
@@ -1503,7 +1529,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   foreground: {fileID: 3468384091755684871}
   updateSpeedSeconds: 0.5
-  health: {fileID: 7663019493445358207}
+  health: {fileID: 0}
   parent: {fileID: 8068156315499582883}
   text: {fileID: 4775469713910667080}
 --- !u!1 &6352366547075952288
@@ -2915,7 +2941,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8068156316098506097}
-  m_LocalRotation: {x: 0.19755913, y: 0.000000059778, z: -0.000000012047126, w: 0.980291}
+  m_LocalRotation: {x: 0.19755913, y: 0.000000058556886, z: -0.000000011801033, w: 0.980291}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:

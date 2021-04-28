@@ -10,6 +10,7 @@ TagManager:
   - enemyWeapon
   - gateCollider
   - Body
+  - Enemy
   layers:
   - Default
   - TransparentFX

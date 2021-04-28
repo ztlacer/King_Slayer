@@ -48,6 +48,8 @@ public class PatrolScript : MonoBehaviour
 
         nextSpot = Random.Range(0, patrolLocations.Length);
 
+        prioQueue.Enqueue(0);
+
         //lookDir = patrolLocations[nextSpot].position - transform.position;
 
         lastSpot = nextSpot;
@@ -111,9 +113,9 @@ public class PatrolScript : MonoBehaviour
 
                 patrolLocations.SetValue(GameObject.Find("waypoint" + numWaypointSet).transform, 4);
 
-                transform.position = new Vector3(patrolLocations[nextSpot].position.x, transform.position.y, patrolLocations[nextSpot].position.z);
+                gameObject.transform.position = new Vector3(patrolLocations[nextSpot].position.x, 100, patrolLocations[nextSpot].position.z);
 
-                print(transform.position + " tpos");
+               // print(transform.position + " tpos");
 
                 waypointsSet = true;
 

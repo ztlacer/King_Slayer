@@ -8,6 +8,7 @@ public class EnemySight : MonoBehaviour
 
     [SerializeField] private Animator animator;
     [SerializeField] public AudioClip clip;
+    [SerializeField] private EnemyKnightStat stats;
     public float speed;
 
     public bool passedThrough;

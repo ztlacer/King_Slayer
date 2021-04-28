@@ -1224,7 +1224,29 @@ public class MazeGen3 : MonoBehaviour
 
         var enemy = Instantiate(EnemyPrefab);
 
+        enemy.transform.position = new Vector3(0, 5, 0);
+
+
         PatrolScript script = enemy.GetComponent<PatrolScript>();
+
+        EnemyKnightStat stats = enemy.GetComponent<EnemyKnightStat>();
+
+        if (waypointsSet < 9)
+        {
+            stats.zone = 1;
+        }
+        else if (waypointsSet < 19)
+        {
+            stats.zone = 2;
+        }
+        else if (waypointsSet < 29)
+        {
+            stats.zone = 3;
+        }
+        else
+        {
+            stats.zone = 4;
+        }
 
         script.numWaypointSet = waypointsSet;
 
