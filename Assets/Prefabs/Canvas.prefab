@@ -958,6 +958,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b2753ed7f3f2468f8d3cc487ba29a1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unlockFirstButton: {fileID: 3291758746132478814}
   puzzle: {fileID: 11400000, guid: ce2c6b68a29c44b2e8e3df3d3ffec60b, type: 2}
   databaseObject: {fileID: 11400000, guid: 4380a3298d2384aaa8ad3f196d0c178a, type: 2}
   puzzlePrefab: {fileID: 2548638287734218805, guid: 9ceefbc5a0048408bb06e9a30b0d600f, type: 3}
@@ -1001,6 +1002,7 @@ MonoBehaviour:
   goldText: {fileID: 2066032814}
   goldImg1: {fileID: 1047768476}
   goldImg2: {fileID: 2039486763}
+  selectorNum: 0
 --- !u!1 &3291758745930648722
 GameObject:
   m_ObjectHideFlags: 0

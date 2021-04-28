@@ -57,6 +57,86 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""StartPuzzle"",
+                    ""type"": ""Button"",
+                    ""id"": ""d61ff820-3bde-4dd6-8c88-a1950ad71a78"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""SelectInPuzzle"",
+                    ""type"": ""Button"",
+                    ""id"": ""05c719f6-fab9-488c-90b3-6bd836e4e18a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""OpenInventory"",
+                    ""type"": ""Button"",
+                    ""id"": ""ad87b176-7ecf-4c13-90f9-876b658ed8e7"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""OpenShop"",
+                    ""type"": ""Button"",
+                    ""id"": ""a31a85aa-cda9-4217-a883-8d129e9a0c6b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""SelectMoveLeft"",
+                    ""type"": ""Button"",
+                    ""id"": ""c8104fbb-54a5-43b8-9469-89d29a8688ba"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""SelectMoveRight"",
+                    ""type"": ""Button"",
+                    ""id"": ""3476986d-1ae2-4f5c-8e48-a4de1c89b176"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""SelectMoveUp"",
+                    ""type"": ""Button"",
+                    ""id"": ""6d65fa9c-341a-4796-86df-87f63ba000eb"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""SelectMoveDown"",
+                    ""type"": ""Button"",
+                    ""id"": ""76f6813e-0621-4d63-8b17-17fb2b904bdb"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Buy"",
+                    ""type"": ""Button"",
+                    ""id"": ""33e34c96-d912-469e-a6e6-2581a60195c0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""PuzzleMouse"",
+                    ""type"": ""Value"",
+                    ""id"": ""d59a6a7c-924d-4c10-abb4-a888632dac0b"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -213,6 +293,204 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""action"": ""Fire"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8cd573e5-9483-42d5-b0a6-c0887829fda4"",
+                    ""path"": ""<Keyboard>/p"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard & Mouse"",
+                    ""action"": ""StartPuzzle"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""206ad150-18aa-49a4-8b9c-3c9a5d9b1581"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""GameController"",
+                    ""action"": ""StartPuzzle"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9c98b649-d121-4fdb-87ec-f17e1acc3136"",
+                    ""path"": ""<Gamepad>/select"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""GameController"",
+                    ""action"": ""SelectInPuzzle"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""29260b34-4f13-445f-80aa-b3271ed4ce41"",
+                    ""path"": ""<Keyboard>/i"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard & Mouse"",
+                    ""action"": ""OpenInventory"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c98d62ac-4356-4540-a544-bb2156d24582"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""GameController"",
+                    ""action"": ""OpenInventory"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8b086ef5-c8f3-4524-9f02-298a78b31ea9"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard & Mouse"",
+                    ""action"": ""OpenShop"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1e4aafc6-f385-439e-987f-8dc18247c3ff"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""GameController"",
+                    ""action"": ""OpenShop"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""04b13bb5-37cb-4110-b29b-c525d67e9d21"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard & Mouse"",
+                    ""action"": ""SelectMoveLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""83c1b605-5de0-4d95-9ef1-de87c78d6a68"",
+                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""GameController"",
+                    ""action"": ""SelectMoveLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9e9ec5f0-a3ee-4b23-b46c-e74e7a6304a4"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard & Mouse"",
+                    ""action"": ""SelectMoveRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c548157d-a7ce-4242-8792-195b8a1db4da"",
+                    ""path"": ""<Gamepad>/dpad/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""GameController"",
+                    ""action"": ""SelectMoveRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d7edccb5-5800-4894-a9cc-d1ae90ef8ee8"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard & Mouse"",
+                    ""action"": ""SelectMoveUp"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9cf03ca8-cbd4-4176-b3cf-ff6c543b1cdd"",
+                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""GameController"",
+                    ""action"": ""SelectMoveUp"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6e6516fb-05cb-44d3-8eb5-94faab03c18e"",
+                    ""path"": ""<Gamepad>/dpad/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""GameController"",
+                    ""action"": ""SelectMoveDown"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""73b58ce2-66b5-42a6-93a6-347080cba1c2"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard & Mouse"",
+                    ""action"": ""SelectMoveDown"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3d83dcaf-a618-4e58-b1f4-fb226200cbd1"",
+                    ""path"": ""<Keyboard>/b"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard & Mouse"",
+                    ""action"": ""Buy"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0c6a2ddd-b54a-4dce-ad35-a3b981c21454"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""GameController"",
+                    ""action"": ""Buy"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bcbe9089-24ab-462f-95f9-e25b18405cd4"",
+                    ""path"": ""<Gamepad>/leftStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""GameController"",
+                    ""action"": ""PuzzleMouse"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -254,6 +532,16 @@ public class @Controls : IInputActionCollection, IDisposable
         m_Player_Sneak = m_Player.FindAction("Sneak", throwIfNotFound: true);
         m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
         m_Player_Fire = m_Player.FindAction("Fire", throwIfNotFound: true);
+        m_Player_StartPuzzle = m_Player.FindAction("StartPuzzle", throwIfNotFound: true);
+        m_Player_SelectInPuzzle = m_Player.FindAction("SelectInPuzzle", throwIfNotFound: true);
+        m_Player_OpenInventory = m_Player.FindAction("OpenInventory", throwIfNotFound: true);
+        m_Player_OpenShop = m_Player.FindAction("OpenShop", throwIfNotFound: true);
+        m_Player_SelectMoveLeft = m_Player.FindAction("SelectMoveLeft", throwIfNotFound: true);
+        m_Player_SelectMoveRight = m_Player.FindAction("SelectMoveRight", throwIfNotFound: true);
+        m_Player_SelectMoveUp = m_Player.FindAction("SelectMoveUp", throwIfNotFound: true);
+        m_Player_SelectMoveDown = m_Player.FindAction("SelectMoveDown", throwIfNotFound: true);
+        m_Player_Buy = m_Player.FindAction("Buy", throwIfNotFound: true);
+        m_Player_PuzzleMouse = m_Player.FindAction("PuzzleMouse", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -308,6 +596,16 @@ public class @Controls : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Sneak;
     private readonly InputAction m_Player_Pause;
     private readonly InputAction m_Player_Fire;
+    private readonly InputAction m_Player_StartPuzzle;
+    private readonly InputAction m_Player_SelectInPuzzle;
+    private readonly InputAction m_Player_OpenInventory;
+    private readonly InputAction m_Player_OpenShop;
+    private readonly InputAction m_Player_SelectMoveLeft;
+    private readonly InputAction m_Player_SelectMoveRight;
+    private readonly InputAction m_Player_SelectMoveUp;
+    private readonly InputAction m_Player_SelectMoveDown;
+    private readonly InputAction m_Player_Buy;
+    private readonly InputAction m_Player_PuzzleMouse;
     public struct PlayerActions
     {
         private @Controls m_Wrapper;
@@ -317,6 +615,16 @@ public class @Controls : IInputActionCollection, IDisposable
         public InputAction @Sneak => m_Wrapper.m_Player_Sneak;
         public InputAction @Pause => m_Wrapper.m_Player_Pause;
         public InputAction @Fire => m_Wrapper.m_Player_Fire;
+        public InputAction @StartPuzzle => m_Wrapper.m_Player_StartPuzzle;
+        public InputAction @SelectInPuzzle => m_Wrapper.m_Player_SelectInPuzzle;
+        public InputAction @OpenInventory => m_Wrapper.m_Player_OpenInventory;
+        public InputAction @OpenShop => m_Wrapper.m_Player_OpenShop;
+        public InputAction @SelectMoveLeft => m_Wrapper.m_Player_SelectMoveLeft;
+        public InputAction @SelectMoveRight => m_Wrapper.m_Player_SelectMoveRight;
+        public InputAction @SelectMoveUp => m_Wrapper.m_Player_SelectMoveUp;
+        public InputAction @SelectMoveDown => m_Wrapper.m_Player_SelectMoveDown;
+        public InputAction @Buy => m_Wrapper.m_Player_Buy;
+        public InputAction @PuzzleMouse => m_Wrapper.m_Player_PuzzleMouse;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -341,6 +649,36 @@ public class @Controls : IInputActionCollection, IDisposable
                 @Fire.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire;
                 @Fire.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire;
                 @Fire.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire;
+                @StartPuzzle.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStartPuzzle;
+                @StartPuzzle.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStartPuzzle;
+                @StartPuzzle.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStartPuzzle;
+                @SelectInPuzzle.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectInPuzzle;
+                @SelectInPuzzle.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectInPuzzle;
+                @SelectInPuzzle.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectInPuzzle;
+                @OpenInventory.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnOpenInventory;
+                @OpenInventory.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnOpenInventory;
+                @OpenInventory.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnOpenInventory;
+                @OpenShop.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnOpenShop;
+                @OpenShop.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnOpenShop;
+                @OpenShop.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnOpenShop;
+                @SelectMoveLeft.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectMoveLeft;
+                @SelectMoveLeft.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectMoveLeft;
+                @SelectMoveLeft.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectMoveLeft;
+                @SelectMoveRight.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectMoveRight;
+                @SelectMoveRight.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectMoveRight;
+                @SelectMoveRight.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectMoveRight;
+                @SelectMoveUp.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectMoveUp;
+                @SelectMoveUp.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectMoveUp;
+                @SelectMoveUp.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectMoveUp;
+                @SelectMoveDown.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectMoveDown;
+                @SelectMoveDown.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectMoveDown;
+                @SelectMoveDown.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectMoveDown;
+                @Buy.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnBuy;
+                @Buy.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnBuy;
+                @Buy.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnBuy;
+                @PuzzleMouse.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPuzzleMouse;
+                @PuzzleMouse.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPuzzleMouse;
+                @PuzzleMouse.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPuzzleMouse;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -360,6 +698,36 @@ public class @Controls : IInputActionCollection, IDisposable
                 @Fire.started += instance.OnFire;
                 @Fire.performed += instance.OnFire;
                 @Fire.canceled += instance.OnFire;
+                @StartPuzzle.started += instance.OnStartPuzzle;
+                @StartPuzzle.performed += instance.OnStartPuzzle;
+                @StartPuzzle.canceled += instance.OnStartPuzzle;
+                @SelectInPuzzle.started += instance.OnSelectInPuzzle;
+                @SelectInPuzzle.performed += instance.OnSelectInPuzzle;
+                @SelectInPuzzle.canceled += instance.OnSelectInPuzzle;
+                @OpenInventory.started += instance.OnOpenInventory;
+                @OpenInventory.performed += instance.OnOpenInventory;
+                @OpenInventory.canceled += instance.OnOpenInventory;
+                @OpenShop.started += instance.OnOpenShop;
+                @OpenShop.performed += instance.OnOpenShop;
+                @OpenShop.canceled += instance.OnOpenShop;
+                @SelectMoveLeft.started += instance.OnSelectMoveLeft;
+                @SelectMoveLeft.performed += instance.OnSelectMoveLeft;
+                @SelectMoveLeft.canceled += instance.OnSelectMoveLeft;
+                @SelectMoveRight.started += instance.OnSelectMoveRight;
+                @SelectMoveRight.performed += instance.OnSelectMoveRight;
+                @SelectMoveRight.canceled += instance.OnSelectMoveRight;
+                @SelectMoveUp.started += instance.OnSelectMoveUp;
+                @SelectMoveUp.performed += instance.OnSelectMoveUp;
+                @SelectMoveUp.canceled += instance.OnSelectMoveUp;
+                @SelectMoveDown.started += instance.OnSelectMoveDown;
+                @SelectMoveDown.performed += instance.OnSelectMoveDown;
+                @SelectMoveDown.canceled += instance.OnSelectMoveDown;
+                @Buy.started += instance.OnBuy;
+                @Buy.performed += instance.OnBuy;
+                @Buy.canceled += instance.OnBuy;
+                @PuzzleMouse.started += instance.OnPuzzleMouse;
+                @PuzzleMouse.performed += instance.OnPuzzleMouse;
+                @PuzzleMouse.canceled += instance.OnPuzzleMouse;
             }
         }
     }
@@ -389,5 +757,15 @@ public class @Controls : IInputActionCollection, IDisposable
         void OnSneak(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
         void OnFire(InputAction.CallbackContext context);
+        void OnStartPuzzle(InputAction.CallbackContext context);
+        void OnSelectInPuzzle(InputAction.CallbackContext context);
+        void OnOpenInventory(InputAction.CallbackContext context);
+        void OnOpenShop(InputAction.CallbackContext context);
+        void OnSelectMoveLeft(InputAction.CallbackContext context);
+        void OnSelectMoveRight(InputAction.CallbackContext context);
+        void OnSelectMoveUp(InputAction.CallbackContext context);
+        void OnSelectMoveDown(InputAction.CallbackContext context);
+        void OnBuy(InputAction.CallbackContext context);
+        void OnPuzzleMouse(InputAction.CallbackContext context);
     }
 }

@@ -57,7 +57,7 @@ public class PlayerInventory : MonoBehaviour
     {
         if (isTriggering)
         {
-            if (Input.GetKeyDown(KeyCode.E))
+            if (InputManager.Controls.Player.OpenShop.triggered)
             {
                 print("e");
                 if (shopScreen.activeSelf)
@@ -79,7 +79,7 @@ public class PlayerInventory : MonoBehaviour
                 }
 
             }
-            if (Input.GetKeyDown(KeyCode.RightArrow))
+            if (InputManager.Controls.Player.SelectMoveRight.triggered)
             {
                 if (shopInv != null && shopInv.currentContainerLook < shopInv.Container.Count - 1)
                 {
@@ -87,7 +87,7 @@ public class PlayerInventory : MonoBehaviour
                 }
 
             }
-            if (Input.GetKeyDown(KeyCode.LeftArrow))
+            if (InputManager.Controls.Player.SelectMoveLeft.triggered)
             {
                 if (shopInv != null && shopInv.currentContainerLook > 0)
                 {
@@ -95,7 +95,7 @@ public class PlayerInventory : MonoBehaviour
                 }
 
             }
-            if (shopInv != null && shopScreen.activeSelf && Input.GetKeyDown(KeyCode.B))
+            if (shopInv != null && shopScreen.activeSelf && InputManager.Controls.Player.Buy.triggered)
             {
                 if (shopInv.Container[shopInv.currentContainerLook].amount > 0)
                 {
@@ -124,7 +124,7 @@ public class PlayerInventory : MonoBehaviour
             }
 
         }
-        if (Input.GetKeyDown(KeyCode.I) && !isTriggering)
+        if (InputManager.Controls.Player.OpenInventory.triggered && !isTriggering)
         {
             print("i");
             if (screen.activeSelf)

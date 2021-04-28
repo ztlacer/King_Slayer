@@ -10,23 +10,25 @@ public class Health : MonoBehaviour
 
     [SerializeField] private string damagingWeapon;
 
+    [SerializeField] private StatObject playerStats;
+
     //[SerializeField] private TextMesh text;
 
-    private int currentHealth;
+    //private int currentHealth;
 
     public event Action<float> onHealthPctChanged = delegate { };
 
 
     private void OnEnable()
     {
-        currentHealth = maxHealth;
+        playerStats.Health = maxHealth;
     }
 
     public void ModifyHealth(int amount)
     {
-        currentHealth += amount;
+        playerStats.Health += amount;
 
-        float currentHealthPct = (float)currentHealth / (float)maxHealth;
+        float currentHealthPct = (float)playerStats.Health / (float)maxHealth;
         onHealthPctChanged(currentHealthPct);
         //text.text = currentHealthPct.ToString() + "%";
 

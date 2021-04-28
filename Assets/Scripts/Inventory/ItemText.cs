@@ -20,7 +20,7 @@ public class ItemText : MonoBehaviour
             print("fine");
             npcText.SetActive(true);
 
-            if (Input.GetKeyDown(KeyCode.E))
+            if (InputManager.Controls.Player.OpenShop.triggered)
             {
 
                 triggering = false;

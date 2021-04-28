@@ -1276,6 +1276,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   damagingWeapon: enemyWeapon
+  playerStats: {fileID: 11400000, guid: d742020996d217d4cb20cdfd8bcda90c, type: 2}
 --- !u!65 &7586658628660164689
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2914,7 +2915,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8068156316098506097}
-  m_LocalRotation: {x: 0.19755913, y: 0.000000058761557, z: -0.000000011842281, w: 0.980291}
+  m_LocalRotation: {x: 0.19755913, y: 0.000000059778, z: -0.000000012047126, w: 0.980291}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:

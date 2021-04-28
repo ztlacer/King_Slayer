@@ -33,30 +33,17 @@ public class PlayerMove : MonoBehaviour
     public Animator animator;
 
     float elapsedTime = 0;
-
-    private Controls controls;
-    private Controls Controls
-    {
-        get
-        {
-            if (controls != null) { return controls; }
-            return controls = new Controls();
-        }
-    }
     void Start()
     {
         enabled = true;
 
-        Controls.Player.Move.performed += ctx => SetMovement(ctx.ReadValue<Vector2>());
-        Controls.Player.Move.canceled += ctx => ResetMovement();
-        Controls.Player.Sneak.performed += ctx => SetSneaking();
-        Controls.Player.Sneak.canceled += ctx => resetSneaking();
-        Controls.Player.Pause.performed += ctx => PauseGame();
-        Controls.Player.Fire.performed += ctx => attack();
+        InputManager.Controls.Player.Move.performed += ctx => SetMovement(ctx.ReadValue<Vector2>());
+        InputManager.Controls.Player.Move.canceled += ctx => ResetMovement();
+        InputManager.Controls.Player.Sneak.performed += ctx => SetSneaking();
+        InputManager.Controls.Player.Sneak.canceled += ctx => resetSneaking();
+        InputManager.Controls.Player.Pause.performed += ctx => PauseGame();
+        InputManager.Controls.Player.Fire.performed += ctx => attack();
     }
-    private void OnEnable() => Controls.Enable();
-
-    private void OnDisable() => Controls.Disable();
 
     private void SetMovement(Vector2 movement) {
         horizontalX = movement.x;
@@ -85,6 +72,13 @@ public class PlayerMove : MonoBehaviour
 
     public void PauseGame()
     {
+        if (InputManager.Controls.Player.enabled)
+        {
+            InputManager.Controls.Player.Disable();
+        } else
+        {
+            InputManager.Controls.Player.Enable();
+        }
         inventoryUI.SetActive(!inventoryUI.activeInHierarchy);
         Time.timeScale = Time.timeScale == 0 ? 1 : 0;
         EventSystem.current.SetSelectedGameObject(null);

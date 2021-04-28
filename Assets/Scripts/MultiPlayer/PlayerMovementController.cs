@@ -86,7 +86,7 @@ public class PlayerMovementController : NetworkBehaviour
     private void Move()
     {
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (InputManager.Controls.Player.Pause.triggered)
         {
             if (Time.timeScale == 0)
             {

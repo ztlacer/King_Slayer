@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -9,6 +10,7 @@ using Random = System.Random;
 
 public class DisplayPuzzle : MonoBehaviour
 {
+    [SerializeField] private GameObject unlockFirstButton;
     public PuzzleObject puzzle;
     public PuzzleItemDatabaseObject databaseObject;
     public GameObject puzzlePrefab;
@@ -40,6 +42,8 @@ public class DisplayPuzzle : MonoBehaviour
     public Image goldImg1;
     public Image goldImg2;
 
+    public int selectorNum = 0;
+
     void Start()
     {
         if (puzzle.database == null)
@@ -55,10 +59,60 @@ public class DisplayPuzzle : MonoBehaviour
         goldText.enabled = false;
         goldImg1.enabled = false;
         goldImg2.enabled = false;
+        //InputManager.Controls.Player.PuzzleMouse.performed += ctx => moveMouse(ctx.ReadValue<Vector2>());
+        InputManager.Controls.Player.SelectInPuzzle.performed += ctx => selectMouse();
+        InputManager.Controls.Player.SelectInPuzzle.Disable();
+    }
+
+    //void moveMouse(Vector2 vec)
+    //{
+    //    print("movingMouse");
+    //    print(vec);
+    //    //Vector3 mousepos = Camera.main.WorldToScreenPoint(Mouse.current.position.ReadValue() + vec);
+    //    //InputState.Change(Mouse.current.position, vec);
+    //    //Vector2 newPos = (Vector2)Input.mousePosition + vec;
+    //    Vector2 mousepos = Mouse.current.position.ReadValue() + vec * 10;
+    //    Mouse.current.WarpCursorPosition(mousepos);
+    //    InputState.Change(Mouse.current.position, mousepos);
+    //}
+
+    void selectMouse()
+    {
+        print("clickingMouse");
+
+        PuzzleSlot pz = puzzle.Container.Items[selectorNum];
+        var keeey = itemsDisplayed.FirstOrDefault(x => x.Value == pz).Key;
+        OnClick(keeey);
+        selectorNum++;
+        if (selectorNum >= 16)
+        {
+            selectorNum = 0;
+        }
+
+        //RaycastHit hit;
+        //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        //if (Physics.Raycast(ray, out hit, 100.0f))
+        //{
+        //    //StartCoroutine(ScaleMe(hit.transform));
+        //    Debug.Log("You selected the " + hit.transform.name); // ensure you picked right object
+        //}
+        //Mouse.current.leftButton.IsPressed(0);
+        //Mouse.current.leftButton.IsPressed(1);
+        //Mouse.current.
+        //OnClick();
     }
 
     public void Activate()
     {
+        // Select the controller to the bottom buttons
+        InputManager.Controls.Player.SelectInPuzzle.Enable();
+        InputManager.Controls.Player.SelectMoveDown.Enable();
+        InputManager.Controls.Player.SelectMoveUp.Enable();
+
+        InputManager.Controls.Player.SelectMoveLeft.Enable();
+
+        InputManager.Controls.Player.SelectMoveRight.Enable();
+
         gameObject.SetActive(true);
         Time.timeScale = 0;
         unlockMessage.text = "";
@@ -66,10 +120,15 @@ public class DisplayPuzzle : MonoBehaviour
         goldText.enabled = false;
         goldImg1.enabled = false;
         goldImg2.enabled = false;
+
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(unlockFirstButton);
     }
 
     public void deActivate()
     {
+        InputManager.Controls.Player.Enable();
+        InputManager.Controls.Player.SelectInPuzzle.Disable();
         gameObject.SetActive(false);
         Time.timeScale = 1;
         goldText.enabled = false;
@@ -255,43 +314,43 @@ public class DisplayPuzzle : MonoBehaviour
     void Update()
     {
         //UpdateSlots();
-        if (Input.GetKey(KeyCode.DownArrow) && selectedSlot != null && onDown == false)
+        if (InputManager.Controls.Player.SelectMoveDown.triggered && selectedSlot != null && onDown == false)
         {
             onDown = true;
             print("move down -- " + selectedSlot.ID);
             moveDown();
         }
-        if (Input.GetKey(KeyCode.UpArrow) && selectedSlot != null && onUp == false)
+        if (InputManager.Controls.Player.SelectMoveUp.triggered && selectedSlot != null && onUp == false)
         {
             onUp = true;
             print("move up -- " + selectedSlot.ID);
             moveUp();
         }
-        if (Input.GetKey(KeyCode.RightArrow) && selectedSlot != null && onRight == false)
+        if (InputManager.Controls.Player.SelectMoveRight.triggered && selectedSlot != null && onRight == false)
         {
             onRight = true;
             print("move right -- " + selectedSlot.ID);
             moveRight();
         }
-        if (Input.GetKey(KeyCode.LeftArrow) && selectedSlot != null && onLeft == false)
+        if (InputManager.Controls.Player.SelectMoveLeft.triggered && selectedSlot != null && onLeft == false)
         {
             onLeft = true;
             print("move left -- " + selectedSlot.ID);
             moveLeft();
         }
-        if (!Input.GetKey(KeyCode.DownArrow))
+        if (!InputManager.Controls.Player.SelectMoveDown.triggered)
         {
             onDown = false;
         }
-        if (!Input.GetKey(KeyCode.UpArrow))
+        if (!InputManager.Controls.Player.SelectMoveUp.triggered)
         {
             onUp = false;
         }
-        if (!Input.GetKey(KeyCode.RightArrow))
+        if (!InputManager.Controls.Player.SelectMoveRight.triggered)
         {
             onRight = false;
         }
-        if (!Input.GetKey(KeyCode.LeftArrow))
+        if (!InputManager.Controls.Player.SelectMoveLeft.triggered)
         {
             onLeft = false;
         }

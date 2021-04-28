@@ -18,21 +18,22 @@ public class SingleGateHandler : MonoBehaviour
     void Start()
     {
         active = false;
+        InputManager.Controls.Player.StartPuzzle.performed += ctx => startPuzzle();
     }
 
-    private void Update()
+    private void startPuzzle()
     {
+        print("hit that putton");
         if (active)
         {
-            if (Input.GetKeyDown(KeyCode.P))
-            {
-                print("P was pressed!");
-                gateCollision.deActivate();
-                puzzleDisplay.Activate();
-                puzzleDisplay.ScrambleByGate(gateId);
-            }
-        }
+            // Disable the player from pausing or doing anything relating to the UI
+            InputManager.Controls.Player.Disable();
+            print("P was pressed!");
+            gateCollision.deActivate();
+            puzzleDisplay.Activate();
+            puzzleDisplay.ScrambleByGate(gateId);
 
+        }
     }
 
     private void OnTriggerEnter(Collider other)
