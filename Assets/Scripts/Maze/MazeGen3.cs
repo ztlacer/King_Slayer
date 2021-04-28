@@ -435,8 +435,8 @@ public class MazeGen3 : MonoBehaviour
 
         generateWayPoints(5, 2, 19, -485, -420, 50, wayPoints1, takenX1, takenZ1, 0, 18, 0);
         generateWayPoints(5, 19, 19, -485, -420, 50, wayPoints2, takenX1, takenZ1, 17, 17, 5);
-        generateWayPoints(5, 2, 24, -1490, -190, 40, wayPoints3, takenX2, takenZ2, 0, 23, 10);
-        generateWayPoints(5, 19, 19, -1490, -190, 40, wayPoints4, takenX2, takenZ2, 17, 17, 15);
+        generateWayPoints(5, 3, 24, -1490, -190, 40, wayPoints3, takenX2, takenZ2, 3, 24, 10);
+        generateWayPoints(5, 19, 19, -1490, -190, 40, wayPoints4, takenX2, takenZ2, 18, 10, 15);
         generateWayPoints(5, 4, 4, -1505, 785, 25, wayPoints5, takenX3, takenZ3, 2, 2, 20);
         generateWayPoints(5, 39, 10, -1505, 785, 25, wayPoints6, takenX3, takenZ3, 38, 9, 25);
         generateWayPoints(5, 4, 2, -390, 550, 20, wayPoints7, takenX4, takenZ4, 2, 0, 30);
