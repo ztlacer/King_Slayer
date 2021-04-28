@@ -41,7 +41,7 @@ public class Health : MonoBehaviour
         currentHealth += amount;
 
 
-        float currentHealthPct = (float)playerStats.Health / (float)maxHealth;
+        float currentHealthPct = (float)currentHealth / (float)maxHealth;
         onHealthPctChanged(currentHealthPct);
         //text.text = currentHealthPct.ToString() + "%";
 
