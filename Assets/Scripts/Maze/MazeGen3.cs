@@ -1213,6 +1213,7 @@ public class MazeGen3 : MonoBehaviour
 
         }
     }
+
     void generateWayPoints(int wayPointCount, int gridEndX, int gridEndZ, double worldTransX, double worldTransZ, float coordSize, GameObject[] wayPoints, int[][] takenX, int[][] takenZ, int gridStartX, int gridStartZ, int waypointsSet)
     {
         int[] xValues = new int[wayPointCount];
