@@ -6,17 +6,27 @@ using System;
 
 public class Health : MonoBehaviour
 {
-    [SerializeField] private int maxHealth = 100;
+    [SerializeField] public int maxHealth = 100;
 
-    [SerializeField] private string damagingWeapon;
+    [SerializeField] public string damagingWeapon;
 
     [SerializeField] private StatObject playerStats;
 
     //[SerializeField] private TextMesh text;
 
-    //private int currentHealth;
+
+    public int currentHealth;
+
+
+
 
     public event Action<float> onHealthPctChanged = delegate { };
+
+
+    public StatObject ownStats;
+
+    public StatObject enemyStats;
+
 
 
     private void OnEnable()
@@ -26,7 +36,10 @@ public class Health : MonoBehaviour
 
     public void ModifyHealth(int amount)
     {
-        playerStats.Health += amount;
+
+
+        currentHealth += amount;
+
 
         float currentHealthPct = (float)playerStats.Health / (float)maxHealth;
         onHealthPctChanged(currentHealthPct);
@@ -34,11 +47,7 @@ public class Health : MonoBehaviour
 
     }
 
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == damagingWeapon)
-        {
-            ModifyHealth(-10);
-        }
-    }
+
+
+    
 }

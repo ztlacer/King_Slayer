@@ -174,15 +174,25 @@ public class PlayerInventory : MonoBehaviour
                     {
                         playerStats.Health = 100;
                     }
+                    var grandChild = this.gameObject.transform.GetChild(0).GetChild(2).gameObject;
+                    var health = grandChild.GetComponent<PlayerHealth>();
+
+                    health.ModifyHealth(playerStats.Health - health.currentHealth);
                 }
                 if (inventory.Container[inventory.currentContainerLook].item.name == "Meat")
                 {
-                    playerStats.Health += meat.restoreHealthValue;
-                    inventory.Container[inventory.currentContainerLook].RemoveAmount(1);
+                    if (playerStats.Health < 100)
+                    {
+                        playerStats.Health += meat.restoreHealthValue;
+                        inventory.Container[inventory.currentContainerLook].RemoveAmount(1);
+                    }
                     if (playerStats.Health > 100)
                     {
                         playerStats.Health = 100;
                     }
+                    var grandChild = this.gameObject.transform.GetChild(0).GetChild(2).gameObject;
+                    var health = grandChild.GetComponent<PlayerHealth>();
+                    health.currentHealth = playerStats.Health;
                 }
             }
         }
