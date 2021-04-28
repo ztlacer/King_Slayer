@@ -1,5 +1,6 @@
 ﻿using Mirror;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using Cinemachine;
 
@@ -11,8 +12,9 @@ public class PlayerMovementController : NetworkBehaviour
     [SerializeField] private CharacterController controller = null;
     [SerializeField] private Animator animator = null;
     [SerializeField] private GameObject freeLook = null;
-    [SerializeField] private GameObject playerUI;
-
+    [SerializeField] private GameObject inventoryUI;
+    [SerializeField] private GameObject pauseUI;
+    private float elapsedTime = 0f;
 
     //private Transform cam;
 
@@ -32,15 +34,6 @@ public class PlayerMovementController : NetworkBehaviour
 
     private bool isSneaking = false;
 
-    private Controls controls;
-    private Controls Controls
-    {
-        get
-        {
-            if (controls != null) { return controls; }
-            return controls = new Controls();
-        }
-    }
     private void Start()
     {
         controller = gameObject.GetComponent<CharacterController>();
@@ -49,74 +42,129 @@ public class PlayerMovementController : NetworkBehaviour
     {
         enabled = true;
         freeLook.SetActive(true);
-        playerUI.SetActive(true);
+        inventoryUI.SetActive(true);
         GetComponent<PlayerInventory>().enabled = true;
         //cam = GameObject.Find("MainCamera").transform;
 
-        Controls.Player.Move.performed += ctx => SetMovement(ctx.ReadValue<Vector2>());
-        Controls.Player.Move.canceled += ctx => ResetMovement();
+        InputManager.Controls.Player.Move.performed += ctx => SetMovement(ctx.ReadValue<Vector2>());
+        InputManager.Controls.Player.Move.canceled += ctx => ResetMovement();
+        InputManager.Controls.Player.Move.performed += ctx => SetMovement(ctx.ReadValue<Vector2>());
+        InputManager.Controls.Player.Move.canceled += ctx => ResetMovement();
+        InputManager.Controls.Player.Sneak.performed += ctx => SetSneaking();
+        InputManager.Controls.Player.Sneak.canceled += ctx => resetSneaking();
+        InputManager.Controls.Player.Pause.performed += ctx => PauseGame();
+        InputManager.Controls.Player.Fire.performed += ctx => attack();
     }
 
 
-    [ClientCallback]
-    private void OnEnable() => Controls.Enable();
+    //[ClientCallback]
+    //private void OnEnable() => Controls.Enable();
 
-    [ClientCallback]
-    private void OnDisable() => Controls.Disable();
+    //[ClientCallback]
+    //private void OnDisable() => Controls.Disable();
 
     [ClientCallback] // Needs server authority movement
     private void Update() => Move();
 
     [Client]
-    private void SetMovement(Vector2 movement) => previousInput = movement;
+    private void SetMovement(Vector2 movement)
+    {
+        horizontalX = movement.x;
+        horizontalZ = movement.y;
+        isMoving = horizontalX == 0 && horizontalZ == 0 ? false : true;
+    }
+    [Client]
+    private void ResetMovement()
+    {
+        isMoving = false;
+        horizontalX = 0;
+        horizontalZ = 0;
+    }
 
     [Client]
-    private void ResetMovement() => previousInput = Vector2.zero;
-
-    private void OnMove(InputValue inputAction)
+    private void SetSneaking()
     {
-        Vector2 direction = inputAction.Get<Vector2>();
-        horizontalX = direction.x;
-        horizontalZ = direction.y;
+        isSneaking = true;
+        animator.SetBool("isSneaking", true);
+    }
 
-        isMoving = horizontalX == 0 && horizontalZ == 0 ? false : true;
+    [Client]
+    private void resetSneaking()
+    {
+        isSneaking = false;
+        animator.SetBool("isSneaking", false);
+    }
+
+    [Client]
+    public void PauseGame()
+    {
+        if (InputManager.Controls.Player.enabled)
+        {
+            InputManager.Controls.Player.Disable();
+        }
+        else
+        {
+            InputManager.Controls.Player.Enable();
+        }
+        pauseUI.SetActive(!pauseUI.activeInHierarchy);
+        Time.timeScale = Time.timeScale == 0 ? 1 : 0;
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(pauseUI.transform.GetChild(0).gameObject);
+    }
+
+    private void attack()
+    {
+        if (elapsedTime == 0)
+        {
+            animator.SetBool("isAttacking", true);
+            elapsedTime += Time.deltaTime;
+        }
     }
 
     [Client]
     private void Move()
     {
+        animator.SetBool("isMoving", isMoving);
 
-        if (InputManager.Controls.Player.Pause.triggered)
+        if (elapsedTime > 0 && elapsedTime < 1.667) // length of attack anim
         {
-            if (Time.timeScale == 0)
-            {
-                Time.timeScale = 1;
-            }
-            else
-            {
-                Time.timeScale = 0;
-
-            }
+            elapsedTime += Time.deltaTime;
         }
-        // New Code for networked movement
+        else if (elapsedTime > 1.667)
+        {
+            print("reset animation");
+            elapsedTime = 0;
+            animator.SetBool("isAttacking", false);
+        }
+        //if (Input.GetKeyDown(KeyCode.Escape))
+        //{
+        //    if (Time.timeScale == 0)
+        //    {
+        //        Time.timeScale = 1;
+        //    } else
+        //    {
+        //        Time.timeScale = 0;
+
+        //    }
+        //}
         Vector3 direction = new Vector3(horizontalX, 0f, horizontalZ).normalized;
 
         // If there is any magnitude at which the player is moving then animate it running
         //animator.SetBool("isMoving", direction.magnitude > 0);
 
-        if (Keyboard.current.ctrlKey.wasPressedThisFrame) // if the player is crouching, reduce movement speed
-        {
-            isSneaking = true;
-        }
-        else if (Keyboard.current.ctrlKey.wasReleasedThisFrame)
-        {
-            isSneaking = false;
-        }
+        //if (Keyboard.current.ctrlKey.wasPressedThisFrame) // if the player is crouching, reduce movement speed
+        //{
+        //    isSneaking = true;
+        //}
+        //else if (Keyboard.current.ctrlKey.wasReleasedThisFrame)
+        //{
+        //    isSneaking = false;
+        //}
         // test
 
         if (isMoving)
         { // then calculate movement and stuff.
-            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + Camera.main.transform.eulerAngles.y; // Here Camera.main refers to the primary camera with the tag "MainCamera"
+            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + Camera.main.transform.eulerAngles.y;
 
 
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
@@ -142,19 +190,27 @@ public class PlayerMovementController : NetworkBehaviour
 
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, realTurnTime);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
-            Vector3 playerVelocity = moveDir.normalized * movementSpeed * Time.deltaTime;
-            if (controller.isGrounded)
-            {
-                playerVelocity.y = 0;
 
-            }
-            else
-            {
-                playerVelocity.y += gravity * Time.deltaTime;
-
-            }
+            Vector3 playerVelocity = moveDir.normalized * realSpeed * Time.deltaTime;
             controller.Move(playerVelocity);
 
+
+
         }
+
+
+        Vector3 gravityVec = new Vector3();
+        if (controller.isGrounded)
+        {
+            gravityVec.y = 0;
+
+        }
+        else
+        {
+            gravityVec.y += gravity * Time.deltaTime;
+
+        }
+
+        controller.Move(gravityVec);
     }
 }

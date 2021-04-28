@@ -2345,7 +2345,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  damagingWeapon: 
+  damagingWeapon: playerWeapon
+  playerStats: {fileID: 11400000, guid: d742020996d217d4cb20cdfd8bcda90c, type: 2}
 --- !u!65 &8446897835560610822
 BoxCollider:
   m_ObjectHideFlags: 0

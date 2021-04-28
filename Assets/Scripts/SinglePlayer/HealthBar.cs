@@ -42,6 +42,11 @@ public class HealthBar : MonoBehaviour
         if (foreground.fillAmount <= 0)
         {
             Destroy(parent);
+            if (parent.tag == "Player")
+            {
+                EndStateManager.instance.initiateEndScreen("You Lose");
+            }
+            MusicTransition.instance.returnToDefault();
         }
     }
 
