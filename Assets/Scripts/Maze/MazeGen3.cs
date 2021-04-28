@@ -1097,9 +1097,12 @@ public class MazeGen3 : MonoBehaviour
 
             while (valid == false)
             {
+                
                 float startX = Random.Range(0, gridWidth - 2) * coordSize - coordSize - coordSize/2;
 
                 float startZ = Random.Range(0, gridDepth - 2) * coordSize - coordSize - coordSize/2;
+
+                
 
                 if (dec)
                 {
@@ -1129,30 +1132,38 @@ public class MazeGen3 : MonoBehaviour
                 if (level == 1)
                 {
                     //print(startX + worldTransX);
-                    //print(startX + worldTransX)
+                    //print(startZ + worldTransZ);
                     for (int j = 0; j < 4; j++)
                     {
                         int index1 = j * 2;
                         int index2 = j * 2 + 1;
-                        if ((startX + worldTransX) > zoneStart1[index1] && (startX + worldTransX) < (zoneStart1[index1] + 50))
+                        //print("x" + zoneStart1[index1]);
+                        //print("z" + zoneStart1[index2]);
+                        if ((startX + worldTransX) > (zoneStart1[index1] - 100) && (startX + worldTransX) < (zoneStart1[index1] + 100))
                         {
-                            if ((startZ + worldTransZ) > zoneStart1[index2] && (startZ + worldTransZ) < (zoneStart1[index2] + 50))
+                            if ((startZ + worldTransZ) > (zoneStart1[index2]-100) && (startZ + worldTransZ) < (zoneStart1[index2] + 100))
                             {
                                 valid = false;
                             }
+
+                            
                         }
                     }
                 }
 
                 if (level == 2)
                 {
+                    print( "x" + (startX + worldTransX) + " -- i -- " + i);
+                    print( "z" + (startZ + worldTransZ) + " -- i -- " + i);
                     for (int j = 0; j < 4; j++)
                     {
                         int index1 = j * 2;
                         int index2 = j * 2 + 1;
-                        if ( (startX + worldTransX) > zoneStart2[index1] && (startX + worldTransX) < (zoneStart2[index1] + 50) )
+                        print("x " + j + ": " + zoneStart2[index1]);
+                        print("z " + j + ": " + zoneStart2[index2]);
+                        if ( (startX + worldTransX) > (zoneStart2[index1] - 80) && (startX + worldTransX) < (zoneStart2[index1] + 80) )
                         {
-                            if ((startZ + worldTransZ) > zoneStart2[index2] && (startZ + worldTransZ) < (zoneStart2[index2] + 50))
+                            if ((startZ + worldTransZ) > (zoneStart2[index2] - 80) && (startZ + worldTransZ) < (zoneStart2[index2] + 80))
                             {
                                 valid = false;
                             }
@@ -1166,9 +1177,9 @@ public class MazeGen3 : MonoBehaviour
                     {
                         int index1 = j * 2;
                         int index2 = j * 2 + 1;
-                        if ((startX + worldTransX) > zoneStart3[index1] && (startX + worldTransX) < (zoneStart3[index1] + 50))
+                        if ((startX + worldTransX) > (zoneStart3[index1] - 90) && (startX + worldTransX) < (zoneStart3[index1] + 90))
                         {
-                            if ((startZ + worldTransZ) > zoneStart3[index2] && (startZ + worldTransZ) < (zoneStart3[index2] + 50))
+                            if ((startZ + worldTransZ) > (zoneStart3[index2] - 90) && (startZ + worldTransZ) < (zoneStart3[index2] + 90))
                             {
                                 valid = false;
                             }
@@ -1182,9 +1193,9 @@ public class MazeGen3 : MonoBehaviour
                     {
                         int index1 = j * 2;
                         int index2 = j * 2 + 1;
-                        if ((startX + worldTransX) > zoneStart4[index1] && (startX + worldTransX) < (zoneStart4[index1] + 50))
+                        if ((startX + worldTransX) > (zoneStart4[index1] - 80) && (startX + worldTransX) < (zoneStart4[index1] + 80))
                         {
-                            if ((startZ + worldTransZ) > zoneStart4[index2] && (startZ + worldTransZ) < (zoneStart4[index2] + 50))
+                            if ((startZ + worldTransZ) > (zoneStart4[index2] - 80) && (startZ + worldTransZ) < (zoneStart4[index2] + 80))
                             {
                                 valid = false;
                             }
