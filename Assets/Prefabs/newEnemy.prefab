@@ -177,6 +177,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   damagingWeapon: playerWeapon
+  playerStats: {fileID: 11400000, guid: d742020996d217d4cb20cdfd8bcda90c, type: 2}
   currentHealth: 0
   ownStats: {fileID: 0}
   enemyStats: {fileID: 11400000, guid: d742020996d217d4cb20cdfd8bcda90c, type: 2}
@@ -435,6 +436,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 7578937281671870191}
   clip: {fileID: 8300000, guid: 36280d49368ff004292f3940f2106d77, type: 3}
+  stats: {fileID: 0}
   speed: 10
   passedThrough: 0
   exited: 0

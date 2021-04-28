@@ -31,7 +31,7 @@ public class Health : MonoBehaviour
 
     private void OnEnable()
     {
-        playerStats.Health = maxHealth;
+        currentHealth = maxHealth;
     }
 
     public void ModifyHealth(int amount)
