@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 1960340469579129369, guid: 5b4a5c4c7d175654b99d8d953f7d1de7, type: 3}
   type: 1
-  description: 
+  description: 'Fine silk imbued with concealing magic. Cost: 30'
   name: Cloak
   cost: 30
   atkBonus: 0

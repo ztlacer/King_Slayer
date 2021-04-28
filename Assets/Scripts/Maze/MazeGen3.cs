@@ -419,28 +419,28 @@ public class MazeGen3 : MonoBehaviour
         b3Taken = 0;
         b4Taken = 0;
         genSubZone(3, 4, 4, 20, 20, 50, -430, -400, transXTaken1, transZTaken1, SubZones1, 1);
-        genSubZone(4, 4, 4, 25, 25, 40, -1450, -170, transXTaken2, transZTaken2, SubZones2, 2);
-        genSubZone(3, 8, 8, 40, 40, 25, -1442.5, 861.5, transXTaken3, transZTaken3, SubZones3, 3);
+        genSubZone(4, 4, 4, 25, 25, 40, -1450, -380, transXTaken2, transZTaken2, SubZones2, 2); // x, z - 210
+        genSubZone(3, 8, 8, 40, 40, 25, -1442.5, 612.5, transXTaken3, transZTaken3, SubZones3, 3); // x, z - 249
         genSubZone(4, 8, 8, 50, 50, 20, -449, 600, transXTaken4, transZTaken4, SubZones4, 4);
 
         genMaze(takenX4, takenZ4, transXTaken4, transZTaken4, 4, 9, 9, 50, 50, 0, 0, 0, 2400, -499, 550, 20, -20, -30, -10, -40, Walls4, 4);
-        genMaze(takenX3, takenZ3, transXTaken3, transZTaken3, 3, 8, 8, 40, 40, 0, 0, 0, 1520, -1497.5, 804.5, 25, -20, -30, -7.5, -42.5, Walls3, 3);
-        genMaze(takenX2, takenZ2, transXTaken2, transZTaken2, 4, 4, 4, 25, 25, 0, 0, 0, 575, -1490, -180, 40, -20, -30, 0, -50, Walls2, 2);
+        genMaze(takenX3, takenZ3, transXTaken3, transZTaken3, 3, 8, 8, 40, 40, 0, 0, 0, 1520, -1497.5, 555.5, 25, -20, -30, -7.5, -42.5, Walls3, 3); // x, z - 249
+        genMaze(takenX2, takenZ2, transXTaken2, transZTaken2, 4, 4, 4, 25, 25, 0, 0, 0, 575, -1490, -430, 40, -20, -30, 0, -50, Walls2, 2); // x, z - 210
         genMaze(takenX1, takenZ1, transXTaken1, transZTaken1, 3, 4, 4, 20, 20, 0, 0, 0, 360, -485, -420, 50, -20, -30, 5, -55, Walls1, 1);
 
         //generateWayPoints(5, 20, 20, -485, -420, 50, wayPoints1, takenX1, takenZ1);
 
         generateGates(8, 20, 20, -430, -400, 50, Gates1, false, 1);
-        generateGates(10, 25, 25, -1450, -170, 40, Gates2, false, 2);
-        generateGates(18, 38, 38, -1442.5, 861.5, 25, Gates3, true, 3);
+        generateGates(10, 25, 25, -1450, -370, 40, Gates2, false, 2); // x, z - 200
+        generateGates(18, 38, 38, -1442.5, 612.5, 25, Gates3, true, 3); // x, z - 249
         generateGates(20, 48, 48, -449, 600, 20, Gates4, false, 4);
 
         generateWayPoints(5, 2, 19, -485, -420, 50, wayPoints1, takenX1, takenZ1, 0, 18, 0);
         generateWayPoints(5, 19, 19, -485, -420, 50, wayPoints2, takenX1, takenZ1, 17, 17, 5);
-        generateWayPoints(5, 3, 24, -1490, -190, 40, wayPoints3, takenX2, takenZ2, 3, 24, 10);
-        generateWayPoints(5, 19, 19, -1490, -190, 40, wayPoints4, takenX2, takenZ2, 17, 17, 15);
-        generateWayPoints(5, 4, 4, -1505, 785, 25, wayPoints5, takenX3, takenZ3, 2, 2, 20);
-        generateWayPoints(5, 39, 10, -1505, 785, 25, wayPoints6, takenX3, takenZ3, 38, 9, 25);
+        generateWayPoints(5, 3, 24, -1490, -390, 40, wayPoints3, takenX2, takenZ2, 3, 24, 10); // x, z - 200
+        generateWayPoints(5, 19, 19, -1490, -390, 40, wayPoints4, takenX2, takenZ2, 18, 10, 15); // x, z - 200
+        generateWayPoints(5, 4, 4, -1505, 536, 25, wayPoints5, takenX3, takenZ3, 2, 2, 20); // x, z - 249
+        generateWayPoints(5, 39, 10, -1505, 536, 25, wayPoints6, takenX3, takenZ3, 38, 9, 25); // x, z - 249
         generateWayPoints(5, 4, 2, -390, 550, 20, wayPoints7, takenX4, takenZ4, 2, 0, 30);
         generateWayPoints(5, 33, 47, -650, 490, 20, wayPoints8, takenX4, takenZ4, 32, 47, 35);
 
@@ -1215,6 +1215,7 @@ public class MazeGen3 : MonoBehaviour
 
         }
     }
+
     void generateWayPoints(int wayPointCount, int gridEndX, int gridEndZ, double worldTransX, double worldTransZ, float coordSize, GameObject[] wayPoints, int[][] takenX, int[][] takenZ, int gridStartX, int gridStartZ, int waypointsSet)
     {
         int[] xValues = new int[wayPointCount];
@@ -1226,7 +1227,29 @@ public class MazeGen3 : MonoBehaviour
 
         var enemy = Instantiate(EnemyPrefab);
 
+        enemy.transform.position = new Vector3(0, 5, 0);
+
+
         PatrolScript script = enemy.GetComponent<PatrolScript>();
+
+        EnemyKnightStat stats = enemy.GetComponent<EnemyKnightStat>();
+
+        if (waypointsSet < 9)
+        {
+            stats.zone = 1;
+        }
+        else if (waypointsSet < 19)
+        {
+            stats.zone = 2;
+        }
+        else if (waypointsSet < 29)
+        {
+            stats.zone = 3;
+        }
+        else
+        {
+            stats.zone = 4;
+        }
 
         script.numWaypointSet = waypointsSet;
 

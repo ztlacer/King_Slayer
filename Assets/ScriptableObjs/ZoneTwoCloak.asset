@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 7391360094572949266, guid: 0039a3d3c604d2d4b83e3f996b3d084a, type: 3}
   type: 1
-  description: 
+  description: 'This cloak will serve you well in avoiding the gaze of enemies patrolling
+    the area. Cost: 20'
   name: Cloak
   cost: 20
   atkBonus: 0

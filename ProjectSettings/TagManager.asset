@@ -10,6 +10,7 @@ TagManager:
   - enemyWeapon
   - gateCollider
   - Body
+  - Enemy
   - Win
   layers:
   - Default

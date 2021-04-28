@@ -115,7 +115,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   foreground: {fileID: 2842706285593927615}
   updateSpeedSeconds: 0.5
-  health: {fileID: 2842706285280495232}
+  health: {fileID: 5944828753051562441}
   parent: {fileID: 6955059208961391902}
 --- !u!1 &2842706285280495235
 GameObject:
@@ -126,8 +126,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2842706285280495234}
-  - component: {fileID: 2842706285280495232}
   - component: {fileID: 2842706285280495233}
+  - component: {fileID: 5944828753051562441}
   m_Layer: 0
   m_Name: hurtbox
   m_TagString: Untagged
@@ -150,21 +150,6 @@ Transform:
   m_Father: {fileID: 6955059208961391896}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2842706285280495232
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2842706285280495235}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 776ae60cedc20e0479551e4d817dddc6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 100
-  damagingWeapon: playerWeapon
-  playerStats: {fileID: 11400000, guid: d742020996d217d4cb20cdfd8bcda90c, type: 2}
 --- !u!65 &2842706285280495233
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -178,6 +163,24 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.3433533, y: 3.2410696, z: 1.7837677}
   m_Center: {x: 0.06447601, y: 0.7554711, z: -0.006477356}
+--- !u!114 &5944828753051562441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2842706285280495235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5eb51cea00ba7a348a0c247e88ecb732, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  damagingWeapon: playerWeapon
+  playerStats: {fileID: 11400000, guid: d742020996d217d4cb20cdfd8bcda90c, type: 2}
+  currentHealth: 0
+  ownStats: {fileID: 0}
+  enemyStats: {fileID: 11400000, guid: d742020996d217d4cb20cdfd8bcda90c, type: 2}
 --- !u!1 &2842706285593927609
 GameObject:
   m_ObjectHideFlags: 0
@@ -332,9 +335,10 @@ GameObject:
   - component: {fileID: 6955059208961391900}
   - component: {fileID: 6955059208961391903}
   - component: {fileID: 6955059208961391897}
+  - component: {fileID: 5123184331758484842}
   m_Layer: 0
   m_Name: newEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -432,6 +436,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 7578937281671870191}
   clip: {fileID: 8300000, guid: 36280d49368ff004292f3940f2106d77, type: 3}
+  stats: {fileID: 0}
   speed: 10
   passedThrough: 0
   exited: 0
@@ -486,6 +491,20 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &5123184331758484842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6955059208961391902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7f2891726e1a4b43a761b104a7ba0ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats: {fileID: 0}
+  zone: 0
 --- !u!1 &7578937281655369374
 GameObject:
   m_ObjectHideFlags: 0

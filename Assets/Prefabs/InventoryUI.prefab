@@ -791,7 +791,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7274111819410227456}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -990,12 +990,12 @@ MonoBehaviour:
   X_START: -180
   Y_START: 260
   X_SPACE_BETWEEN_ITEM: 100
-  NUMBER_OF_COLUMNS: 2
+  NUMBER_OF_COLUMNS: 4
   Y_SPACE_BETWEEN_ITEMS: 100
-  X_GOLD_START: 0
-  Y_GOLD_START: 0
-  X_EQUIPMENT_START: 0
-  Y_EQUIPMENT_START: 0
+  X_GOLD_START: -140
+  Y_GOLD_START: -170
+  X_EQUIPMENT_START: -180
+  Y_EQUIPMENT_START: 260
 --- !u!1 &7274111819410227460
 GameObject:
   m_ObjectHideFlags: 0
@@ -1033,6 +1033,7 @@ RectTransform:
   - {fileID: 4395736551453361688}
   - {fileID: 7142084346212622735}
   - {fileID: 998565671045301856}
+  - {fileID: 4412370818035949865}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1212,10 +1213,12 @@ MonoBehaviour:
   X_START: -180
   Y_START: 260
   X_SPACE_BETWEEN_ITEM: 100
-  NUMBER_OF_COLUMNS: 2
+  NUMBER_OF_COLUMNS: 4
   Y_SPACE_BETWEEN_ITEMS: 100
-  X_GOLD_START: 0
-  Y_GOLD_START: 0
+  X_GOLD_START: -140
+  Y_GOLD_START: -170
+  X_EQUIPMENT_START: -180
+  Y_EQUIPMENT_START: 260
 --- !u!1 &8438421005832340918
 GameObject:
   m_ObjectHideFlags: 0

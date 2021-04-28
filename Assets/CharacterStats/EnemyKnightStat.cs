@@ -2,15 +2,39 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Knight Enemy", menuName = "Stats/Enemy/Knight")]
-public class EnemyKnightStat : StatObject
+public class EnemyKnightStat : MonoBehaviour
 {
+    public StatObject stats;
 
-    public void Awake()
+    public int zone;
+
+    public void OnEnable()
     {
-        Stealth = 20;
-        Attack = 20;
-        Health = 20;
-        Defense = 20;
+        stats = new StatObject();
+        stats.Stealth = 20;
+        stats.Health = 100;
+
+        if (zone == 1)
+        {
+            stats.Attack = 20;
+            stats.Defense = 20;
+        }
+        else if (zone == 2)
+        {
+            stats.Attack = 30;
+            stats.Defense = 30;
+        }
+        else if (zone == 3)
+        {
+            stats.Attack = 40;
+            stats.Defense = 40;
+        }
+        else if (zone == 4)
+        {
+            stats.Attack = 50;
+            stats.Defense = 50;
+        }
     }
+
+
 }

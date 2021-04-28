@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 4756770355501378484, guid: 99de87d474a1d654393da6be7ff05524, type: 3}
   type: 1
-  description: 
+  description: 'Chainmail set of armor to help defend against attacks from enemies.
+    Cost: 20'
   name: Armor
   cost: 20
   atkBonus: 0

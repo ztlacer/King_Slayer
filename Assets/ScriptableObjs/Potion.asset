@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 822438447775363644, guid: 4a0016be54199014b838435c311b8da7, type: 3}
   type: 0
-  description: Potion that restores a large amount of health.
+  description: 'Potion that restores a large amount of health. Cost: 25'
   name: Potion
   cost: 25
-  restoreHealthValue: 30
+  restoreHealthValue: 50

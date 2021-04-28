@@ -13,6 +13,7 @@ public class PlayerInventory : MonoBehaviour
     public GameObject screen;
     public GameObject shopScreen;
     public GameObject DescriptionScreen;
+    public GameObject popupScreen;
     [SerializeField] GameObject messagePrefab;
     public DisplayInventory display;
     public StatObject playerStats;
@@ -33,6 +34,7 @@ public class PlayerInventory : MonoBehaviour
         shopScreen.SetActive(false);
         screen.SetActive(false);
         DescriptionScreen.SetActive(false);
+        popupScreen.SetActive(false);
         //shopScreen = GameObject.Find("ShopScreen");
         //shopScreen.SetActive(false);
     }
@@ -129,13 +131,14 @@ public class PlayerInventory : MonoBehaviour
             print("i");
             if (screen.activeSelf)
             {
+                popupScreen.SetActive(false);
                 screen.SetActive(false);
                 // Unpause game if you turn off 
                 Time.timeScale = 1;
             }
             else
             {
-                
+                popupScreen.SetActive(true);
                 screen.SetActive(true);
                 // pause game
                 Time.timeScale = 0;
@@ -145,6 +148,7 @@ public class PlayerInventory : MonoBehaviour
 
         if (screen.activeSelf && !isTriggering)
         {
+            
             if (Input.GetKeyDown(KeyCode.RightArrow))
             {
                 if (inventory.currentContainerLook < inventory.Container.Count - 1)
@@ -174,15 +178,25 @@ public class PlayerInventory : MonoBehaviour
                     {
                         playerStats.Health = 100;
                     }
+                    var grandChild = this.gameObject.transform.GetChild(0).GetChild(2).gameObject;
+                    var health = grandChild.GetComponent<PlayerHealth>();
+
+                    health.ModifyHealth(playerStats.Health - health.currentHealth);
                 }
                 if (inventory.Container[inventory.currentContainerLook].item.name == "Meat")
                 {
-                    playerStats.Health += meat.restoreHealthValue;
-                    inventory.Container[inventory.currentContainerLook].RemoveAmount(1);
+                    if (playerStats.Health < 100)
+                    {
+                        playerStats.Health += meat.restoreHealthValue;
+                        inventory.Container[inventory.currentContainerLook].RemoveAmount(1);
+                    }
                     if (playerStats.Health > 100)
                     {
                         playerStats.Health = 100;
                     }
+                    var grandChild = this.gameObject.transform.GetChild(0).GetChild(2).gameObject;
+                    var health = grandChild.GetComponent<PlayerHealth>();
+                    health.ModifyHealth(playerStats.Health - health.currentHealth);
                 }
             }
         }
