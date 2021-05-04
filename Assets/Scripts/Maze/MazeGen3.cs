@@ -438,9 +438,9 @@ public class MazeGen3 : MonoBehaviour
         generateWayPoints(5, 3, 24, -1490, -390, 40, wayPoints3, takenX2, takenZ2, 3, 24, 10); // x, z - 200
         generateWayPoints(5, 19, 19, -1490, -390, 40, wayPoints4, takenX2, takenZ2, 18, 10, 15); // x, z - 200
         generateWayPoints(5, 4, 4, -1505, 536, 25, wayPoints5, takenX3, takenZ3, 2, 2, 20); // x, z - 249
-        generateWayPoints(5, 39, 10, -1505, 536, 25, wayPoints6, takenX3, takenZ3, 38, 9, 25); // x, z - 249
+        generateWayPoints(5, 35, 19, -1505, 536, 25, wayPoints6, takenX3, takenZ3, 35, 19, 25); // x, z - 249
         generateWayPoints(5, 4, 2, -390, 550, 20, wayPoints7, takenX4, takenZ4, 2, 0, 30);
-        generateWayPoints(5, 33, 47, -650, 490, 20, wayPoints8, takenX4, takenZ4, 32, 46, 35);
+        generateWayPoints(5, 33, 28, -650, 490, 20, wayPoints8, takenX4, takenZ4, 33, 28, 35);
 
     }
 
@@ -1223,6 +1223,15 @@ public class MazeGen3 : MonoBehaviour
         xValues[0] = Random.Range(gridStartX, gridEndX);
         zValues[0] = Random.Range(gridStartZ, gridEndZ);
 
+        xValues[1] = xValues[0] + 1;
+        zValues[1] = zValues[0];
+        xValues[2] = xValues[0] - 1;
+        zValues[2] = zValues[0];
+        xValues[3] = xValues[0];
+        zValues[3] = zValues[0] + 1;
+        xValues[4] = xValues[0];
+        zValues[4] = zValues[0] - 1;
+
         var enemy = Instantiate(EnemyPrefab);
 
         enemy.transform.position = new Vector3(0, 5, 0);
@@ -1251,9 +1260,11 @@ public class MazeGen3 : MonoBehaviour
 
         script.numWaypointSet = waypointsSet;
 
+        /*
         int rendered = 1;
         bool rendering = true;
 
+        
         for (int i = 1; i < wayPointCount; i++)
         {
             int lastIndex = i - 1;
@@ -1357,11 +1368,11 @@ public class MazeGen3 : MonoBehaviour
                 }
             }
         }
-
+        */
 
         //waypointOrder = findClosest(xValues, zValues, bestXIndex, waypointOrder, -1);
 
-        for (int i = 0; i < rendered; i++)
+        for (int i = 0; i < 5; i++)
         {
             var x = worldTransX + coordSize * xValues[i] - coordSize / 2;
             var z = worldTransZ + coordSize * zValues[i] - coordSize;
