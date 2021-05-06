@@ -12,12 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Maze2.unity
     guid: c723184577c71454cba962b09e5b7423
   - enabled: 1
-    path: Assets/Scenes/MultiplayerMaze.unity
-    guid: 48a43feed9503914f9123ca339851ea2
-  - enabled: 1
     path: Assets/Scenes/Tutorial.unity
     guid: aee81616df6a97d4a934b1e02ee9918c
   - enabled: 1
-    path: Assets/Scenes/SinglePlayerDemo.unity
-    guid: 64ecc2fe99e100e479252dbef1cd5238
+    path: Assets/Scenes/NewMultiplayerMaze.unity
+    guid: b846e10967563df4887a55d8ffbdcadc
   m_configObjects: {}
