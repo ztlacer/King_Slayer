@@ -79,6 +79,14 @@ public class MazeGen3 : MonoBehaviour
     public GameObject[] wayPoints6;
     public GameObject[] wayPoints7;
     public GameObject[] wayPoints8;
+    public GameObject[] wayPoints9;
+    public GameObject[] wayPoints10;
+    public GameObject[] wayPoints11;
+    public GameObject[] wayPoints12;
+    public GameObject[] wayPoints13;
+    public GameObject[] wayPoints14;
+    public GameObject[] wayPoints15;
+    public GameObject[] wayPoints16;
 
     int numberOfWaypoints = 0;
 
@@ -311,6 +319,68 @@ public class MazeGen3 : MonoBehaviour
             wayPoints8[i].transform.localScale = new Vector3(5, 500, 5);
         }
 
+        wayPoints9 = new GameObject[5];
+        for (int i = 0; i < 5; i++)
+        {
+            wayPoints9[i] = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            wayPoints9[i].transform.position = new Vector3(0, -200, 0);
+            wayPoints9[i].transform.localScale = new Vector3(5, 500, 5);
+        }
+
+        wayPoints10 = new GameObject[5];
+        for (int i = 0; i < 5; i++)
+        {
+            wayPoints10[i] = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            wayPoints10[i].transform.position = new Vector3(0, -200, 0);
+            wayPoints10[i].transform.localScale = new Vector3(5, 500, 5);
+        }
+        wayPoints11 = new GameObject[5];
+        for (int i = 0; i < 5; i++)
+        {
+            wayPoints11[i] = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            wayPoints11[i].transform.position = new Vector3(0, -200, 0);
+            wayPoints11[i].transform.localScale = new Vector3(5, 500, 5);
+        }
+
+        wayPoints12 = new GameObject[5];
+        for (int i = 0; i < 5; i++)
+        {
+            wayPoints12[i] = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            wayPoints12[i].transform.position = new Vector3(0, -200, 0);
+            wayPoints12[i].transform.localScale = new Vector3(5, 500, 5);
+        }
+        wayPoints13 = new GameObject[5];
+        for (int i = 0; i < 5; i++)
+        {
+            wayPoints13[i] = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            wayPoints13[i].transform.position = new Vector3(0, -200, 0);
+            wayPoints13[i].transform.localScale = new Vector3(5, 500, 5);
+        }
+
+        wayPoints14 = new GameObject[5];
+        for (int i = 0; i < 5; i++)
+        {
+            wayPoints14[i] = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            wayPoints14[i].transform.position = new Vector3(0, -200, 0);
+            wayPoints14[i].transform.localScale = new Vector3(5, 500, 5);
+        }
+        wayPoints15 = new GameObject[5];
+        for (int i = 0; i < 5; i++)
+        {
+            wayPoints15[i] = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            wayPoints15[i].transform.position = new Vector3(0, -200, 0);
+            wayPoints15[i].transform.localScale = new Vector3(5, 500, 5);
+        }
+
+        wayPoints16 = new GameObject[5];
+        for (int i = 0; i < 5; i++)
+        {
+            wayPoints16[i] = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            wayPoints16[i].transform.position = new Vector3(0, -200, 0);
+            wayPoints16[i].transform.localScale = new Vector3(5, 500, 5);
+        }
+
+
         takenX1 = new int[19][];
         takenX2 = new int[24][];
         takenX3 = new int[39][];
@@ -433,14 +503,41 @@ public class MazeGen3 : MonoBehaviour
         generateGates(18, 38, 38, -1442.5, 612.5, 25, Gates3, true, 3); // x, z - 249
         generateGates(20, 48, 48, -449, 600, 20, Gates4, false, 4);
 
+
+
+        /*
+         * Creates gate enemies between sections of the map.
+         * 
+         */
+
         generateWayPoints(5, 2, 19, -485, -420, 50, wayPoints1, takenX1, takenZ1, 0, 18, 0);
         generateWayPoints(5, 19, 19, -485, -420, 50, wayPoints2, takenX1, takenZ1, 17, 17, 5);
-        generateWayPoints(5, 3, 24, -1490, -390, 40, wayPoints3, takenX2, takenZ2, 3, 24, 10); // x, z - 200
-        generateWayPoints(5, 19, 19, -1490, -390, 40, wayPoints4, takenX2, takenZ2, 18, 10, 15); // x, z - 200
-        generateWayPoints(5, 4, 4, -1505, 536, 25, wayPoints5, takenX3, takenZ3, 2, 2, 20); // x, z - 249
-        generateWayPoints(5, 35, 19, -1505, 536, 25, wayPoints6, takenX3, takenZ3, 35, 19, 25); // x, z - 249
-        generateWayPoints(5, 4, 2, -390, 550, 20, wayPoints7, takenX4, takenZ4, 2, 0, 30);
-        generateWayPoints(5, 33, 28, -650, 490, 20, wayPoints8, takenX4, takenZ4, 33, 28, 35);
+
+        generateWayPoints(5, 3, 22, -1490, -390, 40, wayPoints3, takenX2, takenZ2, 3, 22, 20); // x, z - 200
+        generateWayPoints(5, 19, 19, -1490, -390, 40, wayPoints4, takenX2, takenZ2, 18, 10, 25); // x, z - 200
+
+        generateWayPoints(5, 4, 4, -1505, 536, 25, wayPoints5, takenX3, takenZ3, 2, 2, 40); // x, z - 249
+        generateWayPoints(5, 35, 19, -1505, 536, 25, wayPoints6, takenX3, takenZ3, 35, 19, 45); // x, z - 249
+
+        generateWayPoints(5, 2, 20, -390, 550, 20, wayPoints7, takenX4, takenZ4, 2, 20, 60);
+        generateWayPoints(5, 33, 28, -650, 490, 20, wayPoints8, takenX4, takenZ4, 33, 28, 65);
+
+        /*
+         * Creates random enemies in the map.
+         * 
+         */
+
+        generateWayPoints(5, 7, 7, -485, -420, 50, wayPoints9, takenX1, takenZ1, 1, 1, 10);
+        generateWayPoints(5, 15, 15, -485, -420, 50, wayPoints10, takenX1, takenZ1, 10, 10, 15);
+
+        generateWayPoints(5, 12, 12, -1490, -390, 40, wayPoints11, takenX2, takenZ2, 1, 1, 30); // x, z - 200
+        generateWayPoints(5, 20, 20, -1490, -390, 40, wayPoints12, takenX2, takenZ2, 15, 15, 35); // x, z - 200
+
+        generateWayPoints(5, 17, 17, -1505, 536, 25, wayPoints13, takenX3, takenZ3, 1, 1, 50); // x, z - 249
+        generateWayPoints(5, 32, 32, -1505, 536, 25, wayPoints14, takenX3, takenZ3, 20, 20, 55); // x, z - 249
+
+        generateWayPoints(5, 20, 20, -390, 550, 20, wayPoints15, takenX4, takenZ4, 1, 1, 70);
+        generateWayPoints(5, 35, 35, -650, 490, 20, wayPoints16, takenX4, takenZ4, 22, 22, 75);
 
     }
 
@@ -464,7 +561,7 @@ public class MazeGen3 : MonoBehaviour
 
                 var black = Instantiate(MerchantPrefab, new Vector3(startX * coordSize + (float)worldTransX + 40, 1.39f, startZ * coordSize + (float)worldTransZ + 25), Quaternion.identity);
 
-                Instantiate(DoctorPrefab, new Vector3(startX * coordSize + (float)worldTransX + 80, 1.39f, startZ * coordSize + (float)worldTransZ + 25), Quaternion.identity);
+                Instantiate(DoctorPrefab, new Vector3(startX * coordSize + (float)worldTransX - 40, 1.39f, startZ * coordSize + (float)worldTransZ + 25), Quaternion.identity);
 
                 var shopInventory = black.GetComponent<BlackSmithInventory>();
 
@@ -480,7 +577,7 @@ public class MazeGen3 : MonoBehaviour
 
                 var black = Instantiate(MerchantPrefab, new Vector3(startX * coordSize + (float)worldTransX + 40, 1.39f, startZ * coordSize + (float)worldTransZ + 25), Quaternion.identity);
 
-                Instantiate(DoctorPrefab, new Vector3(startX * coordSize + (float)worldTransX + 80, 1.39f, startZ * coordSize + (float)worldTransZ + 25), Quaternion.identity);
+                Instantiate(DoctorPrefab, new Vector3(startX * coordSize + (float)worldTransX - 40, 1.39f, startZ * coordSize + (float)worldTransZ + 25), Quaternion.identity);
 
                 var shopInventory = black.GetComponent<BlackSmithInventory>();
 
@@ -495,7 +592,7 @@ public class MazeGen3 : MonoBehaviour
                 Towns3[i].transform.position = new Vector3(startX * coordSize + (float)worldTransX + 40, -15, startZ * coordSize + (float)worldTransZ + 35);
                 var black = Instantiate(MerchantPrefab, new Vector3(startX * coordSize + (float)worldTransX + 40, 1.39f, startZ * coordSize + (float)worldTransZ + 25), Quaternion.identity);
 
-                Instantiate(DoctorPrefab, new Vector3(startX * coordSize + (float)worldTransX + 80, 1.39f, startZ * coordSize + (float)worldTransZ + 25), Quaternion.identity);
+                Instantiate(DoctorPrefab, new Vector3(startX * coordSize + (float)worldTransX - 40, 1.39f, startZ * coordSize + (float)worldTransZ + 25), Quaternion.identity);
 
                 var shopInventory = black.GetComponent<BlackSmithInventory>();
 
@@ -510,7 +607,7 @@ public class MazeGen3 : MonoBehaviour
                 Towns4[i].transform.position = new Vector3(startX * coordSize + (float)worldTransX + 40, -15, startZ * coordSize + (float)worldTransZ + 35);
                 var black = Instantiate(MerchantPrefab, new Vector3(startX * coordSize + (float)worldTransX + 40, 1.39f, startZ * coordSize + (float)worldTransZ + 25), Quaternion.identity);
 
-                Instantiate(DoctorPrefab, new Vector3(startX * coordSize + (float)worldTransX + 80, 1.39f, startZ * coordSize + (float)worldTransZ + 25), Quaternion.identity);
+                Instantiate(DoctorPrefab, new Vector3(startX * coordSize + (float)worldTransX - 40, 1.39f, startZ * coordSize + (float)worldTransZ + 25), Quaternion.identity);
 
                 var shopInventory = black.GetComponent<BlackSmithInventory>();
 
@@ -1223,6 +1320,11 @@ public class MazeGen3 : MonoBehaviour
         xValues[0] = Random.Range(gridStartX, gridEndX);
         zValues[0] = Random.Range(gridStartZ, gridEndZ);
 
+        if (waypointsSet == 40)
+        {
+            print(xValues[0] + " " + zValues[0]);
+        }
+
         xValues[1] = xValues[0] + 1;
         zValues[1] = zValues[0];
         xValues[2] = xValues[0] - 1;
@@ -1241,15 +1343,15 @@ public class MazeGen3 : MonoBehaviour
 
         EnemyKnightStat stats = enemy.GetComponent<EnemyKnightStat>();
 
-        if (waypointsSet < 9)
+        if (waypointsSet < 19)
         {
             stats.zone = 1;
         }
-        else if (waypointsSet < 19)
+        else if (waypointsSet < 39)
         {
             stats.zone = 2;
         }
-        else if (waypointsSet < 29)
+        else if (waypointsSet < 59)
         {
             stats.zone = 3;
         }
