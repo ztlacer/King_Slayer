@@ -14,6 +14,7 @@ public class DisplayPuzzle : MonoBehaviour
     public PuzzleObject puzzle;
     public PuzzleItemDatabaseObject databaseObject;
     public GameObject puzzlePrefab;
+    public LeavePuzzle leavePuzzle;
     public int X_START;
     public int Y_START;
     public int X_SPACE_BETWEEN_ITEM;
@@ -64,18 +65,6 @@ public class DisplayPuzzle : MonoBehaviour
         InputManager.Controls.Player.SelectInPuzzle.Disable();
     }
 
-    //void moveMouse(Vector2 vec)
-    //{
-    //    print("movingMouse");
-    //    print(vec);
-    //    //Vector3 mousepos = Camera.main.WorldToScreenPoint(Mouse.current.position.ReadValue() + vec);
-    //    //InputState.Change(Mouse.current.position, vec);
-    //    //Vector2 newPos = (Vector2)Input.mousePosition + vec;
-    //    Vector2 mousepos = Mouse.current.position.ReadValue() + vec * 10;
-    //    Mouse.current.WarpCursorPosition(mousepos);
-    //    InputState.Change(Mouse.current.position, mousepos);
-    //}
-
     void selectMouse()
     {
         print("clickingMouse");
@@ -88,18 +77,6 @@ public class DisplayPuzzle : MonoBehaviour
         {
             selectorNum = 0;
         }
-
-        //RaycastHit hit;
-        //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        //if (Physics.Raycast(ray, out hit, 100.0f))
-        //{
-        //    //StartCoroutine(ScaleMe(hit.transform));
-        //    Debug.Log("You selected the " + hit.transform.name); // ensure you picked right object
-        //}
-        //Mouse.current.leftButton.IsPressed(0);
-        //Mouse.current.leftButton.IsPressed(1);
-        //Mouse.current.
-        //OnClick();
     }
 
     public void Activate()
@@ -210,10 +187,17 @@ public class DisplayPuzzle : MonoBehaviour
             print("success");
             if (gateId > -1 && gateId < gatesCount)
             {
+                // Deactivate the ability to start the puzzle screen before we destroy the gate
+                GameObject gate = Gates[gateId];
+                gate.GetComponent<SingleGateHandler>().active = false;
                 Destroy(Gates[gateId]);
                 justUnlocked = true;
                 statObject.changeGold(10);
-            } 
+            }
+
+            // Exit puzzle screen
+            deActivate();
+            leavePuzzle.goBack();
         }
         //return true;
     }

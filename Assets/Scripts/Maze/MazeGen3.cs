@@ -1363,6 +1363,9 @@ public class MazeGen3 : MonoBehaviour
         }
 
         script.numWaypointSet = waypointsSet;
+        // Toggle the stats component so that it can be given the right stats
+        stats.enabled = false;
+        stats.enabled = true;
 
         /*
         int rendered = 1;
