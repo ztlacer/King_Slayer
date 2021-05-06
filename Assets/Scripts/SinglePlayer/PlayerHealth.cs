@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class PlayerHealth : Health
 {
+    private void Start()
+    {
+        ownStats.Health = maxHealth;
+    }
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Enemy")

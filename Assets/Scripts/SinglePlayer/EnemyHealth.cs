@@ -14,6 +14,7 @@ public class EnemyHealth: Health
     {
         if (other.gameObject.tag == damagingWeapon)
         {
+            print("GotHit");
             int dmg = enemyStats.Attack * 2 - ownStats.Defense;
             ModifyHealth(-dmg);
         }

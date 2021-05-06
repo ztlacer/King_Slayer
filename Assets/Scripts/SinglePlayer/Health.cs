@@ -31,17 +31,17 @@ public class Health : MonoBehaviour
 
     private void OnEnable()
     {
-        playerStats.Health = maxHealth;
+        //playerStats.Health = maxHealth;
     }
 
     public void ModifyHealth(int amount)
     {
 
 
-        currentHealth += amount;
+        ownStats.Health += amount;
 
 
-        float currentHealthPct = (float)playerStats.Health / (float)maxHealth;
+        float currentHealthPct = (float)ownStats.Health / (float)maxHealth;
         onHealthPctChanged(currentHealthPct);
         //text.text = currentHealthPct.ToString() + "%";
 
