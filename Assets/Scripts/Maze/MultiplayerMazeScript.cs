@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MazeGen3 : MonoBehaviour
+public class MultiplayerMazeScript : MonoBehaviour
 {
     public Material Material1;
     public Material Material2;
@@ -498,32 +498,38 @@ public class MazeGen3 : MonoBehaviour
 
         generateWayPoints(5, 2, 19, -485, -420, 50, wayPoints1, takenX1, takenZ1, 0, 18, 0);
         generateWayPoints(5, 19, 19, -485, -420, 50, wayPoints2, takenX1, takenZ1, 17, 17, 5);
+        generateWayPoints(5, 7, 7, -485, -420, 50, wayPoints9, takenX1, takenZ1, 1, 1, 10);
+        generateWayPoints(5, 15, 15, -485, -420, 50, wayPoints10, takenX1, takenZ1, 10, 10, 15);
 
         generateWayPoints(5, 3, 22, -1490, -390, 40, wayPoints3, takenX2, takenZ2, 3, 22, 20); // x, z - 200
         generateWayPoints(5, 19, 19, -1490, -390, 40, wayPoints4, takenX2, takenZ2, 18, 10, 25); // x, z - 200
+        generateWayPoints(5, 12, 12, -1490, -390, 40, wayPoints11, takenX2, takenZ2, 1, 1, 30); // x, z - 200
+        generateWayPoints(5, 20, 20, -1490, -390, 40, wayPoints12, takenX2, takenZ2, 15, 15, 35); // x, z - 200
+
+
 
         generateWayPoints(5, 4, 4, -1505, 536, 25, wayPoints5, takenX3, takenZ3, 2, 2, 40); // x, z - 249
         generateWayPoints(5, 35, 19, -1505, 536, 25, wayPoints6, takenX3, takenZ3, 35, 19, 45); // x, z - 249
+        generateWayPoints(5, 17, 17, -1505, 536, 25, wayPoints13, takenX3, takenZ3, 1, 1, 50); // x, z - 249
+        generateWayPoints(5, 32, 32, -1505, 536, 25, wayPoints14, takenX3, takenZ3, 20, 20, 55); // x, z - 249
 
         generateWayPoints(5, 2, 20, -390, 550, 20, wayPoints7, takenX4, takenZ4, 2, 20, 60);
         generateWayPoints(5, 33, 28, -650, 490, 20, wayPoints8, takenX4, takenZ4, 33, 28, 65);
+        generateWayPoints(5, 20, 20, -390, 550, 20, wayPoints15, takenX4, takenZ4, 1, 1, 70);
+        generateWayPoints(5, 35, 35, -650, 490, 20, wayPoints16, takenX4, takenZ4, 22, 22, 75);
 
         /*
          * Creates random enemies in the map.
          * 
          */
 
-        generateWayPoints(5, 7, 7, -485, -420, 50, wayPoints9, takenX1, takenZ1, 1, 1, 10);
-        generateWayPoints(5, 15, 15, -485, -420, 50, wayPoints10, takenX1, takenZ1, 10, 10, 15);
 
-        generateWayPoints(5, 12, 12, -1490, -390, 40, wayPoints11, takenX2, takenZ2, 1, 1, 30); // x, z - 200
-        generateWayPoints(5, 20, 20, -1490, -390, 40, wayPoints12, takenX2, takenZ2, 15, 15, 35); // x, z - 200
 
-        generateWayPoints(5, 17, 17, -1505, 536, 25, wayPoints13, takenX3, takenZ3, 1, 1, 50); // x, z - 249
-        generateWayPoints(5, 32, 32, -1505, 536, 25, wayPoints14, takenX3, takenZ3, 20, 20, 55); // x, z - 249
 
-        generateWayPoints(5, 20, 20, -390, 550, 20, wayPoints15, takenX4, takenZ4, 1, 1, 70);
-        generateWayPoints(5, 35, 35, -650, 490, 20, wayPoints16, takenX4, takenZ4, 22, 22, 75);
+
+
+
+
 
     }
 
@@ -567,7 +573,7 @@ public class MazeGen3 : MonoBehaviour
 
                 var shopInventory = black.GetComponent<BlackSmithInventory>();
 
-                shopInventory.zone = 2;
+                shopInventory.zone = 3;
 
                 zoneStart2[index] = startX * coordSize + (float)worldTransX;
                 zoneStart2[index2] = startZ * coordSize + (float)worldTransZ;
@@ -582,7 +588,7 @@ public class MazeGen3 : MonoBehaviour
 
                 var shopInventory = black.GetComponent<BlackSmithInventory>();
 
-                shopInventory.zone = 3;
+                shopInventory.zone = 1;
 
                 zoneStart3[index] = startX * coordSize + (float)worldTransX;
                 zoneStart3[index2] = startZ * coordSize + (float)worldTransZ;
@@ -597,7 +603,7 @@ public class MazeGen3 : MonoBehaviour
 
                 var shopInventory = black.GetComponent<BlackSmithInventory>();
 
-                shopInventory.zone = 4;
+                shopInventory.zone = 3;
 
                 zoneStart4[index] = startX * coordSize + (float)worldTransX;
                 zoneStart4[index2] = startZ * coordSize + (float)worldTransZ;
@@ -1180,12 +1186,12 @@ public class MazeGen3 : MonoBehaviour
 
             while (valid == false)
             {
-                
-                float startX = Random.Range(0, gridWidth - 2) * coordSize - coordSize - coordSize/2;
 
-                float startZ = Random.Range(0, gridDepth - 2) * coordSize - coordSize - coordSize/2;
+                float startX = Random.Range(0, gridWidth - 2) * coordSize - coordSize - coordSize / 2;
 
-                
+                float startZ = Random.Range(0, gridDepth - 2) * coordSize - coordSize - coordSize / 2;
+
+
 
                 if (dec)
                 {
@@ -1224,33 +1230,33 @@ public class MazeGen3 : MonoBehaviour
                         //print("z" + zoneStart1[index2]);
                         if ((startX + worldTransX) > (zoneStart1[index1] - 100) && (startX + worldTransX) < (zoneStart1[index1] + 100))
                         {
-                            if ((startZ + worldTransZ) > (zoneStart1[index2]-100) && (startZ + worldTransZ) < (zoneStart1[index2] + 100))
+                            if ((startZ + worldTransZ) > (zoneStart1[index2] - 100) && (startZ + worldTransZ) < (zoneStart1[index2] + 100))
                             {
                                 valid = false;
                             }
 
-                            
+
                         }
                     }
                 }
 
                 if (level == 2)
                 {
-                    print( "x" + (startX + worldTransX) + " -- i -- " + i);
-                    print( "z" + (startZ + worldTransZ) + " -- i -- " + i);
+                    print("x" + (startX + worldTransX) + " -- i -- " + i);
+                    print("z" + (startZ + worldTransZ) + " -- i -- " + i);
                     for (int j = 0; j < 4; j++)
                     {
                         int index1 = j * 2;
                         int index2 = j * 2 + 1;
                         print("x " + j + ": " + zoneStart2[index1]);
                         print("z " + j + ": " + zoneStart2[index2]);
-                        if ( (startX + worldTransX) > (zoneStart2[index1] - 80) && (startX + worldTransX) < (zoneStart2[index1] + 80) )
+                        if ((startX + worldTransX) > (zoneStart2[index1] - 80) && (startX + worldTransX) < (zoneStart2[index1] + 80))
                         {
                             if ((startZ + worldTransZ) > (zoneStart2[index2] - 80) && (startZ + worldTransZ) < (zoneStart2[index2] + 80))
                             {
                                 valid = false;
                             }
-                        }  
+                        }
                     }
                 }
 
@@ -1335,15 +1341,15 @@ public class MazeGen3 : MonoBehaviour
         }
         else if (waypointsSet < 39)
         {
-            stats.zone = 2;
+            stats.zone = 3;
         }
         else if (waypointsSet < 59)
         {
-            stats.zone = 3;
+            stats.zone = 1;
         }
         else
         {
-            stats.zone = 4;
+            stats.zone = 3;
         }
 
         script.numWaypointSet = waypointsSet;
@@ -1404,61 +1410,7 @@ public class MazeGen3 : MonoBehaviour
         } // end method
 
 
-        int max_X = -1000000;
-        int bestXIndex = -1;
-        List<int> indexList = new List<int>();
-        for (int i = 0; i < xValues.Length; i++)
-        {
-            if (max_X == xValues[i])
-            {
-                indexList.Add(i);
-            }
-            else
-            {
-                max_X = Mathf.Max(max_X, xValues[i]);
-                if (max_X == xValues[i])
-                {
-                    indexList.Clear();
-                    indexList.Add(i);
-                    bestXIndex = i;
-                }
-            }
-        }
-        if (indexList.Count == 1)
-        {
-            waypointOrder.Add(bestXIndex);
-
-        }
-        else if (indexList.Count == wayPointCount)
-        {
-            max_X = -1000000;
-            for (int i = 0; i < zValues.Length; i++)
-            {
-                max_X = Mathf.Max(max_X, zValues[i]);
-                if (max_X == zValues[i])
-                {
-                    bestXIndex = i;
-                }
-            }
-        }
-        else
-        {
-            for (int i = 0; i < zValues.Length; i++)
-            {
-                max_X = 1000000;
-                if (xValues[i] == xValues[bestXIndex] && bestXIndex == i)
-                {
-                    for (int j = 0; j < indexList.Count; j++)
-                    {
-                        max_X = Mathf.Min(max_X, zValues[indexList[j]]);
-                        if (max_X == zValues[indexList[j]])
-                        {
-                            bestXIndex = j;
-                        }
-                    }
-                }
-            }
-        }
+     
         */
 
         //waypointOrder = findClosest(xValues, zValues, bestXIndex, waypointOrder, -1);
@@ -1469,7 +1421,7 @@ public class MazeGen3 : MonoBehaviour
             var z = worldTransZ + coordSize * zValues[i] - coordSize;
             //wayPoints[waypointOrder[i]].transform.position = new Vector3((float)x, 5, (float)z);
             wayPoints[i].transform.position = new Vector3((float)x, 5, (float)z);
-
+            
 
             wayPoints[i].name = "waypoint" + numberOfWaypoints.ToString();
             wayPoints[i].tag = "Waypoint";
@@ -1478,6 +1430,7 @@ public class MazeGen3 : MonoBehaviour
             //wayPoints[waypointOrder[i]].tag = "Waypoint";
 
         }
+       // enemy.transform.position = wayPoints[0].transform.position;
 
     } // end method 
 }
